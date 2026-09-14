@@ -68,8 +68,55 @@ export default {
 
     const url = new URL(request.url);
 
+    // Health check
     if (url.pathname === '/' && request.method === 'GET') {
       return json({ ok: true, service: 'coldcase-cms', branch: BRANCH }, 200, origin);
+    }
+
+    // Secure admin page. It is only the test-branch copy of admin.html.
+    if (url.pathname === '/admin' && request.method === 'GET') {
+      const page = await fetch(
+        'https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/admin.html',
+        { cache: 'no-store' }
+      );
+
+      if (!page.ok) {
+        return new Response('Adminpagina kon niet worden geladen.', {
+          status: 502,
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+      }
+
+      return new Response(await page.text(), {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': 'no-store'
+        }
+      });
+    }
+
+    // Serve the test-branch cases.json to the admin page.
+    if (url.pathname === '/cases.json' && request.method === 'GET') {
+      const data = await fetch(
+        'https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json',
+        { cache: 'no-store' }
+      );
+
+      if (!data.ok) {
+        return new Response('cases.json kon niet worden geladen.', {
+          status: 502,
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+      }
+
+      return new Response(await data.text(), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Cache-Control': 'no-store'
+        }
+      });
     }
 
     if (url.pathname !== '/save' || request.method !== 'POST') {
