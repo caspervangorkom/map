@@ -20,20 +20,30 @@ function dedupeCases(){
   if(changed){cases=out;editing=-1;renderList();}
   return changed;
 }
+function removeLegacyPeppi(){
+  if(!Array.isArray(cases))return false;
+  var legacy='https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen';
+  var before=cases.length;
+  cases=cases.filter(function(c){return String(c&&(c.link||c.url||'')||'').trim().toLowerCase()!==legacy;});
+  if(cases.length!==before){editing=-1;renderList();return true;}
+  return false;
+}
 var originalSaveCase=saveCase;
 saveCase=function(){
   originalSaveCase();
   dedupeCases();
 };
 async function cleanupDuplicateCases(){
-  if(!dedupeCases())return;
+  var removedLegacy=removeLegacyPeppi();
+  var removedDuplicates=dedupeCases();
+  if(!removedLegacy&&!removedDuplicates)return;
   var status=document.getElementById('githubStatus');
-  if(status)status.textContent='Dubbele zaken opruimen…';
+  if(status)status.textContent='Opschonen…';
   try{
     var r=await fetch('/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cases:cases})});
     var j=await r.json().catch(function(){return {}});
     if(!r.ok)throw Error(j.error||'HTTP '+r.status);
-    if(status)status.innerHTML='<span class="oktext">✓ Dubbele zaken automatisch verwijderd. '+String(j.count??cases.length)+' zaken opgeslagen.</span>';
+    if(status)status.innerHTML='<span class="oktext">✓ Oude testzaak/dubbelen automatisch verwijderd. '+String(j.count??cases.length)+' zaken opgeslagen.</span>';
   }catch(e){
     if(status)status.innerHTML='<span class="dangertext">Opruimen mislukt: '+esc(e.message)+'</span>';
   }
