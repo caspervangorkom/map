@@ -4,6 +4,7 @@ const BRANCH = 'cms-v2';
 const PATH = 'cases.json';
 const MAX_BODY_BYTES = 2_000_000;
 const MAX_CASES = 10_000;
+const MAX_GEOCODE_QUERY = 200;
 
 function corsHeaders(origin) {
   return {
@@ -100,6 +101,57 @@ export default {
           'Cache-Control': 'no-store'
         }
       });
+    }
+
+    if (url.pathname === '/geocode' && request.method === 'GET') {
+      if (!ctx?.access) {
+        return json({ error: 'Cloudflare Access vereist.' }, 403, origin);
+      }
+
+      const query = (url.searchParams.get('q') || '').trim();
+      if (!query || query.length > MAX_GEOCODE_QUERY) {
+        return json({ error: 'Vul een plaats of adres in (maximaal 200 tekens).' }, 400, origin);
+      }
+
+      const nominatimUrl = new URL('https://nominatim.openstreetmap.org/search');
+      nominatimUrl.searchParams.set('q', query);
+      nominatimUrl.searchParams.set('format', 'jsonv2');
+      nominatimUrl.searchParams.set('limit', '1');
+      nominatimUrl.searchParams.set('accept-language', 'nl');
+
+      try {
+        const result = await fetch(nominatimUrl.toString(), {
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Coldcasezaken-CMS/1.0 (+https://www.coldcasezaken.nl/cold-case-kaart)'
+          }
+        });
+
+        if (!result.ok) {
+          return json({ error: `Locatie zoeken mislukt (HTTP ${result.status}).` }, 502, origin);
+        }
+
+        const matches = await result.json();
+        if (!Array.isArray(matches) || !matches.length) {
+          return json({ error: 'Geen locatie gevonden. Probeer een plaatsnaam of een iets duidelijker adres.' }, 404, origin);
+        }
+
+        const match = matches[0];
+        const lat = Number(match.lat);
+        const lng = Number(match.lon);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+          return json({ error: 'De gevonden locatie bevat geen geldige coördinaten.' }, 502, origin);
+        }
+
+        return json({
+          ok: true,
+          lat,
+          lng,
+          display_name: typeof match.display_name === 'string' ? match.display_name : query
+        }, 200, origin);
+      } catch (e) {
+        return json({ error: 'Locatie zoeken kon niet worden uitgevoerd.' }, 502, origin);
+      }
     }
 
     if (url.pathname !== '/save' || request.method !== 'POST') {
