@@ -56,12 +56,36 @@ function isAllowedDossierUrl(value) {
   }
 }
 
+function decodeHtmlEntities(value) {
+  let result = String(value ?? '');
+  for (let pass = 0; pass < 3; pass++) {
+    const decoded = result
+      .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => {
+        const code = parseInt(hex, 16);
+        return Number.isFinite(code) ? String.fromCodePoint(code) : _;
+      })
+      .replace(/&#([0-9]+);?/g, (_, dec) => {
+        const code = parseInt(dec, 10);
+        return Number.isFinite(code) ? String.fromCodePoint(code) : _;
+      })
+      .replace(/&(amp|lt|gt|quot|apos|nbsp);/gi, (_, name) => ({
+        amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0'
+      })[name.toLowerCase()] || _);
+    if (decoded === result) break;
+    result = decoded;
+  }
+  return result;
+}
+
 function absoluteImageUrl(value, base) {
-  if (!value || /^(undefined|null|about:blank)$/i.test(value.trim())) return null;
+  if (!value) return null;
+  const cleaned = decodeHtmlEntities(value).trim();
+  if (!cleaned || /^(undefined|null|about:blank)$/i.test(cleaned)) return null;
   try {
-    const u = new URL(value, base);
+    const u = new URL(cleaned, base);
     if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
     if (/\/undefined(?:$|[/?#])/i.test(u.pathname)) return null;
+    if (/\/null(?:$|[/?#])/i.test(u.pathname)) return null;
     return u.toString();
   } catch {
     return null;
