@@ -1,43 +1,779 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Coldcase Kaart</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-  <style>
-    #map { height: 100vh; width: 100%; }
-    body, html { margin:0; padding:0; height:100%; }
-  </style>
-</head>
-<body>
-  <div id="map"></div>
+<html lang="nl"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Coldcase Explorer – lijst</title><style>*{box-sizing:border-box}html{margin:0;padding:0;background:#fff}body{margin:0;padding:0;background:#fff;font-family:Arial,Helvetica,sans-serif;color:#224576;overflow-x:hidden}.wrap{max-width:1156px;margin:0 auto;padding:28px 0 40px}.intro{font-size:15px;line-height:1.5;margin:0 0 18px}.filters{display:grid;grid-template-columns:minmax(240px,1fr) 190px 190px 190px auto;gap:10px;margin:0 0 20px}.filters input,.filters select,.filters button{height:46px;border:1px solid #d7dee7;border-radius:7px;background:#fff;color:#224576;font:inherit;padding:0 13px}.filters button{background:#224576;color:#fff;border-color:#224576;cursor:pointer}.list-top{display:flex;justify-content:space-between;align-items:center;margin:0 0 12px}.count{font-size:16px}.note{font-size:13px;color:#68778a}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.cc-card{position:relative;display:flex;align-items:flex-start;min-height:164px;padding:14px;border:1px solid #e0e5eb;border-radius:8px;background:#fff;overflow:hidden;box-sizing:border-box}.cc-photo-wrap{width:210px;height:140px;min-width:210px;min-height:140px;flex:0 0 210px;margin-right:26px;background:#eef1f4;display:flex;align-items:center;justify-content:center;overflow:hidden}.cc-photo{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#eef1f4;border-radius:0}.cc-no-photo::before{content:'GEEN FOTO'!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%;height:100%;color:#aab4c0;font-size:13px;font-weight:500;letter-spacing:.2px;line-height:1;text-align:center}.cc-no-photo::after{content:none!important;display:none!important}.cc-no-photo img,.cc-no-photo span{display:none!important}.cc-content{min-width:0;flex:1 1 0;width:auto;max-width:calc(100% - 236px);height:140px;display:flex;flex-direction:column;justify-content:flex-start;padding:4px 10px 5px 0;overflow:hidden}.cc-title{width:100%;max-width:100%;min-width:0;overflow-wrap:anywhere;word-break:normal;white-space:normal;box-sizing:border-box}.cc-category{color:#C6534C;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin:0 0 5px;line-height:1.2}.cc-title{margin:0 0 7px;color:#224576;font-size:19px;line-height:1.15;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.cc-place,.cc-date{display:block;color:#224576;font-size:14px;line-height:1.25;margin:0}.cc-place{margin-bottom:3px;font-weight:500}.cc-hit{position:absolute;inset:0;z-index:2;text-decoration:none;color:transparent!important;font-size:0}@media(max-width:850px){.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.grid{grid-template-columns:1fr}}@media(max-width:600px){.wrap{padding:20px 0 30px}.filters{display:flex;flex-direction:column}.filters input,.filters select,.filters button{width:100%}.list-top{display:block}.note{margin-top:5px}.cc-card{min-height:100px}.cc-photo-wrap{width:150px;height:100px;min-width:150px;min-height:100px;flex-basis:150px;margin-right:18px}.cc-photo{width:100%;height:100%;object-fit:contain;object-position:center}.cc-content{height:100px;max-width:calc(100% - 168px);padding:11px 10px 8px 0}.cc-category{font-size:10px;letter-spacing:.9px;margin-bottom:4px}.cc-title{font-size:16px;margin-bottom:5px;max-width:100%;overflow-wrap:anywhere;word-break:normal}.cc-place,.cc-date{font-size:13px}}
+.cc-link{display:inline-block;margin-top:8px;color:#224576!important;text-decoration:underline!important;font-size:13px;line-height:1.2;font-weight:500}.cc-link:hover{text-decoration:underline!important}.cc-hit{position:static!important;inset:auto!important;z-index:auto!important}
+body.cc-map-mode{overflow-x:hidden!important;overflow-y:visible!important}body.cc-map-mode .wrap{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}body.cc-map-mode .map-content{height:clamp(500px,calc(100vh - 155px),700px)!important;min-height:500px!important;max-height:700px!important;overflow:hidden!important} body.cc-list-mode #ccMapContent{display:none!important;height:0!important;min-height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important} body.cc-list-mode #ccListContent{display:block!important} body.cc-map-mode #ccMapContent{display:block!important;visibility:visible!important} body.cc-map-mode #ccListContent{display:none!important}
+</style><style>
+/* Pijlpuntjes verwijderd uit de dossierkaarten */
+.cc-arrow{display:none!important;}
+</style><style>
+/* Explorer switch */
+.cc-switch{position:relative;z-index:10000;display:flex;width:302px;height:45px;min-height:45px;max-height:45px;margin:0 0 22px;background:#224576;border-radius:7px;overflow:hidden}
+.cc-switch button{appearance:none;border:0;background:#224576;color:#fff;font:inherit;font-size:14px;line-height:1;padding:13px 20px;min-width:151px;cursor:pointer}
+.cc-switch button.active{background:#C6534C}
+.cc-switch button:focus-visible{outline:2px solid #224576;outline-offset:2px}
+/* Mobile: prevent cramped controls and keep text readable */
+@media(max-width:600px){
+ .wrap{padding:16px 0 28px}
+ .cc-switch{width:100%;max-width:300px;margin-bottom:18px}
+ .cc-switch button{min-width:0;flex:1;padding:12px 10px;font-size:14px}
+ .grid{gap:12px!important}
+ .cc-card{min-height:124px!important;padding:12px!important;overflow:hidden}
+ .cc-photo-wrap{width:150px!important;height:100px!important;min-width:150px!important;min-height:100px!important;flex-basis:150px!important;margin-right:16px!important}.cc-photo{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important}
+ .cc-content{height:100px!important;padding:2px 4px 0 0!important}
+ .cc-category{margin-bottom:4px!important}
+ .cc-title{font-size:16px!important;line-height:1.18!important;margin-bottom:5px!important;max-height:40px!important}
+ .cc-place,.cc-date{font-size:13px!important;line-height:1.25!important}
+ .cc-link{display:block!important;margin-top:7px!important;font-size:13px!important;line-height:1.2!important}
+}
+/* Moebarak: show the face fully inside the crop */
+</style><link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/><link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" rel="stylesheet"/><style>
+/* ===== Explorer kaart ===== */
+#ccMapContent{display:block!important;height:clamp(500px,calc(100vh - 155px),700px)!important;min-height:500px!important;max-height:700px!important;overflow:hidden!important;position:relative}#ccExplorerMap{position:relative;width:100%;height:100%!important;min-height:500px!important;max-height:700px!important;overflow:hidden!important;border-radius:8px;background:#e7e9e8;contain:strict;isolation:isolate;display:block!important}#ccExplorerMap .leaflet-container{position:absolute!important;inset:0!important;width:100%!important;height:600px!important;min-height:600px!important;max-height:600px!important;overflow:hidden!important}
+#ccExplorerMap .leaflet-container{width:100%;height:100%;font-family:inherit;background:#e7e9e8}
+#ccExplorerMap .leaflet-tile{filter:grayscale(1) saturate(.18) brightness(1.06)}
+#ccExplorerMap .marker-cluster{background:transparent!important;border:0!important}
+#ccExplorerMap .marker-cluster div{color:#fff!important;font-weight:600!important;border-radius:50%!important;border:1px solid rgba(34,69,118,.72)!important;box-shadow:0 0 0 6px rgba(34,69,118,.24)!important;text-align:center!important;box-sizing:border-box}
+#ccExplorerMap .cluster-small div{background:#6F89A7!important;width:38px!important;height:38px!important;line-height:36px!important}
+#ccExplorerMap .cluster-medium div{background:#52749A!important;width:50px!important;height:50px!important;line-height:48px!important}
+#ccExplorerMap .cluster-large div{background:#37628D!important;width:65px!important;height:65px!important;line-height:63px!important}
+#ccExplorerMap .cc-dot{width:16px;height:16px;border-radius:50%;background:#A52A32;border:2px solid #fff;box-sizing:border-box}
+#grid .cc-card:first-child .cc-photo{object-position:50% 80%!important;}
+@media(max-width:700px){#ccExplorerMap{height:420px!important;min-height:420px!important;max-height:420px!important}.cc-map-card{width:170px}.cc-map-card-title{font-size:15px;line-height:19px}}
+</style>
+<style>
+/* KAARTPOPUP — afgeronde card, kleine rechte foto, geen sluitknop */
+.cc-custom-leaflet-popup .leaflet-popup-content-wrapper{width:228px!important;padding:0!important;background:#fff;border:1px solid #E2E5E8;border-radius:10px;box-shadow:0 4px 14px rgba(24,33,43,.14);overflow:visible;}
+.cc-custom-leaflet-popup .leaflet-popup-content{width:228px!important;margin:0!important;}
+.cc-custom-leaflet-popup .leaflet-popup-tip{width:12px;height:12px;background:#fff;box-shadow:none;}
+.cc-custom-leaflet-popup .cc-popup-inner{position:relative;padding:11px 12px 12px;font-family:Arial,Helvetica,sans-serif;}
+.cc-custom-leaflet-popup .cc-leaflet-photo{display:block;width:100%;height:72px;margin:0 0 9px;object-fit:cover;object-position:50% 38.2%;border-radius:0!important;background:#e7ebef;}
+.cc-custom-leaflet-popup .cc-leaflet-type{margin:0 0 3px;color:#A52A32;font-size:11px;line-height:14px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;}
+.cc-custom-leaflet-popup .cc-leaflet-title{margin:0 0 5px;color:#224576;font-size:18px;line-height:21px;font-weight:700;}
+.cc-custom-leaflet-popup .cc-leaflet-year{margin:0 0 3px;color:#224576;font-size:14px;line-height:18px;font-weight:700;}
+.cc-custom-leaflet-popup .cc-leaflet-place{margin:0 0 9px;color:#3F4B57;font-size:14px;line-height:18px;font-weight:400;}
+.cc-custom-leaflet-popup .cc-leaflet-link{display:inline!important;background:none!important;border:0!important;padding:0!important;margin:0!important;color:#224576!important;font-size:14px;line-height:18px;font-weight:500;text-decoration:none!important;cursor:pointer;}
+.cc-custom-leaflet-popup .cc-leaflet-link:hover{text-decoration:underline!important;}
+.cc-custom-leaflet-popup .leaflet-popup-close-button{display:none!important;}
+@media(max-width:700px){.cc-custom-leaflet-popup .leaflet-popup-content-wrapper,.cc-custom-leaflet-popup .leaflet-popup-content{width:190px!important;}.cc-custom-leaflet-popup .cc-popup-inner{padding:9px 10px 10px;}.cc-custom-leaflet-popup .cc-leaflet-photo{height:62px;margin-bottom:7px;}.cc-custom-leaflet-popup .cc-leaflet-title{font-size:15px;line-height:18px;}.cc-custom-leaflet-popup .cc-leaflet-year,.cc-custom-leaflet-popup .cc-leaflet-place{font-size:12px;line-height:16px;}.cc-custom-leaflet-popup .cc-leaflet-link{font-size:12px;line-height:16px;}}
+</style>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-    // Kaart instellen
-    var map = L.map('map').setView([52.1, 5.1], 7);
+<style>
+/* FINAL: switch is structurally above the map, never inside/behind Leaflet */
+.cc-switch-fixed-layout{
+  position:relative!important;
+  z-index:99999!important;
+  isolation:isolate!important;
+  transform:none!important;
+  flex:none!important;
+}
+.cc-map-mode .cc-switch-fixed-layout{
+  margin-bottom:22px!important;
+  position:relative!important;
+  z-index:999999!important;
+}
+#ccMapContent{
+  position:relative!important;
+  z-index:1!important;
+}
+#ccExplorerMap,
+#ccExplorerMap .leaflet-container{
+  z-index:1!important;
+}
+</style>
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+<style>
+/* V2: lijst volledig zichtbaar en foto's direct laden */
+body.cc-list-mode {
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+}
+body.cc-list-mode .wrap {
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+body.cc-list-mode #ccListContent {
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+}
+body.cc-list-mode .grid {
+  height:auto!important;
+  overflow:visible!important;
+}
+body.cc-list-mode .cc-photo {
+  visibility:visible!important;
+  opacity:1!important;
+}
+</style>
 
-    // Cases laden vanuit JSON
-    fetch("cases.json")
-      .then(response => {
-        if (!response.ok) throw new Error("HTTP-fout " + response.status);
-        return response.json();
-      })
-      .then(coldCases => {
-        coldCases.forEach(caseItem => {
-          L.marker([caseItem.lat, caseItem.lng])
-            .addTo(map)
-            .bindPopup(
-              `<strong>${caseItem.title}</strong><br>
-               <a href="${caseItem.link}" target="_blank">Bekijk dossier</a>`
-            );
-        });
-      })
-      .catch(err => console.error('Fout bij laden van cases.json:', err));
-  </script>
-</body>
-</html>
+<style>
+/* V3: lijst krijgt eigen verticale scroll; kop/uitleg scrollen gewoon mee */
+html, body {
+  height: 100%;
+}
+body.cc-list-mode {
+  height: auto!important;
+  min-height: 0!important;
+  overflow-x: hidden!important;
+  overflow-y: auto!important;
+}
+body.cc-list-mode .wrap {
+  height: auto!important;
+  min-height: 0!important;
+  max-height: none!important;
+  overflow: visible!important;
+}
+body.cc-list-mode #ccListContent,
+body.cc-list-mode #grid {
+  height: auto!important;
+  max-height: none!important;
+  overflow: visible!important;
+}
+body.cc-list-mode .intro,
+body.cc-list-mode .filters,
+body.cc-list-mode .list-top {
+  position: static!important;
+}
+</style>
+
+<style>
+/* Mobiel: alleen de switch blijft bovenaan; de rest van de lijst scrollt volledig mee */
+@media(max-width:600px){
+  body.cc-list-mode{
+    height:auto!important;
+    min-height:100vh!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+  }
+
+  body.cc-list-mode .wrap{
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+    padding-top:16px!important;
+    padding-bottom:30px!important;
+  }
+
+  body.cc-list-mode .cc-switch{
+    position:static!important;
+    margin-bottom:18px!important;
+  }
+
+  body.cc-list-mode #ccListContent{
+    height:auto!important;
+    overflow:visible!important;
+  }
+
+  /* Titel/uitleg, filters en teller zijn onderdeel van normale pagina-flow
+     en verdwijnen dus vanzelf uit beeld bij scrollen. */
+  body.cc-list-mode .intro,
+  body.cc-list-mode .filters,
+  body.cc-list-mode .list-top{
+    position:static!important;
+    top:auto!important;
+  }
+
+  body.cc-list-mode .grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    height:auto!important;
+    overflow:visible!important;
+  }
+}
+</style>
+
+<style>
+/* V1: Stichting-blauwe clusters, tinten dicht bij elkaar */
+#ccExplorerMap .marker-cluster div {
+  transition:none!important;
+}
+#ccExplorerMap .marker-cluster-small div {
+  background:#6F89A7!important;
+}
+#ccExplorerMap .marker-cluster-medium div {
+  background:#52749A!important;
+}
+#ccExplorerMap .marker-cluster-large div {
+  background:#37628D!important;
+}
+/* Grootste cluster / hoogste aantallen: Stichting-blauw */
+#ccExplorerMap .marker-cluster-extra-large div {
+  background:#224576!important;
+}
+/* Losse punten: kleiner en donkerrood, zonder hover-effect */
+#ccExplorerMap .cc-dot {
+  width:13px!important;
+  height:13px!important;
+  background:#A52A32!important;
+  transition:none!important;
+}
+#ccExplorerMap .cc-dot:hover {
+  width:13px!important;
+  height:13px!important;
+  background:#A52A32!important;
+}
+</style>
+
+<style>
+/* Definitieve portretkadrering – omhoog */
+.cc-card[data-name="Karin Grijpstra"] .cc-photo{object-position:50% 42%!important}
+.cc-card[data-name="Moebarak Moennoe"] .cc-photo{object-position:50% 80%!important;}
+.cc-card[data-name="Hannie Bakker"] .cc-photo{object-position:50% 44%!important}
+.cc-card[data-name="Viktor Jajcanin"] .cc-photo{object-position:50% 40%!important}
+.cc-card[data-name="Susanna Boon"] .cc-photo{object-position:50% 42%!important}
+.cc-card[data-name="Onbekende Man"] .cc-photo{object-position:50% 18%!important}
+/* Moebarak is de eerste kaart; deze regel moet de eerdere first-child crop overschrijven */
+#grid .cc-card:first-child[data-name="Moebarak Moennoe"] .cc-photo{object-position:50% 38%!important}
+</style>
+<style>
+/* DEFINITIEF PORTRET-KADER: gezichten zo groot mogelijk, hoofd compleet waar bronfoto dit toelaat */
+.cc-photo{object-fit:cover!important;object-position:50% 38%!important;}
+#grid .cc-card:first-child .cc-photo{object-position:50% 80%!important;}
+.cc-card[data-name="Karin Grijpstra"] .cc-photo{object-position:50% 44%!important;}
+.cc-card[data-name="Moebarak Moennoe"] .cc-photo{object-position:50% 80%!important;}
+.cc-card[data-name="Hannie Bakker"] .cc-photo{object-position:50% 45%!important;}
+.cc-card[data-name="Viktor Jajcanin"] .cc-photo{object-position:50% 42%!important;}
+.cc-card[data-name="Susanna Boon"] .cc-photo{object-position:50% 30%!important;}
+.cc-card[data-name="Onbekende Man"] .cc-photo{object-position:50% 20%!important;}
+@media(max-width:600px){
+  .cc-photo{object-position:50% 38%!important;}
+  #grid .cc-card:first-child .cc-photo{object-position:50% 80%!important;}
+  .cc-card[data-name="Karin Grijpstra"] .cc-photo{object-position:50% 44%!important;}
+  .cc-card[data-name="Moebarak Moennoe"] .cc-photo{object-position:50% 80%!important;}
+  .cc-card[data-name="Hannie Bakker"] .cc-photo{object-position:50% 45%!important;}
+  .cc-card[data-name="Viktor Jajcanin"] .cc-photo{object-position:50% 42%!important;}
+  .cc-card[data-name="Susanna Boon"] .cc-photo{object-position:50% 30%!important;}
+  .cc-card[data-name="Onbekende Man"] .cc-photo{object-position:50% 20%!important;}
+}
+</style>
+<style>
+/* DEFINITIEF PORTRETKADER — per gezicht geoptimaliseerd */
+.cc-photo{object-fit:cover!important;object-position:50% 38.2%!important;}
+#grid .cc-card:first-child .cc-photo,.cc-card[data-name="Moebarak Moennoe"] .cc-photo{object-position:50% 80%!important;}
+.cc-card[data-name="Karin Grijpstra"] .cc-photo{object-position:50% 44%!important;}
+.cc-card[data-name="Hannie Bakker"] .cc-photo{object-position:50% 45%!important;}
+.cc-card[data-name="Viktor Jajcanin"] .cc-photo{object-position:50% 42%!important;}
+.cc-card[data-name="Susanna Boon"] .cc-photo{object-position:50% 30%!important;}
+.cc-card[data-name="Onbekende Man"] .cc-photo{object-position:50% 20%!important;}
+</style>
+
+<style>
+/* Kleine dossierfoto in de kaart-popup — zelfde rechte hoeken als de dossierfoto's */
+.cc-custom-leaflet-popup .cc-leaflet-photo{
+  display:block;
+  width:128px;
+  height:68px;
+  margin:0 auto 8px;
+  object-fit:contain;
+  object-position:center;
+  border-radius:0!important;
+  background:#e7ebef;
+}
+@media(max-width:700px){
+  .cc-custom-leaflet-popup .cc-leaflet-photo{
+    width:118px;
+    height:63px;
+  }
+}
+</style>
+
+<style>
+/* Definitieve popup-styling */
+.cc-custom-leaflet-popup .leaflet-popup-content-wrapper{border-radius:10px!important;overflow:visible!important;}
+.cc-custom-leaflet-popup .cc-leaflet-photo{width:128px!important;height:68px!important;border-radius:0!important;object-fit:cover!important;display:block!important;margin:0 auto 9px!important;}
+.cc-custom-leaflet-popup .leaflet-popup-close-button{display:none!important;}
+.cc-custom-leaflet-popup .cc-leaflet-link{display:inline!important;padding:0!important;margin:0!important;background:none!important;border:0!important;text-decoration:none!important;}
+.cc-custom-leaflet-popup .cc-leaflet-link:hover{text-decoration:underline!important;}
+</style>
+
+<style>
+/* POPUP-FOTO: zichtbaar voor ieder dossier waarvoor in de Explorer een foto beschikbaar is */
+.cc-custom-leaflet-popup .cc-leaflet-photo{display:block!important;width:100%!important;height:72px!important;object-fit:cover!important;object-position:50% 38.2%!important;border-radius:0!important;background:#e7ebef;}
+</style>
+<style>
+/* Volledig scherm — als Leaflet kaartcontrol */
+.cc-fullscreen{position:absolute;right:10px;top:10px;z-index:10001;border:1px solid #d7dee7;border-radius:7px;background:#fff;color:#224576;font:inherit;font-size:13px;line-height:1;padding:10px 12px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.cc-fullscreen:hover{background:#f7f9fb}
+.cc-fullscreen:focus-visible{outline:2px solid #224576;outline-offset:2px}
+#ccMapContent:fullscreen{background:#fff;width:100vw;height:100vh!important;min-height:100vh!important;max-height:none!important;overflow:hidden!important;padding:0}
+#ccMapContent:fullscreen #ccExplorerMap{height:100%!important;min-height:100%!important;max-height:none!important;border-radius:0!important}
+#ccMapContent:fullscreen .cc-fullscreen{position:fixed;right:16px;top:16px}
+@media(max-width:600px){.cc-fullscreen{display:none!important}}
+</style>
+
+<style>
+/* FINAL MOBILE FIX — dossierkaart mag nooit horizontaal afknellen */
+@media (max-width:600px){
+  .grid,
+  #grid{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+
+  .cc-card{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    display:grid!important;
+    grid-template-columns:150px minmax(0,1fr)!important;
+    column-gap:16px!important;
+    align-items:start!important;
+    padding:12px!important;
+    overflow:hidden!important;
+  }
+
+  .cc-photo-wrap{
+    grid-column:1!important;
+    width:150px!important;
+    min-width:150px!important;
+    max-width:150px!important;
+    height:100px!important;
+    margin:0!important;
+  }
+
+  .cc-content{
+    grid-column:2!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:100px!important;
+    overflow:hidden!important;
+    padding:2px 0 0!important;
+  }
+
+  .cc-category,
+  .cc-title,
+  .cc-place,
+  .cc-date,
+  .cc-link{
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  .cc-title{
+    width:100%!important;
+    overflow:hidden!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+    white-space:normal!important;
+    display:-webkit-box!important;
+    -webkit-box-orient:vertical!important;
+    -webkit-line-clamp:2!important;
+  }
+}
+</style>
+
+<style id="cc-mobile-title-final-fix">
+@media (max-width:600px){
+  .cc-card{display:flex!important;align-items:flex-start!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;padding:12px!important;}
+  .cc-photo-wrap{flex:0 0 150px!important;width:150px!important;min-width:150px!important;height:100px!important;margin-right:16px!important;}
+  .cc-content{flex:1 1 auto!important;width:auto!important;min-width:0!important;max-width:none!important;height:100px!important;overflow:hidden!important;padding:2px 4px 0 0!important;}
+  .cc-category{display:block!important;height:auto!important;visibility:visible!important;opacity:1!important;}
+  .cc-title{display:block!important;visibility:visible!important;opacity:1!important;color:#224576!important;font-family:Arial,Helvetica,sans-serif!important;font-size:17px!important;font-weight:500!important;line-height:1.18!important;width:100%!important;min-width:0!important;max-width:100%!important;height:auto!important;max-height:40px!important;overflow:hidden!important;white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;margin:0 0 5px!important;padding:0!important;}
+}
+</style>
+
+<style id="cc-mobile-final-layout">
+@media (max-width:600px){
+  .cc-card{
+    display:grid!important;
+    grid-template-columns:125px minmax(0,1fr)!important;
+    column-gap:14px!important;
+    align-items:start!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:110px!important;
+    height:auto!important;
+    padding:12px!important;
+    overflow:hidden!important;
+  }
+  .cc-photo-wrap{
+    grid-column:1!important;
+    width:125px!important;
+    min-width:125px!important;
+    max-width:125px!important;
+    height:84px!important;
+    min-height:84px!important;
+    margin:0!important;
+    flex:none!important;
+  }
+  .cc-photo{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .cc-content{
+    grid-column:2!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:auto!important;
+    min-height:84px!important;
+    overflow:visible!important;
+    padding:0!important;
+    display:block!important;
+  }
+  .cc-category{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 0 4px!important;
+    font-size:10px!important;
+    line-height:13px!important;
+  }
+  .cc-title{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    max-height:none!important;
+    margin:0 0 5px!important;
+    padding:0!important;
+    color:#224576!important;
+    font-size:17px!important;
+    line-height:20px!important;
+    font-weight:500!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    overflow-wrap:break-word!important;
+    word-break:normal!important;
+    -webkit-line-clamp:unset!important;
+    -webkit-box-orient:initial!important;
+  }
+  .cc-place,.cc-date{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    font-size:13px!important;
+    line-height:16px!important;
+    white-space:normal!important;
+    overflow-wrap:break-word!important;
+  }
+  .cc-place{margin:0 0 2px!important;}
+  .cc-date{margin:0!important;}
+  .cc-link{
+    display:block!important;
+    width:max-content!important;
+    max-width:100%!important;
+    margin:7px 0 0!important;
+    font-size:13px!important;
+    line-height:16px!important;
+  }
+}
+</style>
+
+<style>
+/* FINAL MOBILE MAP VIEWPORT — ruimer kaartvenster, minder witruimte onder de kaart */
+@media (max-width:600px){
+  #ccMapContent{
+    height:600px!important;
+    min-height:600px!important;
+    max-height:600px!important;
+  }
+  #ccExplorerMap{
+    height:600px!important;
+    min-height:600px!important;
+    max-height:600px!important;
+  }
+  #ccExplorerMap .leaflet-container{
+    height:100%!important;
+    min-height:100%!important;
+    max-height:none!important;
+  }
+}
+</style>
+
+<style>
+/* Definitieve mobiele filterfix:
+   latere mobiele .cc-card-regels gebruiken !important voor display.
+   Deze regel zorgt dat een gefilterde kaart ook echt verdwijnt. */
+#grid .cc-card[hidden]{
+  display:none!important;
+}
+</style>
+
+</head><body><main class="wrap" id="ccFullscreenTarget"><div class="cc-switch cc-switch-fixed-layout"><button class="active" id="ccMapButton" type="button">Zoek via kaart</button><button id="ccListButton" type="button">Zoek via lijst</button></div><section class="map-content" id="ccMapContent" style="display:block;position:relative;z-index:1"><div id="ccExplorerMap"></div><button class="cc-fullscreen" id="ccFullscreenButton" type="button" aria-label="Volledig scherm">⛶ <span>Volledig scherm</span></button></section><section class="list-content" id="ccListContent" style="display:none"><div class="filters"><input id="q" oninput="filterCards()" placeholder="Zoek op naam of plaats..."/><select id="year" onchange="filterCards()"><option value="">Alle jaren</option><option value="2020">2020–2029</option><option value="2010">2010–2019</option><option value="2000">2000–2009</option><option value="1990">1990–1999</option><option value="1980">1980–1989</option><option value="1970">1970–1979</option><option value="1960">1960–1969</option><option value="1950">1950–1959</option><option value="0">Voor 1950</option></select><select id="type" onchange="filterCards()"><option value="">Alle zaken</option><option value="moord">Moord</option><option value="vermissing">Vermissing</option><option value="onbekendedoden">Onbekende doden</option><option value="overige">Overige</option></select><select id="sort" onchange="sortCards()"><option>Nieuwste eerst</option><option>Oudste eerst</option><option>Naam A–Z</option><option>Naam Z–A</option></select><button onclick="clearFilters()" type="button">Wis filters</button></div><div class="list-top"><div class="count" id="count">20 zaken</div></div><div class="grid" id="grid"><div class="cc-card" data-date="20221203" data-name="Moebarak Moennoe" data-place="Paramaribo (SUR)" data-type="moord" data-year="2022"><img alt="Moebarak Moennoe" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/maxresdefault-high.jpg?enable-io=true&enable=upscale&width=500" srcset="" style="object-position:center 46%;;border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Moebarak Moennoe</h3><div class="cc-place">Paramaribo (SUR)</div><div class="cc-date">03-12-2022</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/moebarak-moennoe">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20220617" data-name="Jakob Johan de Bruijn" data-place="Schiedam" data-type="vermissing" data-year="2022"><img alt="Jakob Johan de Bruijn" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/550900514_24201040139596785_418436105436203320_n-high.png?enable-io=true&enable=upscale&crop=0.7359%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Vermissing</div><h3 class="cc-title">Jakob Johan de Bruijn</h3><div class="cc-place">Schiedam</div><div class="cc-date">17-06-2022</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/jakob-johan-de-bruijn">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20220520" data-name="Peter van Dongen" data-place="Helvoirt" data-type="moord" data-year="2022"><img alt="Peter van Dongen" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/afbeelding-slachtoffer-van-dongen-standard.png?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Peter van Dongen</h3><div class="cc-place">Helvoirt</div><div class="cc-date">20-05-2022</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/peter-van-dongen">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20210917" data-name="Roshentlie Rosaria" data-place="Vlissingen" data-type="moord" data-year="2021"><img alt="Roshentlie Rosaria" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-kfw39i.png?enable-io=true&enable=upscale&crop=1.5111%3A1%2Coffset-y0&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Roshentlie Rosaria</h3><div class="cc-place">Vlissingen</div><div class="cc-date">17-09-2021</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/roshentlie-rosaria">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20200223" data-name="Karin Grijpstra" data-place="Cornjum" data-type="moord" data-year="2020"><img alt="Karin Grijpstra" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/karin-grijpstra_high-res-high-high.jpg?enable-io=true&enable=upscale&crop=0.7505%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Karin Grijpstra</h3><div class="cc-place">Cornjum</div><div class="cc-date">23-02-2020</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/karin-grijpstra-1">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20190617" data-name="Saban Berk" data-place="Amsterdam" data-type="moord" data-year="2019"><img alt="Saban Berk" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5e6e5ca6-48c8-46c9-92a5-d131595e05be-high.jpg?enable-io=true&enable=upscale&crop=0.7903%3A1%2Coffset-y100&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Saban Berk</h3><div class="cc-place">Amsterdam</div><div class="cc-date">17-06-2019</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/saban-berk">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20190508" data-name="Corrie van Geesbergen" data-place="Den Haag" data-type="moord" data-year="2019"><img alt="Corrie van Geesbergen" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/images-1-high-o9ufp2.jpg?enable-io=true&enable=upscale&crop=0.7361%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Corrie van Geesbergen</h3><div class="cc-place">Den Haag</div><div class="cc-date">08-05-2019</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/corrie-van-geesbergen">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20180218" data-name="Jeroen de Wit" data-place="Leimuiden" data-type="vermissing" data-year="2018"><img alt="Jeroen de Wit" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-38.png?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Vermissing</div><h3 class="cc-title">Jeroen de Wit</h3><div class="cc-place">Leimuiden</div><div class="cc-date">18-02-2018</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/jeroen-de-wit">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20170426" data-name="Hannie Bakker" data-place="Winkel" data-type="moord" data-year="2017"><img alt="Hannie Bakker" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/schermopname_17-9-2025_144618_www-bing-com-high.jpg?enable-io=true&enable=upscale&crop=0.8333%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Hannie Bakker</h3><div class="cc-place">Winkel</div><div class="cc-date">26-04-2017</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/hannie-bakker">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20170331" data-name="Ralf Meinema" data-place="Klazienaveen" data-type="moord" data-year="2017"><img alt="Ralf Meinema" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-54zpxz.png?enable-io=true&enable=upscale&crop=0.6656%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Ralf Meinema</h3><div class="cc-place">Klazienaveen</div><div class="cc-date">31-03-2017</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/ralf-meinema">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20161210" data-name="Sidney Lute" data-place="Den Oever" data-type="vermissing" data-year="2016"><img alt="Sidney Lute" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/sidney-lute-verouderingsfoto-politie-nl_-high.jpg?enable-io=true&enable=upscale&crop=1.4847%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Vermissing</div><h3 class="cc-title">Sidney Lute</h3><div class="cc-place">Den Oever</div><div class="cc-date">10-12-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/sidney-lute">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20161208" data-name="Viktor Jajcanin" data-place="Zagorje" data-type="moord" data-year="2016"><img alt="Viktor Jajcanin" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ucvsir/2-84.jpg?enable-io=true&enable=upscale&crop=0.7255%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Viktor Jajcanin</h3><div class="cc-place">Zagorje</div><div class="cc-date">08-12-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/viktor-jajcanin">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20161117" data-name="Rosleny Magdalena" data-place="Amsterdam" data-type="moord" data-year="2016"><img alt="Rosleny Magdalena" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/j3198o/1-151.jpg?enable-io=true&enable=upscale&crop=0.9052%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Rosleny Magdalena</h3><div class="cc-place">Amsterdam</div><div class="cc-date">17-11-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/rosleny-magdalena">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20160820" data-name="Sietze Grave" data-place="Winschoten" data-type="moord" data-year="2016"><img alt="Sietze Grave" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/b88351119z.jpg?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Sietze Grave</h3><div class="cc-place">Winschoten</div><div class="cc-date">20-08-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/sietze-grave">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20160319" data-name="Marlon Fidanque" data-place="Apeldoorn" data-type="moord" data-year="2016"><img alt="Marlon Fidanque" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1-107.jpg?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Marlon Fidanque</h3><div class="cc-place">Apeldoorn</div><div class="cc-date">19-03-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/marlon-fidanque">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20160222" data-name="Mariëlle Markgraaff" data-place="Helmond" data-type="moord" data-year="2016"><img alt="Mariëlle Markgraaff" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1-24.jpg?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Mariëlle Markgraaff</h3><div class="cc-place">Helmond</div><div class="cc-date">22-02-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/marielle-markgraaff">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20160108" data-name="Susanna Boon" data-place="Amsterdam / Nunspeet" data-type="moord" data-year="2016"><img alt="Susanna Boon" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-xhya2n.png?enable-io=true&enable=upscale&crop=1.0863%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Susanna Boon</h3><div class="cc-place">Amsterdam / Nunspeet</div><div class="cc-date">08-01-2016</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/susanna-boon">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20151220" data-name="Onbekende Man" data-place="Oud-Zuilen" data-type="onbekendedoden" data-year="2015"><img alt="Onbekende Man" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/k7jozx/image-14.png?enable-io=true&enable=upscale&crop=0.8673%3A1&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Onbekende doden</div><h3 class="cc-title">Onbekende Man</h3><div class="cc-place">Oud-Zuilen</div><div class="cc-date">20-12-2015</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/onbekende-man-vecht">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20151006" data-name="Baby Elise Smit" data-place="Papendrecht" data-type="overige" data-year="2015"><img alt="Baby Elise Smit" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/download8.jpg?enable-io=true&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Overige</div><h3 class="cc-title">Baby Elise Smit</h3><div class="cc-place">Papendrecht</div><div class="cc-date">06-10-2015</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/elise-smit">Bekijk dossier>></a></div></div><div class="cc-card" data-date="20150627" data-name="Tom de Munter" data-place="Assen" data-type="moord" data-year="2015"><img alt="Tom de Munter" class="cc-photo" decoding="async" fetchpriority="auto" height="127" loading="eager" src="https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/41de5eb8-06bb-37cd-872f-d40d86226b9b-high.jpg?enable-io=true&enable=upscale&crop=1.1931%3A1%2Coffset-x19&width=500" srcset="" style="border-radius:0!important" width="190"/><div class="cc-content"><div class="cc-category">Moord</div><h3 class="cc-title">Tom de Munter</h3><div class="cc-place">Assen</div><div class="cc-date">27-06-2015</div><a aria-label="Bekijk dossier" class="cc-link" href="https://www.coldcasezaken.nl/tom-de-munter">Bekijk dossier>></a></div></div></div></section></main><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><script>
+(function(){
+  var ALL_CASES=[];
+  var CASES_READY=false;
+  function cleanImageUrl(src){
+    if(!src)return '';
+    try{
+      var u=new URL(String(src),window.location.href);
+      ['crop','offset-x','offset-y'].forEach(function(k){u.searchParams.delete(k)});
+      return u.href;
+    }catch(e){return String(src)}
+  }
+  function caseMetaFor(c){
+    var wanted=String(c&&(c.link||c.url||'')||'');
+    /* Enkele oude markerlinks bevatten een foutieve tekst in plaats van de echte dossier-URL. */
+    if(/geertje\s+vliegenthart/i.test(wanted) || /edmond\s+van\s+hellenraadstraat/i.test(wanted)){
+      return CASE_META['https://www.coldcasezaken.nl/geertje-vliegenthart-roest'] || null;
+    }
+    var key=normalizeUrl(wanted);
+    if(key&&CASE_META[key])return CASE_META[key];
+    var short=popupUrlKey(wanted);
+    if(short){
+      var keys=Object.keys(CASE_META);
+      for(var i=0;i<keys.length;i++)if(popupUrlKey(keys[i])===short)return CASE_META[keys[i]];
+    }
+    return null;
+  }
+  function cleanTitle(c){return String(c&&(c.title||c.name)||'Onbekende cold case').replace(/\s*\(geen sitedossier\)\s*/ig,'').replace(/\s+(19|20)\d{2}\s*$/i,'').trim()}
+  function caseDetails(c){
+    var meta=caseMetaFor(c), title=cleanTitle(c), raw=String(c&&(c.title||c.name)||'');
+    if(meta){
+      return {title:title,year:String(meta.year||''),type:String(meta.type||''),place:String(meta.place||''),href:String(meta.link||'')};
+    }
+    var year=(c&&c.year)||((raw.match(/\b(19|20)\d{2}\b/)||[])[0]) || '';
+    var type=(c&&c.type)||(/vermissing|verdwijning/i.test(raw)?'Vermissing':(/onbekende|ongeïdentificeerde|ongeidentificeerde/i.test(raw)?'Onbekende doden':(/moord|dood/i.test(raw)?'Moord':'Overige')));
+    var place=(c&&(c.place||c.location||c.city)) || '';
+    var href=(c&&(c.link||c.url)) || '';
+    return {title:title,year:String(year||''),type:String(type||''),place:String(place||''),href:String(href||'')};
+  }
+  function typeKey(type){return String(type||'').toLowerCase().replace(/[^a-z]/g,'').replace('onbekendedoden','onbekendedoden')}
+  function renderAllCases(cases){
+    /* Kaart = alle markers. Lijst = alleen echte dossierpagina's. */
+    var seenListLinks=Object.create(null);
+    var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
+      var wanted=c&&(c.link||c.url||'')||'';
+      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
+      var meta=caseMetaFor(c);
+      if(!meta)return false;
+      var key=popupUrlKey(meta.link||wanted);
+      if(seenListLinks[key])return false;
+      seenListLinks[key]=true;
+      return true;
+    });
+    ALL_CASES=listCases.slice();
+    var grid=document.getElementById('grid'); if(!grid)return;
+    var frag=document.createDocumentFragment();
+    listCases.forEach(function(c){
+      var d=caseDetails(c);
+      var image=getCardImage(c);
+      var card=document.createElement('article');
+      card.className='cc-card';
+      card.setAttribute('data-name',d.title); card.setAttribute('data-place',d.place); card.setAttribute('data-type',typeKey(d.type)); card.setAttribute('data-year',d.year||'0'); card.setAttribute('data-date',(d.year||'0000')+'0101');
+      var photo=document.createElement('div'); photo.className='cc-photo-wrap';
+      if(image){var img=document.createElement('img'); img.className='cc-photo'; img.alt=d.title; img.decoding='async'; img.loading='lazy'; img.src=cleanImageUrl(image); photo.appendChild(img)} else {photo.className+=' cc-no-photo';}
+      var content=document.createElement('div'); content.className='cc-content';
+      var cat=document.createElement('div'); cat.className='cc-category'; cat.textContent=d.type; content.appendChild(cat);
+      var h=document.createElement('h3'); h.className='cc-title'; h.textContent=d.title; content.appendChild(h);
+      if(d.place){var pl=document.createElement('div');pl.className='cc-place';pl.textContent=d.place;content.appendChild(pl)}
+      if(d.year){var dt=document.createElement('div');dt.className='cc-date';dt.textContent=d.year;content.appendChild(dt)}
+      if(d.href && d.href.indexOf('/zaak-zonder-dossier')===-1){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';a.textContent='Bekijk dossier »';a.setAttribute('aria-label','Bekijk dossier');content.appendChild(a)}
+      card.appendChild(photo); card.appendChild(content); frag.appendChild(card);
+    });
+    grid.innerHTML=''; grid.appendChild(frag);
+    CASES_READY=true;
+    filterCards();
+    sortCards();
+  }
+  function filterCards(){
+    var qEl=document.getElementById('q'), yEl=document.getElementById('year'), tEl=document.getElementById('type');
+    var q=(qEl&&qEl.value||'').toLowerCase().trim();
+    var y=yEl?yEl.value:'';
+    var t=tEl?tEl.value:'';
+    var cards=document.querySelectorAll('#grid .cc-card'), n=0;
+    for(var i=0;i<cards.length;i++){
+      var c=cards[i];
+      var name=(c.getAttribute('data-name')||'').toLowerCase();
+      var place=(c.getAttribute('data-place')||'').toLowerCase();
+      var cy=parseInt(c.getAttribute('data-year')||'0',10);
+      var ok=(q===''||name.indexOf(q)>-1||place.indexOf(q)>-1);
+      if(y){
+        var yy=parseInt(y,10);
+        ok=ok && (yy===0 ? (cy>0 && cy<1950) : cy>=yy && cy<=yy+9);
+      }
+      if(t) ok=ok && c.getAttribute('data-type')===t;
+      c.hidden=!ok;
+      c.style.display=ok?'flex':'none';
+      if(ok)n++;
+    }
+    var count=document.getElementById('count');
+    if(count) count.textContent=n+' zaken';
+    var grid=document.getElementById('grid');
+    if(grid){
+      grid.style.display='none';
+      void grid.offsetHeight;
+      grid.style.display='grid';
+    }
+  }
+  function surnameSortKey(name){
+    var s=String(name||'').replace(/\s+/g,' ').trim();
+    if(!s)return '';
+    // Sorteer op achternaam: de laatste naamcomponent is leidend.
+    // Daardoor staat bijvoorbeeld Peter van Dongen vóór Karin Grijpstra.
+    var parts=s.split(' ');
+    return parts[parts.length-1].toLocaleLowerCase('nl-NL');
+  }
+  function sortCards(){
+    var grid=document.getElementById('grid'), cards=Array.prototype.slice.call(grid.querySelectorAll('.cc-card')), v=document.getElementById('sort').value;
+    var collator=new Intl.Collator('nl-NL',{sensitivity:'base',numeric:true});
+    cards.sort(function(a,b){
+      var an=a.getAttribute('data-name')||'',bn=b.getAttribute('data-name')||'',ad=a.getAttribute('data-date')||'',bd=b.getAttribute('data-date')||'';
+      if(v==='Nieuwste eerst')return bd.localeCompare(ad);
+      if(v==='Oudste eerst')return ad.localeCompare(bd);
+      var ak=surnameSortKey(an), bk=surnameSortKey(bn);
+      var result=collator.compare(ak,bk);
+      if(result!==0)return v==='Naam A–Z'?result:-result;
+      // Bij gelijke achternaam blijft de volledige naam als tweede sortering staan.
+      result=collator.compare(an,bn);
+      return v==='Naam A–Z'?result:-result;
+    });
+    cards.forEach(function(c){grid.appendChild(c)}); filterCards();
+  }
+  function clearFilters(){document.getElementById('q').value='';document.getElementById('year').value='';document.getElementById('type').value='';document.getElementById('sort').value='Nieuwste eerst';sortCards();}
+  window.filterCards=filterCards; window.sortCards=sortCards; window.clearFilters=clearFilters;
+  /* Reliable filter events for desktop and mobile. */
+  (function(){var q=document.getElementById('q'),year=document.getElementById('year'),type=document.getElementById('type'),sort=document.getElementById('sort'),clear=document.querySelector('.filters button');if(q){q.oninput=filterCards;q.onkeyup=filterCards;}if(year){year.onchange=filterCards;year.oninput=filterCards;}if(type){type.onchange=filterCards;type.oninput=filterCards;}if(sort){sort.onchange=sortCards;sort.oninput=sortCards;}if(clear)clear.onclick=clearFilters;})();
+
+  var map=null, clusterGroup=null, activeMarker=null, activePopup=null;
+  function esc(v){return String(v==null?'':v).replace(/&/g,'&').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
+  function normalizeUrl(url){if(!url)return '';try{return new URL(url,window.location.href).href.replace(/\/$/,'').toLowerCase()}catch(e){return String(url).replace(/\/$/,'').toLowerCase()}}
+  function normalizeName(v){return String(v||'').toLowerCase().replace(/\s*\(geen sitedossier\)\s*/ig,'').replace(/\s+(19|20)\d{2}\s*$/i,'').replace(/[^a-z0-9à-ÿ]+/g,' ').trim()}
+  var CASE_META = {"https://www.coldcasezaken.nl/ingrid-hakkert":{"place":"Vught","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/ingrid-hakkert"},"https://www.coldcasezaken.nl/geertje-vliegenthart-roest":{"place":"Rotterdam","year":null,"type":"Overige","link":"https://www.coldcasezaken.nl/geertje-vliegenthart-roest"},"https://www.coldcasezaken.nl/hanno-van-mil":{"place":"Zeist","year":null,"type":"Overige","link":"https://www.coldcasezaken.nl/hanno-van-mil"},"https://www.coldcasezaken.nl/jan-schoenmakers":{"place":"Eindhoven","year":1967,"type":"Moord","link":"https://www.coldcasezaken.nl/jan-schoenmakers"},"https://www.coldcasezaken.nl/hinke-van-der-velde":{"place":"Leeuwarden","year":1970,"type":"Moord","link":"https://www.coldcasezaken.nl/hinke-van-der-velde"},"https://www.coldcasezaken.nl/alwin-sterk":{"place":"Amsterdam","year":1972,"type":"Vermissing","link":"https://www.coldcasezaken.nl/alwin-sterk"},"https://www.coldcasezaken.nl/marjo-winkens":{"place":"Sittard","year":1975,"type":"Vermissing","link":"https://www.coldcasezaken.nl/marjo-winkens"},"https://www.coldcasezaken.nl/angela-mangot":{"place":"Amsterdam","year":1970,"type":"Moord","link":"https://www.coldcasezaken.nl/angela-mangot"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje":{"place":"Amersfoort","year":1976,"type":"Overige","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje"},"https://www.coldcasezaken.nl/gerhardus-goldschmeding":{"place":"Amsterdam","year":1976,"type":"Moord","link":"https://www.coldcasezaken.nl/gerhardus-goldschmeding"},"https://www.coldcasezaken.nl/riky-bartels":{"place":"Nijmegen","year":1977,"type":"Moord","link":"https://www.coldcasezaken.nl/riky-bartels"},"https://www.coldcasezaken.nl/willemijntje-van-der-meer":{"place":"Amsterdam","year":1978,"type":"Vermissing","link":"https://www.coldcasezaken.nl/willemijntje-van-der-meer"},"https://www.coldcasezaken.nl/levie-van-amerongen":{"place":"Leiden","year":1978,"type":"Moord","link":"https://www.coldcasezaken.nl/levie-van-amerongen"},"https://www.coldcasezaken.nl/wendy-hart":{"place":"Apeldoorn","year":1981,"type":"Moord","link":"https://www.coldcasezaken.nl/wendy-hart"},"https://www.coldcasezaken.nl/petra-van-den-berg":{"place":"Rotterdam","year":1982,"type":"Moord","link":"https://www.coldcasezaken.nl/petra-van-den-berg"},"https://www.coldcasezaken.nl/het-kelderlijk":{"place":"Amsterdam","year":1982,"type":"Overige","link":"https://www.coldcasezaken.nl/het-kelderlijk"},"https://www.coldcasezaken.nl/riet-de-vries":{"place":"Sittard","year":1982,"type":"Vermissing","link":"https://www.coldcasezaken.nl/riet-de-vries"},"https://www.coldcasezaken.nl/petertje-oort":{"place":"Amsterdam","year":1982,"type":"Moord","link":"https://www.coldcasezaken.nl/petertje-oort"},"https://www.coldcasezaken.nl/fred-halsema":{"place":"Amsterdam","year":1983,"type":"Moord","link":"https://www.coldcasezaken.nl/fred-halsema"},"https://www.coldcasezaken.nl/eefke-wolf":{"place":"Zwolle","year":1983,"type":"Vermissing","link":"https://www.coldcasezaken.nl/eefke-wolf"},"https://www.coldcasezaken.nl/coby-toet":{"place":"Rotterdam","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/coby-toet"},"https://www.coldcasezaken.nl/gerda-merchel":{"place":"Almere","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/gerda-merchel"},"https://www.coldcasezaken.nl/germa-van-den-boom":{"place":"Oosterhout","year":1984,"type":"Vermissing","link":"https://www.coldcasezaken.nl/germa-van-den-boom"},"https://www.coldcasezaken.nl/ahmed-korkmaz":{"place":"Rotterdam","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/ahmed-korkmaz"},"https://www.coldcasezaken.nl/willem-klein":{"place":"Amsterdam","year":1986,"type":"Moord","link":"https://www.coldcasezaken.nl/willem-klein"},"https://www.coldcasezaken.nl/wijtske-bauer-hiemstra":{"place":"Groningen","year":1986,"type":"Moord","link":"https://www.coldcasezaken.nl/wijtske-bauer-hiemstra"},"https://www.coldcasezaken.nl/piet-beentjes":{"place":"","year":1987,"type":"Vermissing","link":"https://www.coldcasezaken.nl/piet-beentjes"},"https://www.coldcasezaken.nl/helena-mendonca":{"place":"Terneuzen","year":1987,"type":"Moord","link":"https://www.coldcasezaken.nl/helena-mendonca"},"https://www.coldcasezaken.nl/sjef-delahaije":{"place":"Breda","year":1987,"type":"Moord","link":"https://www.coldcasezaken.nl/sjef-delahaije"},"https://www.coldcasezaken.nl/alie-spruit-roelofsen":{"place":"Utrecht","year":1988,"type":"Vermissing","link":"https://www.coldcasezaken.nl/alie-spruit-roelofsen"},"https://www.coldcasezaken.nl/johannes-schrijvers":{"place":"Delft","year":1988,"type":"Moord","link":"https://www.coldcasezaken.nl/johannes-schrijvers"},"https://www.coldcasezaken.nl/alida-christiana-koopmans":{"place":"Delft","year":1988,"type":"Moord","link":"https://www.coldcasezaken.nl/alida-christiana-koopmans"},"https://www.coldcasezaken.nl/chris-boelsen":{"place":"Rotterdam","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/chris-boelsen"},"https://www.coldcasezaken.nl/yvonne-plasmans":{"place":"Sittard","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/yvonne-plasmans"},"https://www.coldcasezaken.nl/wilma-bres":{"place":"Delft","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/wilma-bres"},"https://www.coldcasezaken.nl/studente-ellen":{"place":"Amsterdam","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/studente-ellen"},"https://www.coldcasezaken.nl/marie-louise-wies-hensen":{"place":"Eindhoven","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/marie-louise-wies-hensen"},"https://www.coldcasezaken.nl/mieke-gulien":{"place":"Amsterdam","year":1989,"type":"Vermissing","link":"https://www.coldcasezaken.nl/mieke-gulien"},"https://www.coldcasezaken.nl/duncan-zwakke":{"place":"Deventer","year":1989,"type":"Vermissing","link":"https://www.coldcasezaken.nl/duncan-zwakke"},"https://www.coldcasezaken.nl/marie-christine-jonas":{"place":"Amsterdam","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/marie-christine-jonas"},"https://www.coldcasezaken.nl/simone-de-laat":{"place":"Leeuwarden","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/simone-de-laat"},"https://www.coldcasezaken.nl/robert-obermeijer":{"place":"Utrecht","year":1989,"type":"Moord","link":"https://www.coldcasezaken.nl/robert-obermeijer"},"https://www.coldcasezaken.nl/anouschka-weezenbeek":{"place":"Roermond","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/anouschka-weezenbeek"},"https://www.coldcasezaken.nl/hans-van-der-mee":{"place":"Rotterdam","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/hans-van-der-mee"},"https://www.coldcasezaken.nl/yvonne-honders":{"place":"Haarlem","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/yvonne-honders"},"https://www.coldcasezaken.nl/jan-de-niet":{"place":"Delft","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/jan-de-niet"},"https://www.coldcasezaken.nl/natascha-meijer":{"place":"Rotterdam","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/natascha-meijer"},"https://www.coldcasezaken.nl/petronella-huijbens":{"place":"Delft","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/petronella-huijbens"},"https://www.coldcasezaken.nl/edward-moonen":{"place":"Delft","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/edward-moonen"},"https://www.coldcasezaken.nl/maarten-nelisse":{"place":"Rotterdam","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/maarten-nelisse"},"https://www.coldcasezaken.nl/saadet-secmen":{"place":"Terneuzen","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/saadet-secmen"},"https://www.coldcasezaken.nl/vera-van-der-lee-van-soldt":{"place":"Rotterdam","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/vera-van-der-lee-van-soldt"},"https://www.coldcasezaken.nl/cornelia-van-den-bergen-groenewold":{"place":"Delft","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/cornelia-van-den-bergen-groenewold"},"http://coldcasezaken.nl/gerrie-schellekens":{"place":"Eindhoven","year":1991,"type":"Moord","link":"http://coldcasezaken.nl/gerrie-schellekens"},"https://www.coldcasezaken.nl/louis-lemstra":{"place":"Leeuwarden","year":1991,"type":"Overige","link":"https://www.coldcasezaken.nl/louis-lemstra"},"https://www.coldcasezaken.nl/theo-kroon":{"place":"Haarlem","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/theo-kroon"},"https://www.coldcasezaken.nl/onbekende-dode-man-naarden":{"place":"Huizen","year":1991,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/onbekende-dode-man-naarden"},"https://www.coldcasezaken.nl/a-van-veen":{"place":"Amsterdam","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/a-van-veen"},"https://www.coldcasezaken.nl/willeke-dost":{"place":"Ommen","year":1992,"type":"Vermissing","link":"https://www.coldcasezaken.nl/willeke-dost"},"https://www.coldcasezaken.nl/louis-van-dam":{"place":"Delft","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/louis-van-dam"},"https://www.coldcasezaken.nl/wim-timmermans":{"place":"Eindhoven","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/wim-timmermans"},"https://www.coldcasezaken.nl/miet-van-bommel":{"place":"Eindhoven","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/miet-van-bommel"},"https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam":{"place":"Amsterdam","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam"},"https://www.coldcasezaken.nl/lisette-vroege":{"place":"Haarlem","year":null,"type":"Vermissing","link":"https://www.coldcasezaken.nl/lisette-vroege"},"https://www.coldcasezaken.nl/marina-denzler":{"place":"Sittard","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/marina-denzler"},"https://www.coldcasezaken.nl/francina-hoogland":{"place":"Delft","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/francina-hoogland"},"https://www.coldcasezaken.nl/folkert-veenstra":{"place":"Leeuwarden","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/folkert-veenstra"},"https://www.coldcasezaken.nl/emerentia-hogema-diepenbrock":{"place":"Amsterdam","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/emerentia-hogema-diepenbrock"},"https://www.coldcasezaken.nl/theo-van-den-oetelaar":{"place":"Oosterhout","year":1992,"type":"Vermissing","link":"https://www.coldcasezaken.nl/theo-van-den-oetelaar"},"https://www.coldcasezaken.nl/christiane-heiser":{"place":"","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/christiane-heiser"},"https://www.coldcasezaken.nl/mariette-peters":{"place":"Nijmegen","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/mariette-peters"},"https://www.coldcasezaken.nl/roelof-steinvoorte":{"place":"Leeuwarden","year":1992,"type":"Moord","link":"https://www.coldcasezaken.nl/roelof-steinvoorte"},"https://www.coldcasezaken.nl/marinus-terwoert":{"place":"Middelburg","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/marinus-terwoert"},"https://www.coldcasezaken.nl/onbekende-man-treinspoor-didam":{"place":"Arnhem","year":null,"type":"Overige","link":"https://www.coldcasezaken.nl/onbekende-man-treinspoor-didam"},"https://www.coldcasezaken.nl/lieneke-troost":{"place":"Leiden","year":1993,"type":"Moord","link":"https://www.coldcasezaken.nl/lieneke-troost"},"https://www.coldcasezaken.nl/imelda-becerro":{"place":"Delft","year":1993,"type":"Vermissing","link":"https://www.coldcasezaken.nl/imelda-becerro"},"https://www.coldcasezaken.nl/jenneke-de-wind":{"place":"Tilburg","year":1993,"type":"Moord","link":"https://www.coldcasezaken.nl/jenneke-de-wind"},"https://www.coldcasezaken.nl/tania-van-kerkhoven":{"place":"Bergen op Zoom","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/tania-van-kerkhoven"},"https://www.coldcasezaken.nl/dirk-schaap":{"place":"Haarlem","year":1993,"type":"Moord","link":"https://www.coldcasezaken.nl/dirk-schaap"},"https://www.coldcasezaken.nl/fatiha-hasnaoui":{"place":"Delft","year":1993,"type":"Moord","link":"https://www.coldcasezaken.nl/fatiha-hasnaoui"},"https://www.coldcasezaken.nl/judit-nyari":{"place":"Lelystad","year":1993,"type":"Moord","link":"https://www.coldcasezaken.nl/judit-nyari"},"https://www.coldcasezaken.nl/babylijkje-den-bosch":{"place":"'s-Hertogenbosch","year":1994,"type":"Overige","link":"https://www.coldcasezaken.nl/babylijkje-den-bosch"},"https://www.coldcasezaken.nl/herman-meert":{"place":"","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/herman-meert"},"https://www.coldcasezaken.nl/lydia-baneke-knap":{"place":"Amstelveen","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/lydia-baneke-knap"},"https://www.coldcasezaken.nl/pieter-hornstra":{"place":"Delft","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/pieter-hornstra"},"https://www.coldcasezaken.nl/daniel-manion":{"place":"Haarlem","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/daniel-manion"},"https://www.coldcasezaken.nl/mario-das-dores":{"place":"Rotterdam","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/mario-das-dores"},"https://www.coldcasezaken.nl/jessica-de-roij":{"place":"Eindhoven","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/jessica-de-roij"},"https://www.coldcasezaken.nl/cafer-gungor":{"place":"Arnhem","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/cafer-gungor"},"https://www.coldcasezaken.nl/maria-van-der-zanden":{"place":"","year":1994,"type":"Overige","link":"https://www.coldcasezaken.nl/maria-van-der-zanden"},"https://www.coldcasezaken.nl/johanna-de-vos":{"place":"Rotterdam","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/johanna-de-vos"},"https://www.coldcasezaken.nl/mohamed-baksoellah":{"place":"Delft","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/mohamed-baksoellah"},"https://www.coldcasezaken.nl/frank-christiaan-petrus-meijeren":{"place":"Rotterdam","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/frank-christiaan-petrus-meijeren"},"https://www.coldcasezaken.nl/glenn-crawfurd":{"place":"Almere","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/glenn-crawfurd"},"https://www.coldcasezaken.nl/sjaak-gerwig":{"place":"Driebergen-Rijsenburg","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/sjaak-gerwig"},"https://www.coldcasezaken.nl/kumral-bagci":{"place":"Delft","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/kumral-bagci"},"https://www.coldcasezaken.nl/anna-heemenga":{"place":"Groningen","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/anna-heemenga"},"https://www.coldcasezaken.nl/jair-soares":{"place":"Delft","year":1995,"type":"Vermissing","link":"https://www.coldcasezaken.nl/jair-soares"},"https://www.coldcasezaken.nl/hayrettin-sahin":{"place":"Haarlem","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/hayrettin-sahin"},"https://www.coldcasezaken.nl/manon-seijkens":{"place":"Eindhoven","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/manon-seijkens"},"https://www.coldcasezaken.nl/jozef-sjef-klee":{"place":"Sittard","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/jozef-sjef-klee"},"https://www.coldcasezaken.nl/martin-de-bruijn":{"place":"Delft","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/martin-de-bruijn"},"https://www.coldcasezaken.nl/hugo-bootsma":{"place":"Deventer","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/hugo-bootsma"},"https://www.coldcasezaken.nl/harry-zunnebeld":{"place":"Zwolle","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/harry-zunnebeld"},"https://www.coldcasezaken.nl/mien-berden":{"place":"Weert","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/mien-berden"},"https://www.coldcasezaken.nl/peternella-hanegraaff":{"place":"Delft","year":1996,"type":"Moord","link":"https://www.coldcasezaken.nl/peternella-hanegraaff"},"https://www.coldcasezaken.nl/veronica-camarines":{"place":"Rotterdam","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/veronica-camarines"},"https://www.coldcasezaken.nl/liam-vanden-branden":{"place":"","year":1996,"type":"Vermissing","link":"https://www.coldcasezaken.nl/liam-vanden-branden"},"https://www.coldcasezaken.nl/rosa-van-der-palen":{"place":"Sittard","year":1996,"type":"Vermissing","link":"https://www.coldcasezaken.nl/rosa-van-der-palen"},"https://www.coldcasezaken.nl/marina-schulein":{"place":"Amsterdam","year":1996,"type":"Vermissing","link":"https://www.coldcasezaken.nl/marina-schulein"},"https://www.coldcasezaken.nl/sabrina-pelizzon":{"place":"Bergen op Zoom","year":1996,"type":"Moord","link":"https://www.coldcasezaken.nl/sabrina-pelizzon"},"https://www.coldcasezaken.nl/reinder-lulofs":{"place":"Leeuwarden","year":1996,"type":"Moord","link":"https://www.coldcasezaken.nl/reinder-lulofs"},"https://www.coldcasezaken.nl/renate-schauerhammer":{"place":"Haarlem","year":1996,"type":"Moord","link":"https://www.coldcasezaken.nl/renate-schauerhammer"},"https://www.coldcasezaken.nl/simone-riedel":{"place":"Sittard","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/simone-riedel"},"https://www.coldcasezaken.nl/orhan-kirac":{"place":"Breda","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/orhan-kirac"},"https://www.coldcasezaken.nl/ancharee-sripho":{"place":"Rotterdam","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/ancharee-sripho"},"https://www.coldcasezaken.nl/dode-baby-celebesstraat-amsterdam":{"place":"Amsterdam","year":1997,"type":"Overige","link":"https://www.coldcasezaken.nl/dode-baby-celebesstraat-amsterdam"},"https://www.coldcasezaken.nl/piet-bosters":{"place":"Amsterdam","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/piet-bosters"},"https://www.coldcasezaken.nl/mirjam-moeller":{"place":"Rotterdam","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/mirjam-moeller"},"https://www.coldcasezaken.nl/marcel-carton":{"place":"Breda","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/marcel-carton"},"https://www.coldcasezaken.nl/onbekende-man-in-best":{"place":"Eindhoven","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/onbekende-man-in-best"},"https://www.coldcasezaken.nl/maria-simons":{"place":"Maastricht","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/maria-simons"},"https://www.coldcasezaken.nl/jacqueline-antes":{"place":"Almere","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/jacqueline-antes"},"https://www.coldcasezaken.nl/justus-hertig":{"place":"Tilburg","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/justus-hertig"},"https://www.coldcasezaken.nl/michel-rubarth":{"place":"Rotterdam","year":1997,"type":"Vermissing","link":"https://www.coldcasezaken.nl/michel-rubarth"},"https://www.coldcasezaken.nl/salvatore-nicolosi":{"place":"Amsterdam","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/salvatore-nicolosi"},"https://www.coldcasezaken.nl/jolanda-meijer":{"place":"Groningen","year":1998,"type":"Vermissing","link":"https://www.coldcasezaken.nl/jolanda-meijer"},"https://www.coldcasezaken.nl/onbekende-man-met-draaktattoo":{"place":"Amsterdam","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/onbekende-man-met-draaktattoo"},"https://www.coldcasezaken.nl/babylijkje-baarle-nassau":{"place":"Oosterhout","year":1998,"type":"Overige","link":"https://www.coldcasezaken.nl/babylijkje-baarle-nassau"},"https://www.coldcasezaken.nl/kanadid-ahmed-gaste":{"place":"Haarlem","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/kanadid-ahmed-gaste"},"https://www.coldcasezaken.nl/cor-booisma":{"place":"Groningen","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/cor-booisma"},"https://www.coldcasezaken.nl/onbekende-man-flevopark":{"place":"Amsterdam","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/onbekende-man-flevopark"},"https://www.coldcasezaken.nl/daan-van-kranenburg":{"place":"'s-Hertogenbosch","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/daan-van-kranenburg"},"https://www.coldcasezaken.nl/muharem-cazim-hebib":{"place":"Deventer","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/muharem-cazim-hebib"},"https://www.coldcasezaken.nl/alex-van-cittert":{"place":"Lelystad","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/alex-van-cittert"},"https://www.coldcasezaken.nl/hans-bluml":{"place":"Arnhem","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/hans-bluml"},"https://www.coldcasezaken.nl/onbekende-man-arkervaart":{"place":"Amersfoort","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/onbekende-man-arkervaart"},"https://www.coldcasezaken.nl/jeanette-sip":{"place":"Rotterdam","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/jeanette-sip"},"https://www.coldcasezaken.nl/linda-mens":{"place":"Arnhem","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/linda-mens"},"https://www.coldcasezaken.nl/ine-wijnen":{"place":"Eindhoven","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/ine-wijnen"},"https://www.coldcasezaken.nl/klikobak-moord":{"place":"Amsterdam","year":1999,"type":"Moord","link":"https://www.coldcasezaken.nl/klikobak-moord"},"https://www.coldcasezaken.nl/riet-poot":{"place":"Delft","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/riet-poot"},"https://www.coldcasezaken.nl/nadia-mehallaoui":{"place":"Roermond","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/nadia-mehallaoui"},"https://www.coldcasezaken.nl/tonny-ter-horst":{"place":"Arnhem","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/tonny-ter-horst"},"https://www.coldcasezaken.nl/amarantha-verhoeff":{"place":"Rotterdam","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/amarantha-verhoeff"},"https://www.coldcasezaken.nl/jan-patat-groeneveld":{"place":"Rotterdam","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/jan-patat-groeneveld"},"https://www.coldcasezaken.nl/hans-alfred-meijer":{"place":"Amsterdam","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/hans-alfred-meijer"},"https://www.coldcasezaken.nl/babylijkje-karthuizerstraat":{"place":"Amsterdam","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/babylijkje-karthuizerstraat"},"https://www.coldcasezaken.nl/fabian-brands":{"place":"Alkmaar","year":2001,"type":"Moord","link":"https://www.coldcasezaken.nl/fabian-brands"},"https://www.coldcasezaken.nl/dyora-bosgra":{"place":"Apeldoorn","year":2001,"type":"Moord","link":"https://www.coldcasezaken.nl/dyora-bosgra"},"https://www.coldcasezaken.nl/ringo-deman":{"place":"","year":2001,"type":"Vermissing","link":"https://www.coldcasezaken.nl/ringo-deman"},"https://www.coldcasezaken.nl/maartje-mariska-klompenhouwer":{"place":"Rotterdam","year":2001,"type":"Moord","link":"https://www.coldcasezaken.nl/maartje-mariska-klompenhouwer"},"edmond van hellenraadstraat geertje vliegenthart":{"place":"Rotterdam","year":2001,"type":"Vermissing","link":"Edmond van Hellenraadstraat Geertje Vliegenthart"},"https://www.coldcasezaken.nl/tino-pokrivac":{"place":"Maastricht","year":2001,"type":"Vermissing","link":"https://www.coldcasezaken.nl/tino-pokrivac"},"https://www.coldcasezaken.nl/meryem-ulusoy":{"place":"Delft","year":2001,"type":"Vermissing","link":"https://www.coldcasezaken.nl/meryem-ulusoy"},"https://www.coldcasezaken.nl/ilona-quaedflieg":{"place":"Sittard","year":2001,"type":"Moord","link":"https://www.coldcasezaken.nl/ilona-quaedflieg"},"https://www.coldcasezaken.nl/wendy-whitehead":{"place":"Naarden","year":2001,"type":"Vermissing","link":"https://www.coldcasezaken.nl/wendy-whitehead"},"https://www.coldcasezaken.nl/martien-van-der-meijs":{"place":"Naarden","year":2002,"type":"Moord","link":"https://www.coldcasezaken.nl/martien-van-der-meijs"},"https://www.coldcasezaken.nl/seyhmus-elmas":{"place":"Arnhem","year":2002,"type":"Moord","link":"https://www.coldcasezaken.nl/seyhmus-elmas"},"https://www.coldcasezaken.nl/cornelis-speksnijder":{"place":"Rotterdam","year":2002,"type":"Moord","link":"https://www.coldcasezaken.nl/cornelis-speksnijder"},"https://www.coldcasezaken.nl/onbekende-man-boterdiep":{"place":"Groningen","year":2002,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/onbekende-man-boterdiep"},"https://www.coldcasezaken.nl/carel-jan-van-wezel":{"place":"","year":2003,"type":"Vermissing","link":"https://www.coldcasezaken.nl/carel-jan-van-wezel"},"https://www.coldcasezaken.nl/annie-visman-venema":{"place":"Haarlem","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/annie-visman-venema"},"https://www.coldcasezaken.nl/jeanette-derksen":{"place":"Driebergen-Rijsenburg","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/jeanette-derksen"},"https://www.coldcasezaken.nl/deborah-rosiek":{"place":"Amsterdam","year":2003,"type":"Vermissing","link":"https://www.coldcasezaken.nl/deborah-rosiek"},"https://www.coldcasezaken.nl/judy-pineda":{"place":"Amsterdam","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/judy-pineda"},"https://www.coldcasezaken.nl/mark-kerssens":{"place":"Alkmaar","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/mark-kerssens"},"https://www.coldcasezaken.nl/samira-van-de-wal":{"place":"Sittard","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/samira-van-de-wal"},"https://www.coldcasezaken.nl/piet-mergelsberg":{"place":"Weert","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/piet-mergelsberg"},"https://www.coldcasezaken.nl/bernie-bersch":{"place":"Weert","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/bernie-bersch"},"https://www.coldcasezaken.nl/alaaddin-olcer":{"place":"Rotterdam","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/alaaddin-olcer"},"https://www.coldcasezaken.nl/muhammed-erdogan":{"place":"Rotterdam","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/muhammed-erdogan"},"https://www.coldcasezaken.nl/fokko-werkman":{"place":"Groningen","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/fokko-werkman"},"https://www.coldcasezaken.nl/ben-stubbe":{"place":"Groningen","year":2003,"type":"Moord","link":"https://www.coldcasezaken.nl/ben-stubbe"},"https://www.coldcasezaken.nl/cornelia-brielsman":{"place":"Amsterdam","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/cornelia-brielsman"},"https://www.coldcasezaken.nl/rhea-ann-mattice":{"place":"Amsterdam","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/rhea-ann-mattice"},"https://www.coldcasezaken.nl/isabelle-pongs":{"place":"Sittard","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/isabelle-pongs"},"https://www.coldcasezaken.nl/sjef-leukel":{"place":"Maastricht","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/sjef-leukel"},"https://www.coldcasezaken.nl/jan-van-der-pool":{"place":"Haarlem","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/jan-van-der-pool"},"https://www.coldcasezaken.nl/nung-lung-withoon-richtert":{"place":"Amsterdam","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/nung-lung-withoon-richtert"},"https://www.coldcasezaken.nl/selma-ameziane":{"place":"Amstelveen","year":2004,"type":"Vermissing","link":"https://www.coldcasezaken.nl/selma-ameziane"},"https://www.coldcasezaken.nl/anton-van-tienhoven":{"place":"Amstelveen","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/anton-van-tienhoven"},"https://www.coldcasezaken.nl/henri-nieboer":{"place":"Sittard","year":2005,"type":"Moord","link":"https://www.coldcasezaken.nl/henri-nieboer"},"https://www.coldcasezaken.nl/cornelis-regter":{"place":"Rotterdam","year":2005,"type":"Moord","link":"https://www.coldcasezaken.nl/cornelis-regter"},"https://www.coldcasezaken.nl/ger-oma-bindi":{"place":"Utrecht","year":2005,"type":"Moord","link":"https://www.coldcasezaken.nl/ger-oma-bindi"},"https://www.coldcasezaken.nl/damien-mooney":{"place":"Amsterdam","year":2005,"type":"Moord","link":"https://www.coldcasezaken.nl/damien-mooney"},"https://www.coldcasezaken.nl/caroline-van-toledo":{"place":"Delft","year":2005,"type":"Moord","link":"https://www.coldcasezaken.nl/caroline-van-toledo"},"https://www.coldcasezaken.nl/hendrik-wildeman":{"place":"Apeldoorn","year":2005,"type":"Vermissing","link":"https://www.coldcasezaken.nl/hendrik-wildeman"},"https://www.coldcasezaken.nl/tamara-morris":{"place":"","year":2006,"type":"Moord","link":"https://www.coldcasezaken.nl/tamara-morris"},"https://www.coldcasezaken.nl/daniel-hilbrands":{"place":"","year":2006,"type":"Moord","link":"https://www.coldcasezaken.nl/daniel-hilbrands"},"https://www.coldcasezaken.nl/ann-bourgoin":{"place":"Bergen op Zoom","year":2006,"type":"Moord","link":"https://www.coldcasezaken.nl/ann-bourgoin"},"https://www.coldcasezaken.nl/claude-mahieu":{"place":"","year":2006,"type":"Moord","link":"https://www.coldcasezaken.nl/claude-mahieu"},"https://www.coldcasezaken.nl/renee-van-utrecht":{"place":"Hilversum","year":2006,"type":"Overige","link":"https://www.coldcasezaken.nl/renee-van-utrecht"},"https://www.coldcasezaken.nl/engeltje-van-het-meer":{"place":"'s-Hertogenbosch","year":2006,"type":"Overige","link":"https://www.coldcasezaken.nl/engeltje-van-het-meer"},"https://www.coldcasezaken.nl/maarten-redeker":{"place":"Delft","year":2007,"type":"Moord","link":"https://www.coldcasezaken.nl/maarten-redeker"},"https://www.coldcasezaken.nl/cassandra-van-schaijk":{"place":"Almere","year":2007,"type":"Moord","link":"https://www.coldcasezaken.nl/cassandra-van-schaijk"},"https://www.coldcasezaken.nl/harry-wiersinga":{"place":"Delft","year":2007,"type":"Moord","link":"https://www.coldcasezaken.nl/harry-wiersinga"},"https://www.coldcasezaken.nl/roeland-oosten":{"place":"Groningen","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/roeland-oosten"},"https://www.coldcasezaken.nl/kim-veerman":{"place":"Naarden","year":2007,"type":"Moord","link":"https://www.coldcasezaken.nl/kim-veerman"},"https://www.coldcasezaken.nl/theo-van-berlo":{"place":"Eindhoven","year":2007,"type":"Moord","link":"https://www.coldcasezaken.nl/theo-van-berlo"},"https://www.coldcasezaken.nl/onbekende-man-staelduinse-bos":{"place":"Delft","year":2007,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/onbekende-man-staelduinse-bos"},"https://www.coldcasezaken.nl/rosa-maria-venda-da-silva":{"place":"Eindhoven","year":2008,"type":"Vermissing","link":"https://www.coldcasezaken.nl/rosa-maria-venda-da-silva"},"https://www.coldcasezaken.nl/james-patrick-grealis":{"place":"Breda","year":2008,"type":"Vermissing","link":"https://www.coldcasezaken.nl/james-patrick-grealis"},"https://www.coldcasezaken.nl/diana-winkel":{"place":"Enschede","year":2008,"type":"Moord","link":"https://www.coldcasezaken.nl/diana-winkel"},"https://www.coldcasezaken.nl/bernadett-szabo":{"place":"Amsterdam","year":2008,"type":"Moord","link":"https://www.coldcasezaken.nl/bernadett-szabo"},"https://www.coldcasezaken.nl/rein-weehuizen":{"place":"Maastricht","year":2009,"type":"Moord","link":"https://www.coldcasezaken.nl/rein-weehuizen"},"https://www.coldcasezaken.nl/robin-van-clingendael":{"place":"Delft","year":2009,"type":"Overige","link":"https://www.coldcasezaken.nl/robin-van-clingendael"},"https://www.coldcasezaken.nl/anne-beckmann":{"place":"","year":2009,"type":"Moord","link":"https://www.coldcasezaken.nl/anne-beckmann"},"https://www.coldcasezaken.nl/dan-dielis":{"place":"Bergen op Zoom","year":2009,"type":"Moord","link":"https://www.coldcasezaken.nl/dan-dielis"},"https://www.coldcasezaken.nl/marian-kusters":{"place":"Groningen","year":2009,"type":"Vermissing","link":"https://www.coldcasezaken.nl/marian-kusters"},"https://www.coldcasezaken.nl/christiaan-weststeijn":{"place":"","year":2010,"type":"Vermissing","link":"https://www.coldcasezaken.nl/christiaan-weststeijn"},"https://www.coldcasezaken.nl/sandra-martinez-burbano":{"place":"Rotterdam","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/sandra-martinez-burbano"},"https://www.coldcasezaken.nl/herman-ploegstra":{"place":"Middelburg","year":2010,"type":"Vermissing","link":"https://www.coldcasezaken.nl/herman-ploegstra"},"https://www.coldcasezaken.nl/stefan-brants":{"place":"Maastricht","year":2010,"type":"Overige","link":"https://www.coldcasezaken.nl/stefan-brants"},"https://www.coldcasezaken.nl/yvonne-beer":{"place":"Den Haag","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/yvonne-beer"},"https://www.coldcasezaken.nl/ida-sjamsudin":{"place":"Arnhem","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/ida-sjamsudin"},"https://www.coldcasezaken.nl/heidy-goedhart":{"place":"Oosterhout","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/heidy-goedhart"},"https://www.coldcasezaken.nl/arnold-van-buuren":{"place":"Rotterdam","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/arnold-van-buuren"},"https://www.coldcasezaken.nl/derk-kiers":{"place":"Winschoten","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/derk-kiers"},"https://www.coldcasezaken.nl/cees-lieftink":{"place":"Arnhem","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/cees-lieftink"},"https://www.coldcasezaken.nl/stefanie-blijd":{"place":"Amsterdam","year":2011,"type":"Vermissing","link":"https://www.coldcasezaken.nl/stefanie-blijd"},"https://www.coldcasezaken.nl/christelle-sandervorst":{"place":"Maastricht","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/christelle-sandervorst"},"https://www.coldcasezaken.nl/pablo-hermeler":{"place":"Naarden","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/pablo-hermeler"},"https://www.coldcasezaken.nl/samba-fall":{"place":"Breda","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/samba-fall"},"https://www.coldcasezaken.nl/edward-maat":{"place":"Rotterdam","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/edward-maat"},"https://www.coldcasezaken.nl/hennie-schellenberg":{"place":"Amsterdam","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/hennie-schellenberg"},"https://www.coldcasezaken.nl/herman-jansen":{"place":"Amsterdam","year":2011,"type":"Moord","link":"https://www.coldcasezaken.nl/herman-jansen"},"https://www.coldcasezaken.nl/nelie-van-der-schouw":{"place":"Arnhem","year":2011,"type":"Vermissing","link":"https://www.coldcasezaken.nl/nelie-van-der-schouw"},"https://www.coldcasezaken.nl/koos-engel":{"place":"Alkmaar","year":2012,"type":"Moord","link":"https://www.coldcasezaken.nl/koos-engel"},"https://www.coldcasezaken.nl/floris-dierdorp":{"place":"","year":2012,"type":"Vermissing","link":"https://www.coldcasezaken.nl/floris-dierdorp"},"https://www.coldcasezaken.nl/sterre-van-de-laarakker":{"place":"Vught","year":2012,"type":"Overige","link":"https://www.coldcasezaken.nl/sterre-van-de-laarakker"},"https://www.coldcasezaken.nl/george-ilahi":{"place":"Alkmaar","year":2012,"type":"Moord","link":"https://www.coldcasezaken.nl/george-ilahi"},"https://www.coldcasezaken.nl/marja-nijholt":{"place":"'s-Hertogenbosch","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/marja-nijholt"},"https://www.coldcasezaken.nl/stephan-buczynski":{"place":"","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/stephan-buczynski"},"https://www.coldcasezaken.nl/tamara-plehn":{"place":"Nijmegen","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/tamara-plehn"},"https://www.coldcasezaken.nl/onke-de-boer":{"place":"Leeuwarden","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/onke-de-boer"},"https://www.coldcasezaken.nl/antoine-thys":{"place":"Maastricht","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/antoine-thys"},"https://www.coldcasezaken.nl/rebecca-groenendijk":{"place":"Rotterdam","year":2014,"type":"Vermissing","link":"https://www.coldcasezaken.nl/rebecca-groenendijk"},"https://www.coldcasezaken.nl/germain-steven-mboyo-bombole":{"place":"Bergen op Zoom","year":2014,"type":"Overige","link":"https://www.coldcasezaken.nl/germain-steven-mboyo-bombole"},"https://www.coldcasezaken.nl/tomasz-zawierucha":{"place":"Delft","year":2014,"type":"Moord","link":"https://www.coldcasezaken.nl/tomasz-zawierucha"},"https://www.coldcasezaken.nl/sicco-cuperus":{"place":"Leeuwarden","year":2014,"type":"Vermissing","link":"https://www.coldcasezaken.nl/sicco-cuperus"},"https://www.coldcasezaken.nl/sumbat-dawood-boghos":{"place":"Enschede","year":2014,"type":"Moord","link":"https://www.coldcasezaken.nl/sumbat-dawood-boghos"},"https://www.coldcasezaken.nl/arne-hermsen":{"place":"Nijmegen","year":2015,"type":"Vermissing","link":"https://www.coldcasezaken.nl/arne-hermsen"},"https://www.coldcasezaken.nl/tom-de-munter":{"place":"Groningen","year":2015,"type":"Moord","link":"https://www.coldcasezaken.nl/tom-de-munter"},"https://www.coldcasezaken.nl/elise-smit":{"place":"Rotterdam","year":2015,"type":"Moord","link":"https://www.coldcasezaken.nl/elise-smit"},"https://www.coldcasezaken.nl/onbekende-man-vecht":{"place":"Hilversum","year":2015,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/onbekende-man-vecht"},"https://www.coldcasezaken.nl/susanna-boon":{"place":"Apeldoorn","year":null,"type":"Moord","link":"https://www.coldcasezaken.nl/susanna-boon"},"https://www.coldcasezaken.nl/marielle-markgraaff":{"place":"Eindhoven","year":2016,"type":"Moord","link":"https://www.coldcasezaken.nl/marielle-markgraaff"},"https://www.coldcasezaken.nl/marlon-fidanque":{"place":"Apeldoorn","year":2016,"type":"Moord","link":"https://www.coldcasezaken.nl/marlon-fidanque"},"https://www.coldcasezaken.nl/sietze-grave":{"place":"Winschoten","year":2016,"type":"Moord","link":"https://www.coldcasezaken.nl/sietze-grave"},"https://www.coldcasezaken.nl/rosleny-magdalena":{"place":"Amstelveen","year":2016,"type":"Moord","link":"https://www.coldcasezaken.nl/rosleny-magdalena"},"https://www.coldcasezaken.nl/viktor-jajcanin":{"place":"","year":2016,"type":"Moord","link":"https://www.coldcasezaken.nl/viktor-jajcanin"},"https://www.coldcasezaken.nl/dumitru-sirbu":{"place":"Haarlem","year":2017,"type":"Moord","link":"https://www.coldcasezaken.nl/dumitru-sirbu"},"https://www.coldcasezaken.nl/ralf-meinema":{"place":"","year":2017,"type":"Moord","link":"https://www.coldcasezaken.nl/ralf-meinema"},"https://www.coldcasezaken.nl/hannie-bakker":{"place":"Alkmaar","year":2017,"type":"Moord","link":"https://www.coldcasezaken.nl/hannie-bakker"},"https://www.coldcasezaken.nl/corrie-van-geesbergen":{"place":"Delft","year":2019,"type":"Moord","link":"https://www.coldcasezaken.nl/corrie-van-geesbergen"},"https://www.coldcasezaken.nl/saban-berk":{"place":"Amsterdam","year":2019,"type":"Moord","link":"https://www.coldcasezaken.nl/saban-berk"},"https://www.coldcasezaken.nl/karin-grijpstra-1":{"place":"Leeuwarden","year":2020,"type":"Overige","link":"https://www.coldcasezaken.nl/karin-grijpstra-1"},"https://www.coldcasezaken.nl/roshentlie-rosaria":{"place":"Middelburg","year":2021,"type":"Moord","link":"https://www.coldcasezaken.nl/roshentlie-rosaria"},"https://www.coldcasezaken.nl/peter-van-dongen":{"place":"Vught","year":2022,"type":"Moord","link":"https://www.coldcasezaken.nl/peter-van-dongen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-nieuwezijds-voorburgwal":{"place":"Amsterdam","year":1986,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-nieuwezijds-voorburgwal"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-teteringen":{"place":"Breda","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-teteringen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sevenum":{"place":"Weert","year":1991,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sevenum"},"https://www.coldcasezaken.nl/duitse-jane-doe":{"place":"","year":1991,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/duitse-jane-doe"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bergen":{"place":"Nijmegen","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bergen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-strandvlietpad":{"place":"Amsterdam","year":1994,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-strandvlietpad"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amstelveen":{"place":"Amstelveen","year":1995,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amstelveen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westerdoksdijk":{"place":"Amsterdam","year":1995,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westerdoksdijk"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-lommel":{"place":"Eindhoven","year":1996,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-lommel"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sloterdijk":{"place":"Amsterdam","year":1997,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sloterdijk"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amsterdam-5":{"place":"Amsterdam","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amsterdam-5"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amstelveen":{"place":"Amstelveen","year":1998,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amstelveen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-t-ij-amsterdam":{"place":"Amsterdam","year":2000,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-t-ij-amsterdam"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-tiel":{"place":"'s-Hertogenbosch","year":2003,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-tiel"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-den-haag":{"place":"Delft","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-den-haag"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-ij-amsterdam":{"place":"Amsterdam","year":2004,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-ij-amsterdam"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen":{"place":"","year":2005,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-huizen":{"place":"Huizen","year":2005,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-huizen"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-albertkanaal-vise":{"place":"Maastricht","year":2009,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-albertkanaal-vise"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westzaan":{"place":"Amsterdam","year":2010,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westzaan"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-12":{"place":"Amsterdam","year":2010,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-12"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-pietersplas":{"place":"Maastricht","year":2013,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-pietersplas"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bij-luik":{"place":"","year":2018,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bij-luik"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-oostende":{"place":"","year":2019,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-oostende"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-torontobrug":{"place":"Amsterdam","year":2022,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-torontobrug"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-nederhemert-zuid":{"place":"'s-Hertogenbosch","year":2023,"type":"Moord","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-nederhemert-zuid"},"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-waal-winssen":{"place":"Nijmegen","year":2025,"type":"Onbekende doden","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-waal-winssen"},"https://www.coldcasezaken.nl/zaak-zonder-dossier":{"place":"Middelburg","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},"https://www.coldcasezaken.nl/ina-vos":{"place":"Amsterdam","year":1997,"type":"Moord","link":"https://www.coldcasezaken.nl/ina-vos"},"https://www.coldcasezaken.nl/daan-van-es":{"place":"Weert","year":2009,"type":"Moord","link":"https://www.coldcasezaken.nl/daan-van-es"},"https://www.coldcasezaken.nl/sidney-luten":{"place":"Hoorn","year":2016,"type":"Vermissing","link":"https://www.coldcasezaken.nl/sidney-luten"},"https://www.coldcasezaken.nl/jakob-johan-de-bruijn":{"place":"Delft","year":2022,"type":"Vermissing","link":"https://www.coldcasezaken.nl/jakob-johan-de-bruijn"},"https://www.coldcasezaken.nl/yoran-krol":{"place":"Oosterhout","year":2023,"type":"Vermissing","link":"https://www.coldcasezaken.nl/yoran-krol"},"https://www.coldcasezaken.nl/angelique-hendrix":{"place":"Sittard","year":1990,"type":"Moord","link":"https://www.coldcasezaken.nl/angelique-hendrix"},"https://www.coldcasezaken.nl/annie-van-der-poel":{"place":"Middelburg","year":2019,"type":"Moord","link":"https://www.coldcasezaken.nl/annie-van-der-poel"},"https://www.coldcasezaken.nl/tanja-groen":{"place":"Maastricht","year":1993,"type":"Vermissing","link":"https://www.coldcasezaken.nl/tanja-groen"},"https://www.coldcasezaken.nl/leon-reubzaet":{"place":"Sittard","year":1987,"type":"Moord","link":"https://www.coldcasezaken.nl/leon-reubzaet"},"https://www.coldcasezaken.nl/rudy-van-der-hoeven":{"place":"Weert","year":2006,"type":"Moord","link":"https://www.coldcasezaken.nl/rudy-van-der-hoeven"},"https://www.coldcasezaken.nl/irene-bernet":{"place":"Hilversum","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/irene-bernet"},"https://www.coldcasezaken.nl/frans-olthof":{"place":"Enschede","year":1995,"type":"Vermissing","link":"https://www.coldcasezaken.nl/frans-olthof"},"https://www.coldcasezaken.nl/lodewijk-louis-genbrugge":{"place":"","year":1994,"type":"Moord","link":"https://www.coldcasezaken.nl/lodewijk-louis-genbrugge"},"https://www.coldcasezaken.nl/geert-gernand":{"place":"Amsterdam","year":1984,"type":"Moord","link":"https://www.coldcasezaken.nl/geert-gernand"},"https://www.coldcasezaken.nl/marcel-putman":{"place":"Naarden","year":2001,"type":"Vermissing","link":"https://www.coldcasezaken.nl/marcel-putman"}};
+  function getListDetails(c){
+    var wanted=normalizeUrl(c.link||c.url||''), cname=normalizeName(c.title||c.name||'');
+    /* /zaak-zonder-dossier is een gedeelde link en mag NOOIT metadata van een andere zaak krijgen. */
+    var isGeneric=!wanted || wanted.indexOf('/zaak-zonder-dossier')!==-1;
+    var meta=(!isGeneric)?caseMetaFor(c):null;
+    if(meta){return {category:meta.type||'',place:meta.place||'',year:meta.year||'',link:meta.link||c.link||''};}
+    /* Voor zaken zonder dossier halen we jaar/type uit de eigen marker-titel. */
+    if(isGeneric){
+      var rawTitle=String(c.title||c.name||'');
+      var ym=rawTitle.match(/\b(19|20)\d{2}\b/);
+      var cat=/vermissing|verdwijning/i.test(rawTitle)?'Vermissing':(/onbekende|ongeïdentificeerde|ongeidentificeerde/i.test(rawTitle)?'Onbekende doden':(/moord|dood/i.test(rawTitle)?'Moord':'Overige'));
+      var specialPlace='';
+      if(/ronnie spa/i.test(rawTitle)) specialPlace='Tsjûkemar';
+      return {category:cat,place:specialPlace||c.place||c.location||c.city||'',year:ym?ym[0]:(c.year||''),link:c.link||c.url||''};
+    }
+    var cards=document.querySelectorAll('#grid .cc-card'),byName=null;
+    for(var i=0;i<cards.length;i++){
+      var card=cards[i],a=card.querySelector('.cc-link'),cardName=normalizeName(card.getAttribute('data-name')||'');
+      if(wanted && a && normalizeUrl(a.getAttribute('href'))===wanted){byName=card;break;}
+      if(!byName && cname && cardName && (cardName===cname || cname.indexOf(cardName)>-1 || cardName.indexOf(cname)>-1))byName=card;
+    }
+    if(byName){var link=byName.querySelector('.cc-link');return {category:(byName.querySelector('.cc-category')||{}).textContent||'',place:(byName.querySelector('.cc-place')||{}).textContent||'',year:byName.getAttribute('data-year')||'',link:link?link.getAttribute('href'):''};}
+    return {category:c.type||'',place:c.place||c.location||c.city||'',year:c.year||'',link:c.link||c.url||''};
+  }
+  function clusterClass(n){return n<10?'cluster-small':(n<30?'cluster-medium':'cluster-large')}
+  function clusterSize(n){return n<10?38:(n<30?50:65)}
+  var hoverTimer=null, popupPinned=false, popupHover=false, markerHover=false;
+  function cancelHoverClose(){if(hoverTimer){clearTimeout(hoverTimer);hoverTimer=null;}}
+  function scheduleHoverClose(){if(popupPinned)return;cancelHoverClose();hoverTimer=setTimeout(function(){if(!popupPinned&&!popupHover&&!markerHover)hideCard();},260);}
+  function hideCard(){cancelHoverClose();popupPinned=false;popupHover=false;markerHover=false;if(activePopup&&map)map.closePopup(activePopup);activePopup=null;activeMarker=null;}
+  /* POPUP-FOTO: vaste koppeling van de 20 zichtbare dossierfoto's aan hun dossier-URL. */
+  /* BACKUP PHOTO DATASET — exact canonical dossier URL -> original backup og:image. */
+  var POPUP_IMAGES = {"https://www.coldcasezaken.nl/sidney-lute":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/sidney-lute-verouderingsfoto-politie-nl_-high.jpg","https://www.coldcasezaken.nl/ingrid-hakkert":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/lhmi3p/logo-kb.png","https://www.coldcasezaken.nl/geertje-vliegenthart-roest":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/schermopname_19-10-2025_19117_www-bing-com-high.jpg","https://www.coldcasezaken.nl/hanno-van-mil":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/large-vecteezy_a-dark-room-with-a-light-at-the-top_30648142_large-high.jpg","https://www.coldcasezaken.nl/jan-schoenmakers":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/326a5m/1-238.jpg","https://www.coldcasezaken.nl/hinke-van-der-velde":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/382m6y/download2-1.jpeg","https://www.coldcasezaken.nl/alwin-sterk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/lvhj46/1-112.jpg","https://www.coldcasezaken.nl/marjo-winkens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/marjo_winkens3-high.webp","https://www.coldcasezaken.nl/angela-mangot":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6crzve/1-233.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nn2222222vg-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/gerhardus-goldschmeding":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/494358440_1620317942000575_6482884630819670994_n-high.png","https://www.coldcasezaken.nl/riky-bartels":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wofp4e/bartels_riky_1960-1977-1.jpg","https://www.coldcasezaken.nl/willemijntje-van-der-meer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/z69nwf/1-240.jpg","https://www.coldcasezaken.nl/levie-van-amerongen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/gb6vmt/wert.jpg","https://www.coldcasezaken.nl/wendy-hart":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/xmqlwk/11.jpeg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/petra-van-den-berg":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wd017g/1jpgfb.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/het-kelderlijk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6nkirg/week-4-tatoeage-1-1.jpg","https://www.coldcasezaken.nl/riet-de-vries":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/riet-smit-de-vries-high.png","https://www.coldcasezaken.nl/petertje-oort":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/po0ovr/1-1.webp","https://www.coldcasezaken.nl/fred-halsema":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/438112454_626925869642025_5612072214032949810_n-high-high.webp","https://www.coldcasezaken.nl/eefke-wolf":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/0e4ntl/3-28.jpg","https://www.coldcasezaken.nl/coby-toet":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/441301168_960373208745258_3337259912846847405_n-high-fjafsb.png","https://www.coldcasezaken.nl/gerda-merchel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-3758yw.png","https://www.coldcasezaken.nl/germa-van-den-boom":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/s6xzu8/1-140.jpg","https://www.coldcasezaken.nl/ahmed-korkmaz":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/433144440_943486720317575_9196892957501941719_n-fotor-2024032815219-high-pn8kch.png","https://www.coldcasezaken.nl/willem-klein":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5wt1b2/0_6em44tdtnl6zqcza-1.jpg","https://www.coldcasezaken.nl/wijtske-bauer-hiemstra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/xcfduf/1-98.jpg","https://www.coldcasezaken.nl/piet-beentjes":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ozkupt/1-225.jpg","https://www.coldcasezaken.nl/helena-mendonca":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/plk19m/3-10.png","https://www.coldcasezaken.nl/sjef-delahaije":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ad9car/1-17.png","https://www.coldcasezaken.nl/alie-spruit-roelofsen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/o4il5q/4-12.jpg","https://www.coldcasezaken.nl/johannes-schrijvers":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jxpfs8/1-166.jpg","https://www.coldcasezaken.nl/alida-christiana-koopmans":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6v5s5i/2-38.jpg","https://www.coldcasezaken.nl/chris-boelsen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/re16nv/1-136.jpg","https://www.coldcasezaken.nl/yvonne-plasmans":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/pmcmny/1-115.jpg","https://www.coldcasezaken.nl/wilma-bres":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/csm_118352_delft_cc-wb_wilma5_11e14e9172-high-4avgra.jpg","https://www.coldcasezaken.nl/studente-ellen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/mw0i4q/ellen-1.jpg","https://www.coldcasezaken.nl/marie-louise-wies-hensen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/xqzm2z/download14.jpg","https://www.coldcasezaken.nl/mieke-gulien":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/2zqvg8/harmina-gulien-2.jpg","https://www.coldcasezaken.nl/duncan-zwakke":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wbshva/duncan-zwakke-1.jpg","https://www.coldcasezaken.nl/marie-christine-jonas":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/f63n9x/1-242.jpg","https://www.coldcasezaken.nl/simone-de-laat":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/rzs0r0/1-274.jpg","https://www.coldcasezaken.nl/robert-obermeijer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/q4ovzg/1-154.jpg","https://www.coldcasezaken.nl/anouschka-weezenbeek":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/27zgmx/121-1.jpg","https://www.coldcasezaken.nl/hans-van-der-mee":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/314ll6/381640877_272928672363286_8263623107090129248_n-1.png","https://www.coldcasezaken.nl/yvonne-honders":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/0narxc/2-60.jpg","https://www.coldcasezaken.nl/jan-de-niet":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/osda1o/1-36.jpg","https://www.coldcasezaken.nl/natascha-meijer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nuo01j/31-1.jpg","https://www.coldcasezaken.nl/petronella-huijbens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/myhwx0/1-51.jpg","https://www.coldcasezaken.nl/edward-moonen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/npjgat/1-32.jpg","https://www.coldcasezaken.nl/maarten-nelisse":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/zq8lv2/1-90.jpg","https://www.coldcasezaken.nl/saadet-secmen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ru0rv8/1-264.jpg","https://www.coldcasezaken.nl/vera-van-der-lee-van-soldt":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/oy6x51/vera-portret-1.jpg","https://www.coldcasezaken.nl/cornelia-van-den-bergen-groenewold":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/tfr7a1/1-43.jpg","http://coldcasezaken.nl/gerrie-schellekens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ue5ngl/download-4.webp","https://www.coldcasezaken.nl/louis-lemstra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ao1vuu/1-205.jpg","https://www.coldcasezaken.nl/theo-kroon":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wzx12j/1-150.jpg","https://www.coldcasezaken.nl/onbekende-dode-man-naarden":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nn232222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/a-van-veen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/7tm734/381305798_1729095114232675_6844390482761162003_n-1.png","https://www.coldcasezaken.nl/willeke-dost":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/236d7f93-23ec-3622-9f7e-afd8e29aa7e0-high.jpg","https://www.coldcasezaken.nl/louis-van-dam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5odepi/1-2.png","https://www.coldcasezaken.nl/wim-timmermans":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/w9h5ek/1-229.jpg","https://www.coldcasezaken.nl/miet-van-bommel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/vrg53x/1-160.jpg","https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/dadd-high-fs518t.png","https://www.coldcasezaken.nl/lisette-vroege":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/aife6n/download-3.jpg","https://www.coldcasezaken.nl/marina-denzler":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4d29bo/1593355513504121-0-2.jpg","https://www.coldcasezaken.nl/francina-hoogland":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ykwrum/image-29.webp","https://www.coldcasezaken.nl/folkert-veenstra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/u4xzrz/1-11.jpg","https://www.coldcasezaken.nl/emerentia-hogema-diepenbrock":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jo254w/1-100.jpg","https://www.coldcasezaken.nl/theo-van-den-oetelaar":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/js2tnd/1-168.jpg","https://www.coldcasezaken.nl/christiane-heiser":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4wksbp/1-2.jpeg","https://www.coldcasezaken.nl/mariette-peters":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/w0p9j9/2-83.jpg","https://www.coldcasezaken.nl/roelof-steinvoorte":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jdmso2/1-174.jpg","https://www.coldcasezaken.nl/marinus-terwoert":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/340gd0/terwoert21804gx-1.jpg","https://www.coldcasezaken.nl/onbekende-man-treinspoor-didam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6qzf98/1-278.jpg","https://www.coldcasezaken.nl/lieneke-troost":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jt96i5/1-203.jpg","https://www.coldcasezaken.nl/imelda-becerro":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-crse2n-1-high.jpg","https://www.coldcasezaken.nl/jenneke-de-wind":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/vfgl2v/1-6.png","https://www.coldcasezaken.nl/tania-van-kerkhoven":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/grd2az/https___static-1.jpg","https://www.coldcasezaken.nl/dirk-schaap":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qwowpo/untitled-1-4.jpg","https://www.coldcasezaken.nl/fatiha-hasnaoui":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qkpw5j/1-17.jpg","https://www.coldcasezaken.nl/judit-nyari":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/sxxjdh/dubbele-foto-1.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/babylijkje-den-bosch":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/dpvnxf/untitled-1-6.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/herman-meert":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/yv93fm/1-251.jpg","https://www.coldcasezaken.nl/lydia-baneke-knap":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nie5w6/1-194.jpg","https://www.coldcasezaken.nl/pieter-hornstra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4v8cj2/hornstra-1.jpg","https://www.coldcasezaken.nl/daniel-manion":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ygga52/1-19.jpg","https://www.coldcasezaken.nl/mario-das-dores":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/8b2c2dae-3efc-393d-afe5-2f16b559c6ad-high.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/jessica-de-roij":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/pz6ial/1-121.jpg","https://www.coldcasezaken.nl/cafer-gungor":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/c58shn/image-46.png","https://www.coldcasezaken.nl/maria-van-der-zanden":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qxg2p8/1-142.jpg","https://www.coldcasezaken.nl/johanna-de-vos":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/0wauqf/1-181.jpg","https://www.coldcasezaken.nl/mohamed-baksoellah":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5m5o80/1-119.jpg","https://www.coldcasezaken.nl/frank-christiaan-petrus-meijeren":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nrr16x/2x2-1.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/glenn-crawfurd":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/2cb9e4d5-209d-4ea1-9b9d-19736d568c89-high-l9x4ry.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/sjaak-gerwig":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6qzh6r/1-79.jpg","https://www.coldcasezaken.nl/kumral-bagci":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/55gbjs/2-72.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/anna-heemenga":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1-69-high.png","https://www.coldcasezaken.nl/jair-soares":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/h1w6ws/1-15.jpg","https://www.coldcasezaken.nl/hayrettin-sahin":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/s5q2mz/1-4.png","https://www.coldcasezaken.nl/manon-seijkens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/901orb/1-124.jpg","https://www.coldcasezaken.nl/jozef-sjef-klee":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/fkt6rf/1-138.jpg","https://www.coldcasezaken.nl/martin-de-bruijn":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/fu63ls/1-47.jpg","https://www.coldcasezaken.nl/hugo-bootsma":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wid1sm/1-27.jpg","https://www.coldcasezaken.nl/harry-zunnebeld":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/8cn6ge/1-55.jpg","https://www.coldcasezaken.nl/mien-berden":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/352-b_25916_pagina_1-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/peternella-hanegraaff":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/502lrn/1-30.jpg","https://www.coldcasezaken.nl/veronica-camarines":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jezsug/1-53.jpg","https://www.coldcasezaken.nl/liam-vanden-branden":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/k1gl6o/1-247.jpg","https://www.coldcasezaken.nl/rosa-van-der-palen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/yxa2m0/1-117.jpg","https://www.coldcasezaken.nl/marina-schulein":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/s3g3tz/marina-hendrika-schulein-1.jpg","https://www.coldcasezaken.nl/sabrina-pelizzon":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/p3c6va/download-2.webp","https://www.coldcasezaken.nl/reinder-lulofs":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/gptoco/1-96.jpg","https://www.coldcasezaken.nl/renate-schauerhammer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-mfaynt.png","https://www.coldcasezaken.nl/simone-riedel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/r7toeg/1-8.png","https://www.coldcasezaken.nl/orhan-kirac":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/96oehb/2-43.jpg","https://www.coldcasezaken.nl/ancharee-sripho":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ancharee-sripho-2-high-0yuv13.jpg","https://www.coldcasezaken.nl/dode-baby-celebesstraat-amsterdam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nc7qdp/jm43-040497-dekbedovertrek.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/piet-bosters":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/x9gtzw/images_5839125d200d4c9daf62bb76082007ff-1.jpg","https://www.coldcasezaken.nl/mirjam-moeller":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/idegvq/1-191.jpg","https://www.coldcasezaken.nl/marcel-carton":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6vjxed/1-74.jpg","https://www.coldcasezaken.nl/onbekende-man-in-best":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/cpnhpi/blouse1-1.jpg","https://www.coldcasezaken.nl/maria-simons":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/p7hk6p/1-16.jpg","https://www.coldcasezaken.nl/jacqueline-antes":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/v63w9r/1-210.jpg","https://www.coldcasezaken.nl/justus-hertig":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/mr9k4e/1-184.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/michel-rubarth":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/michel_rubarth2-high-z7ykzd.png","https://www.coldcasezaken.nl/salvatore-nicolosi":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/9eh7wm/11-1.jpg","https://www.coldcasezaken.nl/jolanda-meijer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5czb0z/1-170.jpg","https://www.coldcasezaken.nl/onbekende-man-met-draaktattoo":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/joqspy/week-27-tatoeage-002-1.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/babylijkje-baarle-nassau":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/2dpmb1/1-11.png","https://www.coldcasezaken.nl/kanadid-ahmed-gaste":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1p05js/1-162.jpg","https://www.coldcasezaken.nl/cor-booisma":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/7iiw5k/1-59.jpg","https://www.coldcasezaken.nl/onbekende-man-flevopark":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nn-er-duitsland-snelweg3-highh-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/daan-van-kranenburg":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qo1vro/02-coldcase-oostnl-daan-van-kranenburg-1.jpg","https://www.coldcasezaken.nl/muharem-cazim-hebib":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/hnb7wg/1-14.jpg","https://www.coldcasezaken.nl/alex-van-cittert":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/op-10-februari-1999-verliet-alex-lex-van-cittert-37-zijn-high-s161k5.jpg","https://www.coldcasezaken.nl/hans-bluml":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/iepllm/1-49.jpg","https://www.coldcasezaken.nl/onbekende-man-arkervaart":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/dx5vlc/1-277.jpg","https://www.coldcasezaken.nl/jeanette-sip":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/87qv6k/150-2.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/linda-mens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1fg0ok/1-40.jpg","https://www.coldcasezaken.nl/ine-wijnen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/9457j2/1-188.jpg","https://www.coldcasezaken.nl/klikobak-moord":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/35622222-high-gknmee.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/riet-poot":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5rdmht/1-72.jpg","https://www.coldcasezaken.nl/nadia-mehallaoui":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/w1i7ar/1-146.jpg","https://www.coldcasezaken.nl/tonny-ter-horst":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/irjlyo/tonny1-1.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/amarantha-verhoeff":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/scascbg-high-4kid7h.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/jan-patat-groeneveld":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/kg1cfe/1-23.jpg","https://www.coldcasezaken.nl/hans-alfred-meijer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/fk77km/3-8.jpg","https://www.coldcasezaken.nl/babylijkje-karthuizerstraat":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/w8sszd/erty.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/fabian-brands":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/53l434/1-29.png","https://www.coldcasezaken.nl/dyora-bosgra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/f5ryjt/2-25.jpg","https://www.coldcasezaken.nl/ringo-deman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/962dan/1-3-2.jpg","https://www.coldcasezaken.nl/maartje-mariska-klompenhouwer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qu11fm/1-186.jpg","https://www.coldcasezaken.nl/tino-pokrivac":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/483997031_29175894475328182_8507132488251360117_n-high-n68ra1.png","https://www.coldcasezaken.nl/meryem-ulusoy":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ttc7o7/1-102.jpg","https://www.coldcasezaken.nl/ilona-quaedflieg":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/a3qgek/3-18.jpg","https://www.coldcasezaken.nl/wendy-whitehead":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wendy-whitehead1-high.jpg","https://www.coldcasezaken.nl/martien-van-der-meijs":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/0g3itt/1-77.jpg","https://www.coldcasezaken.nl/seyhmus-elmas":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/04jq23/eyhmuselmascinayeti-1.png","https://www.coldcasezaken.nl/cornelis-speksnijder":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/33f5gp/79c5a6_e521b10caedd4a619ba1c26a0c5d3c58_mv2-1.jpg","https://www.coldcasezaken.nl/onbekende-man-boterdiep":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/f6ewdq/onbekende-man-week-49-1.jpg","https://www.coldcasezaken.nl/carel-jan-van-wezel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/asset_w77ut6fk2wmnhgtgb18bk3un_create-a-photorealistic-photo-of-this-person-female-35-years-old-brown-long-hair-caucasian-preserve-all-shapes-and-imperfections-so-that-he-remains-recognizable-transform-the-dr-high-8m9qzi.png","https://www.coldcasezaken.nl/annie-visman-venema":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/0t6jjd/annie-visman-venema2jpg.jpg","https://www.coldcasezaken.nl/jeanette-derksen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jcb8jz/1-94.jpg","https://www.coldcasezaken.nl/deborah-rosiek":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/deborah-rosiek-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/judy-pineda":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/y02dxk/12401-1.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/mark-kerssens":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/kvjd8o/mark-kerssens-1.jpg","https://www.coldcasezaken.nl/samira-van-de-wal":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/46a6ar/3-29.jpg","https://www.coldcasezaken.nl/piet-mergelsberg":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/dy7mn4/1-21.jpg","https://www.coldcasezaken.nl/bernie-bersch":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5fzb27/female-id-unknown-hi-1.png","https://www.coldcasezaken.nl/alaaddin-olcer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/kfftq2/alaaddin-olcer-1.jpg","https://www.coldcasezaken.nl/muhammed-erdogan":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/si3gsr/1-88.jpg","https://www.coldcasezaken.nl/fokko-werkman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/uklcv8/1-1-2.jpg","https://www.coldcasezaken.nl/ben-stubbe":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/iggi69/1-105.jpg","https://www.coldcasezaken.nl/cornelia-brielsman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/456502568_1652473231963551_3610280528908450163_n-high.png","https://www.coldcasezaken.nl/rhea-ann-mattice":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5r2mzz/naamloos-3.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/isabelle-pongs":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/j6rd9c/1-201.jpg","https://www.coldcasezaken.nl/sjef-leukel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/rmoent/2-78.jpg","https://www.coldcasezaken.nl/jan-van-der-pool":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ewl6n9/1-86.jpg","https://www.coldcasezaken.nl/nung-lung-withoon-richtert":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/tdygzu/untitled-1-21.jpg","https://www.coldcasezaken.nl/selma-ameziane":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/arhimou-ameziane-high-ip3np5.jpg","https://www.coldcasezaken.nl/anton-van-tienhoven":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/b327j4/1-179.jpg","https://www.coldcasezaken.nl/henri-nieboer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nieboer-high-dzbva0.jpg","https://www.coldcasezaken.nl/cornelis-regter":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/71srof/1-68.jpg","https://www.coldcasezaken.nl/ger-oma-bindi":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/apatj5/1-66.jpg","https://www.coldcasezaken.nl/damien-mooney":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/uwmy2w/1-34.jpg","https://www.coldcasezaken.nl/caroline-van-toledo":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/em7o8n/1-156.jpg","https://www.coldcasezaken.nl/hendrik-wildeman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5060636p1-high-35u3zp.jpg","https://www.coldcasezaken.nl/tamara-morris":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/rj7hnc/1-178.jpg","https://www.coldcasezaken.nl/daniel-hilbrands":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/xfxjta/1-257.jpg","https://www.coldcasezaken.nl/ann-bourgoin":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/xv07ji/1-197.jpg","https://www.coldcasezaken.nl/claude-mahieu":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jnx1w5/1-195.jpg","https://www.coldcasezaken.nl/renee-van-utrecht":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/acis4w/1-131.jpg","https://www.coldcasezaken.nl/engeltje-van-het-meer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/o8j7l2/1-227.jpg","https://www.coldcasezaken.nl/maarten-redeker":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/7ivf1r/1-92.jpg","https://www.coldcasezaken.nl/cassandra-van-schaijk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ly2mlo/1-110.jpg","https://www.coldcasezaken.nl/harry-wiersinga":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/9yev2n/ec51e6e5-813c-3fe4-831e-ad7f4691b3f2-1.jpg","https://www.coldcasezaken.nl/roeland-oosten":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/is78vd/1-158.jpg","https://www.coldcasezaken.nl/kim-veerman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/h2zax3/2-32.jpg","https://www.coldcasezaken.nl/theo-van-berlo":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ogjcv9/1-213.jpg","https://www.coldcasezaken.nl/onbekende-man-staelduinse-bos":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nnw222222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/rosa-maria-venda-da-silva":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/hq2khe/1-82.jpg","https://www.coldcasezaken.nl/james-patrick-grealis":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/448676220_7684351431661007_5411573287690175578_n-high.jpg","https://www.coldcasezaken.nl/diana-winkel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ocdc7x/1-13.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/bernadett-szabo":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/vr0em2/d8457dd7b2-1.jpg","https://www.coldcasezaken.nl/rein-weehuizen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wx0eni/1-62.jpg","https://www.coldcasezaken.nl/robin-van-clingendael":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/hte7th/logo.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/anne-beckmann":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jlenfb/5-2.jpg","https://www.coldcasezaken.nl/dan-dielis":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/mhgtid/https___static-_1_-1.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/marian-kusters":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/mk4cnm/1-172.jpg","https://www.coldcasezaken.nl/christiaan-weststeijn":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/christiaan-willem-weststeijn-high.jpg","https://www.coldcasezaken.nl/sandra-martinez-burbano":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/q4xyo5/ccll9zhw8aib9_b-1.jpeg","https://www.coldcasezaken.nl/herman-ploegstra":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/wa83my/1-148.jpg","https://www.coldcasezaken.nl/stefan-brants":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/mp85jg/1-144.jpg","https://www.coldcasezaken.nl/yvonne-beer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/t49hap/368721343_1359654338286309_2843826598092526474_n.png","https://www.coldcasezaken.nl/ida-sjamsudin":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/cc-2019-week-34-jair-soares-monster-high-d966zc.png","https://www.coldcasezaken.nl/heidy-goedhart":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/schermopname_18-9-2025_21415_www-bing-com-high.jpg","https://www.coldcasezaken.nl/arnold-van-buuren":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/e9zxjm/1-13.png","https://www.coldcasezaken.nl/derk-kiers":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/7fh99w/1-10.jpg","https://www.coldcasezaken.nl/cees-lieftink":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/elb2w8/2-40.jpg","https://www.coldcasezaken.nl/stefanie-blijd":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4yebw2/1-45.jpg","https://www.coldcasezaken.nl/christelle-sandervorst":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5jxlar/1-15.png","https://www.coldcasezaken.nl/pablo-hermeler":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/pablo-high.png","https://www.coldcasezaken.nl/samba-fall":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jqleee/1-12.jpg","https://www.coldcasezaken.nl/edward-maat":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/utuwaj/download23-1.jpg","https://www.coldcasezaken.nl/hennie-schellenberg":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/7kk8ks/1-28.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/herman-jansen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/761h6z/herman-jansen-1.jpg","https://www.coldcasezaken.nl/nelie-van-der-schouw":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/https___cdn-pijper-io_2023_12_6ipm9wuyszcntm1703088118-high.webp","https://www.coldcasezaken.nl/koos-engel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/pbr54a/3-19.jpg","https://www.coldcasezaken.nl/floris-dierdorp":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5206kh/image-61.png","https://www.coldcasezaken.nl/sterre-van-de-laarakker":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/35hc44/liempde1.jpg","https://www.coldcasezaken.nl/george-ilahi":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/n6eg0e/11luzon-1.jpg","https://www.coldcasezaken.nl/marja-nijholt":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/462563401_962568782446726_3814671858687990574_n-high.png","https://www.coldcasezaken.nl/stephan-buczynski":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/t3irp6/1358263823_1-1.webp","https://www.coldcasezaken.nl/tamara-plehn":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/513912537_746067061191167_1816534862157049062_n-high.jpg","https://www.coldcasezaken.nl/onke-de-boer":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/qp2u43/1-221.jpg","https://www.coldcasezaken.nl/antoine-thys":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/jluorw/2-62.jpg","https://www.coldcasezaken.nl/rebecca-groenendijk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4jgqpo/1-281.jpg","https://www.coldcasezaken.nl/germain-steven-mboyo-bombole":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/476393360_633720589141113_2470793504054675256_n-high.png","https://www.coldcasezaken.nl/tomasz-zawierucha":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/o4ez2w/1-249.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/sicco-cuperus":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/vo3uj5/sicco_jan_cuperus-2.jpg","https://www.coldcasezaken.nl/sumbat-dawood-boghos":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/naamloos-1-high.jpg","https://www.coldcasezaken.nl/arne-hermsen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-qqt9hi.png","https://www.coldcasezaken.nl/tom-de-munter":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/41de5eb8-06bb-37cd-872f-d40d86226b9b-high.jpg","https://www.coldcasezaken.nl/elise-smit":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/bwxax8/download8-1.jpg","https://www.coldcasezaken.nl/onbekende-man-vecht":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nndd22222-high-vzmi1p.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/susanna-boon":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-xhya2n.png","https://www.coldcasezaken.nl/marielle-markgraaff":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/foza4o/2-11.jpg","https://www.coldcasezaken.nl/marlon-fidanque":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/tf1pee/1-108.jpg","https://www.coldcasezaken.nl/sietze-grave":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/pemxif/1-64.jpg","https://www.coldcasezaken.nl/rosleny-magdalena":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/8odujn/1-152.jpg","https://www.coldcasezaken.nl/viktor-jajcanin":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/c3fb4z/1-235.jpg","https://www.coldcasezaken.nl/dumitru-sirbu":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ukzmuq/61872762-1.png","https://www.coldcasezaken.nl/ralf-meinema":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-54zpxz.png","https://www.coldcasezaken.nl/hannie-bakker":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/schermopname_17-9-2025_144618_www-bing-com-high.jpg","https://www.coldcasezaken.nl/corrie-van-geesbergen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/images-1-high-o9ufp2.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/saban-berk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/5e6e5ca6-48c8-46c9-92a5-d131595e05be-high.jpg","https://www.coldcasezaken.nl/karin-grijpstra-1":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/karin-grijpstra_high-res-high-oru2lk.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/roshentlie-rosaria":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-kfw39i.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/peter-van-dongen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/afbeelding-slachtoffer-van-dongen-high-iaq5av.png","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-nieuwezijds-voorburgwal":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/11131881-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-teteringen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/2222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sevenum":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/2_kronenberg-1991_afbeelding-locatie-high.jpg","https://www.coldcasezaken.nl/duitse-jane-doe":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nn-er-duitsland-snaelweg-high-1-jpgsss-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bergen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/22-high.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-strandvlietpad":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/siergracht-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amstelveen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/1995-01-13-nn-vrouw-uilenstede_fosmet-sieraden-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westerdoksdijk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/15-3-1995-amsterdam-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-lommel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/portrait-of-a-seventy-year-old-caucasian-man-with-blue-eyes-b7wwfy-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sloterdijk":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/singelgracht-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amsterdam-5":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/afbeelding-van-whatsapp-op-2025-03-09-om-20-48-31_7af1dcc5-high-f06uj9.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amstelveen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/img_20250703_155051-high.png","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-t-ij-amsterdam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/20-3-2000-amsterdam-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-tiel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nnddd3422222222222222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-den-haag":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/222-high.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-ij-amsterdam":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-pskvkt.png","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/4532222222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-huizen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/6-9-2005-huizen-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-albertkanaal-vise":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/333222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westzaan":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/10-3-2010-westzaan-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-12":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/lijkprinshendrikkade-high.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-pietersplas":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-tn4vhj.png","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bij-luik":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/3422223-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-oostende":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/448223331_1161881978378257_1470707893353606511_n-high.png","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-torontobrug":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/nn-high3-1-high-hltku7.jpg","https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-nederhemert-zuid":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/3522222222222-high.jpg?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-waal-winssen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-megfih.png","https://www.coldcasezaken.nl/zaak-zonder-dossier":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/lhmi3p/logo-kb.png","https://www.coldcasezaken.nl/ina-vos":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/adobe-express-qr-code-1-high-w3sutk.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/daan-van-es":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/sssa-high.png","https://www.coldcasezaken.nl/jakob-johan-de-bruijn":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/550900514_24201040139596785_418436105436203320_n-high.png","https://www.coldcasezaken.nl/yoran-krol":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/politie2018imageset_genericlandscape-2-high.jpg","https://www.coldcasezaken.nl/angelique-hendrix":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/ff69454e-6f39-405b-add4-adef8ab8c901-high.png","https://www.coldcasezaken.nl/annie-van-der-poel":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/lhmi3p/logo-kb.png","https://www.coldcasezaken.nl/tanja-groen":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/z1d5u5/1-134.jpg","https://www.coldcasezaken.nl/leon-reubzaet":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/550900514_24201040139596785_418436105436203320_n-high-6hyhfo.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/rudy-van-der-hoeven":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/image-high-3gyuh5.png","https://www.coldcasezaken.nl/irene-bernet":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/screenshot-2026-01-21-alle-10-39-13-high.png","https://www.coldcasezaken.nl/frans-olthof":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/91c7b4d0b1243b8d5c1447510ddf7e552ba96321-high-j6c6ee.png?enable-io=true&enable=upscale&fit=bounds&width=1200","https://www.coldcasezaken.nl/lodewijk-louis-genbrugge":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/louis-genbrugge-enhanced-high.jpg","https://www.coldcasezaken.nl/geert-gernand":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/chatgpt-image-5-aug-2026-19_39_42-high.png","https://www.coldcasezaken.nl/marcel-putman":"https://primary.jwwb.nl/public/t/l/i/temp-bqjoudxtrdpcquxbogqx/putman-high.png?enable-io=true&crop=0.8148%3A1&width=816"};
+  function popupUrlKey(url){
+    try{var u=new URL(url,window.location.href); var host=(u.hostname||'').toLowerCase().replace(/^www\./,''); var path=(u.pathname||'').replace(/\/+$/,'').toLowerCase(); if(host==='coldcasezaken.nl' && path==='/sidney-luten') path='/sidney-lute'; return host+path;}
+    catch(e){return String(url||'').toLowerCase().replace(/^https?:\/\/www\./,'').replace(/^https?:\/\//,'').replace(/\/+$/,'');}
+  }
+  var POPUP_IMAGES_BY_KEY={}; Object.keys(POPUP_IMAGES).forEach(function(k){POPUP_IMAGES_BY_KEY[popupUrlKey(k)]=POPUP_IMAGES[k];});
+  function getCardImage(c){
+    var wanted=c&&(c.link||c.url||'')||'';
+    var rawTitle=String(c&&(c.title||c.name)||'');
+    if(/geen sitedossier/i.test(rawTitle) || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return '';
+    var meta=caseMetaFor(c);
+    var key=popupUrlKey((meta&&meta.link)||wanted);
+    /* Deze vijf dossiers tonen bewust alleen de rustige tekst-placeholder in de lijst. */
+    var noPhotoKeys={
+      'coldcasezaken.nl/annie-van-der-poel':true,
+      'coldcasezaken.nl/ingrid-hakkert':true,
+      'coldcasezaken.nl/frank-christiaan-petrus-meijeren':true,
+      'coldcasezaken.nl/bernie-bersch':true,
+      'coldcasezaken.nl/robin-van-clingendael':true
+    };
+    if(noPhotoKeys[key])return '';
+    
+    return cleanImageUrl(c && c.image ? c.image : '') || POPUP_IMAGES_BY_KEY[key] || '';
+  }
+  function popupHtml(c){
+    var d=getListDetails(c), title=String(c.title||c.name||'Onbekende cold case').replace(/\s*\(geen sitedossier\)\s*/ig,'').replace(/\s+(19|20)\d{2}\s*$/i,'').trim();
+    var type=d&&d.category?d.category:(c.type||''),year=d&&d.year?d.year:(c.year||''),place=d&&d.place?d.place:(c.place||''),meta=caseMetaFor(c),href=(meta&&meta.link)||c.link||c.url||(d&&d.link)||'',image=cleanImageUrl(getCardImage(c));
+    var photo=image?'<img class="cc-leaflet-photo" src="'+esc(image)+'" alt="">':'';
+    var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class="cc-leaflet-link" href="'+esc(href)+'" target="_top" rel="noopener">Bekijk dossier »</a>':'<a class="cc-leaflet-link" href="https://www.coldcasezaken.nl/tip-stichting-coldcasezaken" target="_top" rel="noopener">Geef een tip »</a>';
+    return '<div class="cc-popup-inner">'+photo+'<div class="cc-leaflet-type">'+esc(type)+'</div><div class="cc-leaflet-title">'+esc(title)+'</div>'+(year?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')+(place?'<div class="cc-leaflet-place">'+esc(place)+'</div>':'')+link+'</div>';
+  }
+  function bindPopupHover(){}
+  function showCard(c,marker,pin){cancelHoverClose();if(activePopup&&map)map.closePopup(activePopup);activeMarker=marker;popupPinned=!!pin;activePopup=L.popup({className:'cc-custom-leaflet-popup',closeButton:false,autoClose:false,closeOnClick:false,autoPan:true,autoPanPadding:[18,18],offset:[0,10],maxWidth:228,minWidth:170}).setLatLng(marker.getLatLng()).setContent(popupHtml(c)).openOn(map);}
+  function initMap(){if(map){setTimeout(function(){map.invalidateSize()},80);return;} map=L.map('ccExplorerMap',{zoomControl:true,preferCanvas:true,minZoom:6,maxZoom:18,zoomSnap:.5}).setView([52.15,5.30],7.5); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors',maxZoom:19}).addTo(map); clusterGroup=L.markerClusterGroup({showCoverageOnHover:false,spiderfyOnMaxZoom:true,zoomToBoundsOnClick:true,maxClusterRadius:42,disableClusteringAtZoom:13,animate:true,animateAddingMarkers:false,iconCreateFunction:function(cluster){var n=cluster.getChildCount(),sz=clusterSize(n);return L.divIcon({html:'<div>'+n+'</div>',className:'marker-cluster '+clusterClass(n),iconSize:[sz,sz]})}}); fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json').then(function(r){if(!r.ok)throw new Error('cms-v2 cases.json kon niet worden geladen');return r.json()}).then(function(raw){var cases=Array.isArray(raw)?raw:(Array.isArray(raw.cases)?raw.cases:Array.isArray(raw.data)?raw.data:Array.isArray(raw.features)?raw.features:Object.keys(raw).map(function(k){return raw[k]}).find(Array.isArray)||[]); renderAllCases(cases); cases.forEach(function(c){var lat=Number(c.lat!=null?c.lat:c.latitude),lng=Number(c.lng!=null?c.lng:(c.lon!=null?c.lon:c.longitude));if(!Number.isFinite(lat)||!Number.isFinite(lng))return;var marker=L.marker([lat,lng],{icon:L.divIcon({className:'',html:'<div class="cc-dot"></div>',iconSize:[16,16],iconAnchor:[8,8]})});marker.__case=c;
+      marker.on('click',function(e){if(e&&e.originalEvent)L.DomEvent.stopPropagation(e.originalEvent);markerHover=false;showCard(c,marker,true);});
+      clusterGroup.addLayer(marker)});map.addLayer(clusterGroup);map.setView([52.15,5.30],7.5)}).catch(function(err){console.error(err);var grid=document.getElementById('grid');if(grid)grid.innerHTML='<div style="grid-column:1/-1;padding:24px;border:1px solid #e0e5eb;border-radius:8px;color:#68778a">De cold case gegevens konden nu niet worden geladen.</div>';});map.on('click',hideCard);map.on('zoomstart movestart',function(){hideCard();});}
+  function reportExplorerHeight(){
+    try {
+      var target=document.getElementById('ccFullscreenTarget');
+      var h=target?Math.ceil(target.getBoundingClientRect().bottom + window.scrollY):Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.offsetHeight,document.body.offsetHeight);
+      window.parent.postMessage({type:'cc-explorer-height',height:Math.max(0,h+8)},'*');
+    } catch(e) {}
+  }
+  window.addEventListener('load',function(){setTimeout(reportExplorerHeight,150);setTimeout(reportExplorerHeight,700);});
+  window.addEventListener('resize',function(){setTimeout(reportExplorerHeight,80);});
+
+  function showMap(){document.body.classList.remove('cc-list-mode');document.body.classList.add('cc-map-mode');document.getElementById('ccMapButton').classList.add('active');document.getElementById('ccListButton').classList.remove('active');document.getElementById('ccMapContent').style.display='block';document.getElementById('ccListContent').style.display='none';initMap();setTimeout(function(){if(map)map.invalidateSize()},120)}
+  function showList(){document.body.classList.remove('cc-map-mode');document.body.classList.add('cc-list-mode');document.getElementById('ccMapButton').classList.remove('active');document.getElementById('ccListButton').classList.add('active');document.getElementById('ccMapContent').style.display='none';document.getElementById('ccListContent').style.display='block';hideCard();}
+  document.getElementById('ccMapButton').onclick=showMap;document.getElementById('ccListButton').onclick=showList;
+  document.body.classList.add('cc-map-mode');document.body.classList.remove('cc-list-mode');
+  initMap();
+})();
+
+// Fullscreen-knop voor desktop en mobiel
+(function(){
+  var btn=document.getElementById('ccFullscreenButton');
+  var target=document.getElementById('ccMapContent');
+  if(!btn||!target)return;
+  function update(){
+    var fs=document.fullscreenElement;
+    btn.innerHTML=fs?'⛶ <span>Sluit volledig scherm</span>':'⛶ <span>Volledig scherm</span>';
+    btn.setAttribute('aria-label',fs?'Sluit volledig scherm':'Volledig scherm');
+  }
+  btn.addEventListener('click',function(){
+    if(document.fullscreenElement){
+      if(document.exitFullscreen) document.exitFullscreen();
+    }else if(target.requestFullscreen){
+      target.requestFullscreen().catch(function(){
+        // Sommige browsers weigeren fullscreen binnen een iframe zonder toestemming.
+      });
+    }
+  });
+  document.addEventListener('fullscreenchange',function(){
+    update();
+    setTimeout(function(){ if(window.map&&window.map.invalidateSize) window.map.invalidateSize(); },150);
+  });
+  update();
+})();
+</script><style>
+/* Nieuwe fotobehandeling: volledige bronfoto zichtbaar, geen automatische crop */
+.cc-card .cc-photo{object-fit:contain!important;object-position:center!important;background:#eef1f4!important}
+.cc-card .cc-photo-wrap{overflow:hidden!important;background:#eef1f4!important}
+.cc-custom-leaflet-popup .cc-leaflet-photo{object-fit:contain!important;object-position:center!important;background:#eef1f4!important;border-radius:0!important}
+
+@media(max-width:600px){.cc-card .cc-photo{object-fit:contain!important;object-position:center!important}}
+</style>
+<script>
+(function(){
+  function send(){
+    try{
+      var target=document.getElementById('ccFullscreenTarget');
+      var h=target?Math.ceil(target.getBoundingClientRect().bottom + window.scrollY):Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.offsetHeight,document.body.offsetHeight);
+      window.parent.postMessage({type:'cc-explorer-height',height:Math.max(0,h+8)},'*');
+    }catch(e){}
+  }
+  var target=document.getElementById('ccListContent');
+  if(target && window.MutationObserver){
+    new MutationObserver(function(){setTimeout(send,30);}).observe(target,{childList:true,subtree:true,attributes:true});
+  }
+  setTimeout(send,200);
+  setTimeout(send,1000);
+})();
+</script>
+
+</body></html>
