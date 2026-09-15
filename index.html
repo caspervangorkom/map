@@ -7,7 +7,10 @@
     var html=await r.text();
     var old=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
-      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;`;
+      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
+      var meta=caseMetaFor(c);
+      if(!meta)return false;
+      var key=popupUrlKey(meta.link||wanted);`;
     var replacement=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
