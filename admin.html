@@ -143,7 +143,7 @@ function renderImageChoices(selectedIndex=null){
   const box=$('imageChoices');
   if(!imageChoices.length){box.innerHTML='';box.style.display='none';return}
   const current=$('image').value.trim();
-  box.innerHTML=imageChoices.map((choice,i)=>`<button type="button" class="imagechoice ${choice.image===current||(selectedIndex===i)?'selected':''}" onclick="selectImage(${i})"><img src="${esc(choice.image)}" alt="Dossierfoto ${i+1}"><small>Foto ${i+1}${choice.source?' · '+esc(choice.source):''}</small></button>`).join('');
+  box.innerHTML=imageChoices.map((choice,i)=>`<button type="button" class="imagechoice ${choice.image===current||(selectedIndex===i)?'selected':''}" onclick="selectImage(${i})"><img src="${esc(choice.image)}" alt="Dossierfoto ${i+1}"><small>Foto ${i+1}</small></button>`).join('');
   box.style.display='grid';
 }
 
