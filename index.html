@@ -692,9 +692,11 @@ body.cc-list-mode .list-top {
       'coldcasezaken.nl/bernie-bersch':true,
       'coldcasezaken.nl/robin-van-clingendael':true
     };
+    var cmsImage=cleanImageUrl(c && c.image ? c.image : '');
+    if(cmsImage)return cmsImage;
     if(noPhotoKeys[key])return '';
     
-    return cleanImageUrl(c && c.image ? c.image : '') || POPUP_IMAGES_BY_KEY[key] || '';
+    return POPUP_IMAGES_BY_KEY[key] || '';
   }
   function popupHtml(c){
     var d=getListDetails(c), title=String(c.title||c.name||'Onbekende cold case').replace(/\s*\(geen sitedossier\)\s*/ig,'').replace(/\s+(19|20)\d{2}\s*$/i,'').trim();
