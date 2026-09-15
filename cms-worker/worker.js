@@ -6,12 +6,9 @@ const MAX_BODY_BYTES = 2_000_000;
 const MAX_CASES = 10_000;
 
 function corsHeaders(origin) {
-  // The CMS key is the real access control. CORS is intentionally permissive
-  // so the admin page can later be hosted on coldcasezaken.nl without changing
-  // the Worker. The GitHub token never leaves this Worker.
   return {
     'Access-Control-Allow-Origin': origin || '*',
-    'Access-Control-Allow-Headers': 'Content-Type, X-CMS-Key',
+    'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Vary': 'Origin'
   };
@@ -33,17 +30,6 @@ function validCase(c) {
   return true;
 }
 
-function normalizeCases(cases) {
-  const now = new Date().toISOString();
-  return cases.map(c => {
-    const item = { ...c };
-    if (!item.id) item.id = crypto.randomUUID();
-    if (!item.created) item.created = now;
-    item.updated = now;
-    return item;
-  });
-}
-
 async function github(request, env, path, options = {}) {
   const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
   return fetch(url, {
@@ -59,7 +45,7 @@ async function github(request, env, path, options = {}) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const origin = request.headers.get('Origin') || '*';
 
     if (request.method === 'OPTIONS') {
@@ -68,12 +54,10 @@ export default {
 
     const url = new URL(request.url);
 
-    // Health check
     if (url.pathname === '/' && request.method === 'GET') {
       return json({ ok: true, service: 'coldcase-cms', branch: BRANCH }, 200, origin);
     }
 
-    // Secure admin page. It is only the test-branch copy of admin.html.
     if (url.pathname === '/admin' && request.method === 'GET') {
       const page = await fetch(
         'https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/admin.html',
@@ -96,7 +80,6 @@ export default {
       });
     }
 
-    // Serve the test-branch cases.json to the admin page.
     if (url.pathname === '/cases.json' && request.method === 'GET') {
       const data = await fetch(
         'https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json',
@@ -123,9 +106,10 @@ export default {
       return json({ error: 'Niet gevonden.' }, 404, origin);
     }
 
-    const cmsKey = request.headers.get('X-CMS-Key');
-    if (!env.CMS_KEY || !cmsKey || cmsKey !== env.CMS_KEY) {
-      return json({ error: 'Geen toegang.' }, 401, origin);
+    // Cloudflare Access is the CMS authentication layer. Do not accept saves
+    // from an unauthenticated Worker invocation, even if the URL is known.
+    if (!ctx?.access) {
+      return json({ error: 'Cloudflare Access vereist.' }, 403, origin);
     }
 
     if (!env.GITHUB_TOKEN) {
@@ -154,9 +138,7 @@ export default {
       return json({ error: `Zaak ${invalid + 1} bevat ongeldige gegevens.` }, 400, origin);
     }
 
-    const normalized = normalizeCases(cases);
-
-    // Read the current SHA immediately before writing. GitHub then rejects the
+    // Read the current SHA immediately before writing. GitHub rejects the
     // update if somebody changed cases.json between our read and our write.
     const get = await github(request, env, `${PATH}?ref=${encodeURIComponent(BRANCH)}`);
     if (!get.ok) {
@@ -164,7 +146,7 @@ export default {
     }
 
     const file = await get.json();
-    const content = JSON.stringify(normalized, null, 2) + '\n';
+    const content = JSON.stringify(cases, null, 2) + '\n';
     const encoded = btoa(unescape(encodeURIComponent(content)));
 
     const put = await github(request, env, PATH, {
@@ -187,6 +169,6 @@ export default {
     }
 
     const result = await put.json();
-    return json({ ok: true, branch: BRANCH, commit: result?.commit?.sha || null, count: normalized.length }, 200, origin);
+    return json({ ok: true, branch: BRANCH, commit: result?.commit?.sha || null, count: cases.length }, 200, origin);
   }
 };
