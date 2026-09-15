@@ -23,6 +23,11 @@
     if(html.indexOf(mapOld)===-1)throw new Error('De kaartcode kon niet veilig worden aangepast.');
     html=html.replace(mapOld,mapReplacement);
 
+    var yearOld=String.raw`+(year?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
+    var yearReplacement=String.raw`+(year && String(year).trim()!=='0'?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
+    if(html.indexOf(yearOld)===-1)throw new Error('De jaarweergave kon niet veilig worden aangepast.');
+    html=html.replace(yearOld,yearReplacement);
+
     document.open();document.write(html);document.close();
   }catch(e){
     document.body.innerHTML='<div style="font-family:Arial,sans-serif;color:#224576;padding:30px;max-width:700px;margin:auto"><h2>Coldcase Explorer tijdelijk niet beschikbaar</h2><p>'+String(e.message||e)+'</p></div>';
