@@ -31,6 +31,7 @@
 <h2 id="formTitle">Nieuwe zaak</h2>
 <div class="field"><label>Titel</label><input id="title" autocomplete="off"></div>
 <div class="field"><label>Link naar dossier</label><input id="link" type="url" autocomplete="off"></div>
+<div class="field"><label>Foto URL (eerste foto uit dossier)</label><input id="image" type="url" placeholder="https://..." autocomplete="off"></div>
 <div class="field"><label>Latitude</label><input id="lat" type="number" step="any"></div>
 <div class="field"><label>Longitude</label><input id="lng" type="number" step="any"></div>
 <div class="form-actions"><button onclick="saveCase()">Opslaan</button><button class="secondary" onclick="clearForm()">Annuleren</button><button id="deleteBtn" class="danger" onclick="deleteCase()" style="display:none">Verwijderen</button></div>
@@ -70,18 +71,19 @@ function renderList(){
 function editCase(i){
   editing=i;const c=cases[i];
   $('formTitle').textContent='Zaak bewerken';
-  $('title').value=c.title||'';$('link').value=c.link||'';$('lat').value=c.lat??'';$('lng').value=c.lng??'';
+  $('title').value=c.title||'';$('link').value=c.link||'';$('image').value=c.image||'';$('lat').value=c.lat??'';$('lng').value=c.lng??'';
   $('deleteBtn').style.display='inline-block';$('status').textContent='';renderList();window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function newCase(){$('formTitle').textContent='Nieuwe zaak';clearForm();$('title').focus()}
-function clearForm(){['title','link','lat','lng'].forEach(id=>$(id).value='');editing=-1;$('formTitle').textContent='Nieuwe zaak';$('deleteBtn').style.display='none';$('status').textContent='';renderList()}
+function clearForm(){['title','link','image','lat','lng'].forEach(id=>$(id).value='');editing=-1;$('formTitle').textContent='Nieuwe zaak';$('deleteBtn').style.display='none';$('status').textContent='';renderList()}
 
 function saveCase(){
-  const title=$('title').value.trim(),link=$('link').value.trim(),lat=Number($('lat').value),lng=Number($('lng').value);
+  const title=$('title').value.trim(),link=$('link').value.trim(),image=$('image').value.trim(),lat=Number($('lat').value),lng=Number($('lng').value);
   if(!title||!link||!Number.isFinite(lat)||!Number.isFinite(lng)){alert('Vul titel, link, latitude en longitude correct in.');return}
   if(lat<-90||lat>90||lng<-180||lng>180){alert('Latitude moet tussen -90 en 90 liggen en longitude tussen -180 en 180.');return}
-  const item=editing<0?{lat,lng,title,link}:{...cases[editing],lat,lng,title,link};
+  if(image){try{new URL(image)}catch{alert('De foto URL is niet geldig.');return}}
+  const item=editing<0?{lat,lng,title,link,...(image?{image}:{})}:{...cases[editing],lat,lng,title,link,...(image?{image}:{image:undefined})};
   if(editing<0)cases.push(item);else cases[editing]=item;
   $('status').textContent=editing<0?'Nieuwe zaak toegevoegd.':'Zaak aangepast.';
   renderList();
