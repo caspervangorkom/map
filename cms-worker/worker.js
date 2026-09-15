@@ -57,9 +57,11 @@ function isAllowedDossierUrl(value) {
 }
 
 function absoluteImageUrl(value, base) {
+  if (!value || /^(undefined|null|about:blank)$/i.test(value.trim())) return null;
   try {
     const u = new URL(value, base);
     if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
+    if (/\/undefined(?:$|[/?#])/i.test(u.pathname)) return null;
     return u.toString();
   } catch {
     return null;
@@ -70,7 +72,9 @@ function imageLooksUseful(url) {
   const s = url.toLowerCase();
   if (/facebook|instagram|twitter|x\.com|youtube/.test(s)) return false;
   if (/favicon|logo|icon|sprite|tracking|pixel|avatar/.test(s)) return false;
+  if (/\/undefined(?:$|[/?#])|\/null(?:$|[/?#])/.test(s)) return false;
   if (/\.(svg|gif)(\?|$)/.test(s)) return false;
+  if (/[?&](?:tracking|pixel|analytics)=/i.test(s)) return false;
   return true;
 }
 
@@ -79,6 +83,49 @@ function firstSrcsetUrl(value) {
   const first = value.split(',')[0]?.trim();
   if (!first) return null;
   return first.split(/\s+/)[0] || null;
+}
+
+function stripNonContentSections(html) {
+  return html
+    .replace(/<\s*(script|style|noscript|template|svg|canvas|iframe|footer|nav|header|aside)\b[^>]*>[\s\S]*?<\/\s*\1\s*>/gi, ' ')
+    .replace(/<\s*(script|style|noscript|template|svg|canvas|iframe|footer|nav|header|aside)\b[^>]*\/?>/gi, ' ');
+}
+
+function contentSections(html) {
+  const sections = [];
+  const pushMatches = (re) => {
+    let m;
+    while ((m = re.exec(html))) {
+      if (m[1]) sections.push(m[1]);
+    }
+  };
+
+  pushMatches(/<main\b[^>]*>([\s\S]*?)<\/main>/gi);
+  pushMatches(/<article\b[^>]*>([\s\S]*?)<\/article>/gi);
+
+  if (sections.length) return sections;
+
+  const containerRe = /<([a-z0-9]+)\b[^>]*(?:id|class)=["'][^"']*(?:content|article|post|page|main|story|dossier|zaak)[^"']*["'][^>]*>([\s\S]*?)<\/\1>/gi;
+  let m;
+  while ((m = containerRe.exec(html))) {
+    if (m[2]) sections.push(m[2]);
+  }
+
+  if (sections.length) return sections;
+  return [stripNonContentSections(html)];
+}
+
+function imageTagLooksUseful(tag) {
+  const lower = tag.toLowerCase();
+  if (/(?:class|id|alt|title)=["'][^"']*(?:logo|icon|avatar|social|facebook|instagram|twitter|youtube|footer|header|nav|menu|cookie|tracking|pixel)[^"']*["']/.test(lower)) return false;
+
+  const widthMatch = lower.match(/\bwidth\s*=\s*["']\s*(\d+)/i);
+  const heightMatch = lower.match(/\bheight\s*=\s*["']\s*(\d+)/i);
+  const width = widthMatch ? Number(widthMatch[1]) : null;
+  const height = heightMatch ? Number(heightMatch[1]) : null;
+  if (width !== null && width < 120) return false;
+  if (height !== null && height < 120) return false;
+  return true;
 }
 
 function extractFirstImage(html, base) {
@@ -92,18 +139,23 @@ function extractFirstImage(html, base) {
     if (u && imageLooksUseful(u)) return { image: u, source: 'og:image' };
   }
 
+  const sections = contentSections(html);
   const imgRe = /<img\b[^>]*>/gi;
-  let m;
-  while ((m = imgRe.exec(html))) {
-    const tag = m[0];
-    const attrs = {};
-    const attrRe = /([:\w-]+)\s*=\s*["']([^"']*)["']/gi;
-    let a;
-    while ((a = attrRe.exec(tag))) attrs[a[1].toLowerCase()] = a[2];
-    const candidates = [attrs.src, attrs['data-src'], firstSrcsetUrl(attrs.srcset), firstSrcsetUrl(attrs['data-srcset'])];
-    for (const candidate of candidates) {
-      const u = absoluteImageUrl(candidate, base);
-      if (u && imageLooksUseful(u)) return { image: u, source: 'img' };
+  for (const section of sections) {
+    let m;
+    imgRe.lastIndex = 0;
+    while ((m = imgRe.exec(section))) {
+      const tag = m[0];
+      if (!imageTagLooksUseful(tag)) continue;
+      const attrs = {};
+      const attrRe = /([:\w-]+)\s*=\s*["']([^"']*)["']/gi;
+      let a;
+      while ((a = attrRe.exec(tag))) attrs[a[1].toLowerCase()] = a[2];
+      const candidates = [attrs.src, attrs['data-src'], firstSrcsetUrl(attrs.srcset), firstSrcsetUrl(attrs['data-srcset'])];
+      for (const candidate of candidates) {
+        const u = absoluteImageUrl(candidate, base);
+        if (u && imageLooksUseful(u)) return { image: u, source: 'img' };
+      }
     }
   }
   return null;
