@@ -7,19 +7,20 @@
     var html=await r.text();
     var old=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
-      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
-      var meta=caseMetaFor(c);
-      if(!meta)return false;
-      var key=popupUrlKey(meta.link||wanted);`;
+      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;`;
     var replacement=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
       var key=popupUrlKey(wanted);`;
-    if(html.indexOf(old)===-1)throw new Error('De lijstfunctie in de testversie is niet gevonden; er is niets aangepast.');
+    if(html.indexOf(old)===-1)throw new Error('De lijstcode kon niet veilig worden aangepast.');
     html=html.replace(old,replacement);
-    document.open();
-    document.write(html);
-    document.close();
+
+    var mapOld=String.raw`renderAllCases(cases); cases.forEach(function(c){`;
+    var mapReplacement=String.raw`cases=cases.filter(function(c){var u=String(c&&(c.link||c.url||'')||'').trim().toLowerCase();return u!=='https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen';}); renderAllCases(cases); cases.forEach(function(c){`;
+    if(html.indexOf(mapOld)===-1)throw new Error('De kaartcode kon niet veilig worden aangepast.');
+    html=html.replace(mapOld,mapReplacement);
+
+    document.open();document.write(html);document.close();
   }catch(e){
     document.body.innerHTML='<div style="font-family:Arial,sans-serif;color:#224576;padding:30px;max-width:700px;margin:auto"><h2>Coldcase Explorer tijdelijk niet beschikbaar</h2><p>'+String(e.message||e)+'</p></div>';
   }
