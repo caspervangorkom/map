@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Coldcase Kaart — Beheer</title>
 <style>
-:root{font-family:Arial,sans-serif;color:#1f2937;background:#f5f7fa}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1100px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.top h1{margin:0;font-size:24px}.actions{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer;background:#163b5c;color:#fff}button.secondary{background:#e5e7eb;color:#1f2937}.notice{background:#fff;border-left:4px solid #163b5c;padding:12px 14px;margin-bottom:18px;border-radius:6px}.githubbox{background:#fff;border-radius:8px;padding:18px;margin-bottom:16px;box-shadow:0 1px 4px #00000012}.githubbox h2{margin-top:0;font-size:18px}.hint{font-size:13px;color:#6b7280;line-height:1.5}.bar{display:flex;gap:10px;margin-bottom:14px}.bar input{flex:1}.count{padding:10px 0;color:#6b7280}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.panel{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 4px #00000012}.case{border:1px solid #e5e7eb;border-radius:7px;padding:11px;margin-bottom:8px}.case strong{display:block;margin-bottom:4px}.case small{color:#6b7280}.case .row{display:flex;justify-content:space-between;gap:8px;align-items:center}.case button{padding:7px 10px;font-size:13px}.case.active{border-color:#163b5c}.empty{color:#6b7280;padding:20px 0;text-align:center}.field{margin-bottom:12px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}input{width:100%;padding:11px;border:1px solid #d1d5db;border-radius:6px;font-size:15px}.form-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.status{font-size:13px;color:#166534;margin-top:10px;min-height:18px}.savegithub{background:#245b3a}.danger{background:#8b3030}.dangertext{color:#8b3030}.oktext{color:#166534}.locationbox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:7px;padding:12px;margin:4px 0 14px}.locationbox .form-actions{margin-top:8px}.locationresult{font-size:13px;color:#4b5563;line-height:1.45;margin-top:8px}.attribution{font-size:11px;color:#6b7280;margin-top:7px}.attribution a{color:#4b5563}.imagebox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:7px;padding:12px;margin:4px 0 14px}.imagebox .form-actions{margin-top:8px}.imagestatus{font-size:13px;color:#4b5563;line-height:1.45;margin-top:8px}.imagepreview{display:none;max-width:100%;max-height:220px;margin-top:10px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;object-fit:contain}@media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.wrap{padding:14px}}
+:root{font-family:Arial,sans-serif;color:#1f2937;background:#f5f7fa}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1100px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.top h1{margin:0;font-size:24px}.actions{display:flex;gap:8px;flex-wrap:wrap}button{border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer;background:#163b5c;color:#fff}button.secondary{background:#e5e7eb;color:#1f2937}.notice{background:#fff;border-left:4px solid #163b5c;padding:12px 14px;margin-bottom:18px;border-radius:6px}.githubbox{background:#fff;border-radius:8px;padding:18px;margin-bottom:16px;box-shadow:0 1px 4px #00000012}.githubbox h2{margin-top:0;font-size:18px}.hint{font-size:13px;color:#6b7280;line-height:1.5}.bar{display:flex;gap:10px;margin-bottom:14px}.bar input{flex:1}.count{padding:10px 0;color:#6b7280}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.panel{background:#fff;border-radius:8px;padding:18px;box-shadow:0 1px 4px #00000012}.case{border:1px solid #e5e7eb;border-radius:7px;padding:11px;margin-bottom:8px}.case strong{display:block;margin-bottom:4px}.case small{color:#6b7280}.case .row{display:flex;justify-content:space-between;gap:8px;align-items:center}.case button{padding:7px 10px;font-size:13px}.case.active{border-color:#163b5c}.empty{color:#6b7280;padding:20px 0;text-align:center}.field{margin-bottom:12px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}input{width:100%;padding:11px;border:1px solid #d1d5db;border-radius:6px;font-size:15px}.form-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}.status{font-size:13px;color:#166534;margin-top:10px;min-height:18px}.savegithub{background:#245b3a}.danger{background:#8b3030}.dangertext{color:#8b3030}.oktext{color:#166534}.locationbox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:7px;padding:12px;margin:4px 0 14px}.locationbox .form-actions{margin-top:8px}.locationresult{font-size:13px;color:#4b5563;line-height:1.45;margin-top:8px}.attribution{font-size:11px;color:#6b7280;margin-top:7px}.attribution a{color:#4b5563}.imagebox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:7px;padding:12px;margin:4px 0 14px}.imagebox .form-actions{margin-top:8px}.imagestatus{font-size:13px;color:#4b5563;line-height:1.45;margin-top:8px}.imagepreview{display:none;max-width:100%;max-height:220px;margin-top:10px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;object-fit:contain}.imagechoices{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.imagechoice{border:2px solid transparent;border-radius:7px;background:#fff;padding:4px;cursor:pointer}.imagechoice:hover{border-color:#9ca3af}.imagechoice.selected{border-color:#163b5c}.imagechoice img{display:block;width:100%;height:120px;object-fit:contain;border-radius:4px;background:#f3f4f6}.imagechoice small{display:block;padding:5px 2px 2px;font-size:11px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}.imagehint{font-size:12px;color:#6b7280;margin-top:8px}@media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.wrap{padding:14px}.imagechoices{grid-template-columns:repeat(2,minmax(0,1fr))}.imagechoice img{height:130px}}
 </style>
 </head>
 <body>
@@ -33,10 +33,12 @@
 <div class="field"><label>Link naar dossier</label><input id="link" type="url" autocomplete="off"></div>
 
 <div class="imagebox">
-  <div class="field"><label>Foto URL (eerste foto uit dossier)</label><input id="image" type="url" placeholder="https://..." autocomplete="off"></div>
-  <div class="form-actions"><button type="button" onclick="findImage()">📷 Foto uit dossier ophalen</button></div>
+  <div class="field"><label>Gekozen foto URL</label><input id="image" type="url" placeholder="https://..." autocomplete="off"></div>
+  <div class="form-actions"><button type="button" onclick="findImage()">📷 Foto's uit dossier ophalen</button></div>
   <div id="imageStatus" class="imagestatus"></div>
-  <img id="imagePreview" class="imagepreview" alt="Voorbeeld van gevonden dossierfoto">
+  <div id="imageChoices" class="imagechoices"></div>
+  <div id="imageHint" class="imagehint"></div>
+  <img id="imagePreview" class="imagepreview" alt="Voorbeeld van gekozen dossierfoto">
 </div>
 
 <div class="locationbox">
@@ -64,7 +66,7 @@
 <script>
 const BRANCH='cms-v2';
 const WORKER_ORIGIN='https://coldcase-cms.caspervangorkom.workers.dev';
-let cases=[],editing=-1;
+let cases=[],editing=-1,imageChoices=[];
 const $=id=>document.getElementById(id);
 
 if(location.hostname.endsWith('.github.io')) location.replace(WORKER_ORIGIN+'/admin');
@@ -93,13 +95,13 @@ function editCase(i){
   editing=i;const c=cases[i];
   $('formTitle').textContent='Zaak bewerken';
   $('title').value=c.title||'';$('link').value=c.link||'';$('image').value=c.image||'';$('place').value=c.place||'';$('address').value=c.address||'';$('lat').value=c.lat??'';$('lng').value=c.lng??'';
-  $('locationResult').textContent='';$('imageStatus').textContent='';
+  $('locationResult').textContent='';$('imageStatus').textContent='';$('imageHint').textContent='';imageChoices=[];renderImageChoices();
   showImagePreview(c.image||'');
   $('deleteBtn').style.display='inline-block';$('status').textContent='';renderList();window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function newCase(){$('formTitle').textContent='Nieuwe zaak';clearForm();$('title').focus()}
-function clearForm(){['title','link','image','place','address','lat','lng'].forEach(id=>$(id).value='');editing=-1;$('formTitle').textContent='Nieuwe zaak';$('deleteBtn').style.display='none';$('status').textContent='';$('locationResult').textContent='';$('imageStatus').textContent='';showImagePreview('');renderList()}
+function clearForm(){['title','link','image','place','address','lat','lng'].forEach(id=>$(id).value='');editing=-1;imageChoices=[];$('formTitle').textContent='Nieuwe zaak';$('deleteBtn').style.display='none';$('status').textContent='';$('locationResult').textContent='';$('imageStatus').textContent='';$('imageHint').textContent='';renderImageChoices();showImagePreview('');renderList()}
 
 async function findImage(){
   const dossier=$('link').value.trim();
@@ -108,18 +110,41 @@ async function findImage(){
   try{parsed=new URL(dossier)}catch{alert('De dossierlink is niet geldig.');return}
   if(!['https:','http:'].includes(parsed.protocol)){alert('Gebruik een http- of https-dossierlink.');return}
   const status=$('imageStatus');
-  status.textContent='Eerste geschikte foto zoeken…';
+  status.textContent='Foto\'s uit dossier zoeken…';
+  $('imageHint').textContent='';
+  imageChoices=[];
+  renderImageChoices();
   showImagePreview('');
   try{
     const r=await fetch('/image?url='+encodeURIComponent(dossier),{cache:'no-store'});
     const j=await r.json().catch(()=>({}));
     if(!r.ok)throw Error(j.error||'HTTP '+r.status);
-    $('image').value=j.image||'';
-    showImagePreview(j.image||'');
-    status.innerHTML='<span class="oktext">✓ Foto gevonden'+(j.source?' via '+esc(j.source):'')+'. Controleer de preview en sla daarna de zaak op.</span>';
+    imageChoices=Array.isArray(j.images)?j.images:[];
+    if(!imageChoices.length&&j.image)imageChoices=[{image:j.image,source:j.source||'foto'}];
+    if(!imageChoices.length)throw Error('Geen geschikte foto gevonden op deze dossierpagina.');
+    selectImage(0);
+    renderImageChoices();
+    status.innerHTML='<span class="oktext">✓ '+imageChoices.length+' geschikte foto'+(imageChoices.length===1?'':'\'s')+' gevonden. Klik op de foto die je voor de kaart wilt gebruiken.</span>';
+    $('imageHint').textContent='De eerste foto is alvast geselecteerd. Je kunt hierboven een andere kiezen.';
   }catch(e){
-    status.innerHTML='<span class="dangertext">Foto niet gevonden: '+esc(e.message)+'</span>';
+    status.innerHTML='<span class="dangertext">Foto\'s niet gevonden: '+esc(e.message)+'</span>';
   }
+}
+
+function selectImage(index){
+  const choice=imageChoices[index];
+  if(!choice)return;
+  $('image').value=choice.image||'';
+  showImagePreview(choice.image||'');
+  renderImageChoices(index);
+}
+
+function renderImageChoices(selectedIndex=null){
+  const box=$('imageChoices');
+  if(!imageChoices.length){box.innerHTML='';box.style.display='none';return}
+  const current=$('image').value.trim();
+  box.innerHTML=imageChoices.map((choice,i)=>`<button type="button" class="imagechoice ${choice.image===current||(selectedIndex===i)?'selected':''}" onclick="selectImage(${i})"><img src="${esc(choice.image)}" alt="Dossierfoto ${i+1}"><small>Foto ${i+1}${choice.source?' · '+esc(choice.source):''}</small></button>`).join('');
+  box.style.display='grid';
 }
 
 function showImagePreview(url){
