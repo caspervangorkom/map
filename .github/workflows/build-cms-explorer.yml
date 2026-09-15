@@ -1,0 +1,77 @@
+name: Build CMS Explorer test
+
+on:
+  push:
+    branches: [cms-v2]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.event.head_commit.message != 'Build CMS Explorer test output [skip ci]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cms-v2
+        uses: actions/checkout@v4
+        with:
+          ref: cms-v2
+
+      - name: Copy live Explorer and apply CMS test changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/coldcasezaken/map/coldcase-explorer-test/index.html -o index.html
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          old_fetch = "fetch('https://raw.githubusercontent.com/coldcasezaken/map/main/cases.json').then(function(r){if(!r.ok)throw new Error('main cases.json kon niet worden geladen');return r.json()}).catch(function(){return fetch('https://raw.githubusercontent.com/coldcasezaken/map/coldcase-explorer-test/cases.json').then(function(r){if(!r.ok)throw new Error('cases.json kon niet worden geladen');return r.json()})})"
+          new_fetch = "fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json').then(function(r){if(!r.ok)throw new Error('cms-v2 cases.json kon niet worden geladen');return r.json()})"
+          if old_fetch not in s:
+              raise SystemExit('Expected cases.json fetch block not found')
+          s = s.replace(old_fetch, new_fetch, 1)
+
+          old_image = "return POPUP_IMAGES_BY_KEY[key] || '';"
+          new_image = "return cleanImageUrl(c && c.image ? c.image : '') || POPUP_IMAGES_BY_KEY[key] || '';"
+          if old_image not in s:
+              raise SystemExit('Expected getCardImage return not found')
+          s = s.replace(old_image, new_image, 1)
+
+          old_link = "var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class=\"cc-leaflet-link\" href=\"'+esc(href)+'\" target=\"_top\" rel=\"noopener\">Bekijk dossier »</a>':'';"
+          new_link = "var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class=\"cc-leaflet-link\" href=\"'+esc(href)+'\" target=\"_top\" rel=\"noopener\">Bekijk dossier »</a>':'<a class=\"cc-leaflet-link\" href=\"https://www.coldcasezaken.nl/tip-stichting-coldcasezaken\" target=\"_top\" rel=\"noopener\">Geef een tip »</a>';"
+          if old_link not in s:
+              raise SystemExit('Expected popup link line not found')
+          s = s.replace(old_link, new_link, 1)
+
+          old_mouse = "      marker.on('mouseover',function(){if(window.matchMedia&&!window.matchMedia('(hover:hover)').matches)return;markerHover=true;cancelHoverClose();showCard(c,marker,false);});\n      marker.on('mouseout',function(){if(window.matchMedia&&!window.matchMedia('(hover:hover)').matches)return;markerHover=false;scheduleHoverClose();});\n"
+          if old_mouse not in s:
+              raise SystemExit('Expected marker hover handlers not found')
+          s = s.replace(old_mouse, '', 1)
+
+          old_click = "marker.on('click',function(e){if(e&&e.originalEvent)L.DomEvent.stopPropagation(e.originalEvent);markerHover=true;showCard(c,marker,true);});"
+          new_click = "marker.on('click',function(e){if(e&&e.originalEvent)L.DomEvent.stopPropagation(e.originalEvent);markerHover=false;showCard(c,marker,true);});"
+          if old_click not in s:
+              raise SystemExit('Expected marker click handler not found')
+          s = s.replace(old_click, new_click, 1)
+
+          s = s.replace("  function bindPopupHover(){if(!activePopup)return;var el=activePopup.getElement();if(!el)return;el.onmouseenter=function(){popupHover=true;cancelHoverClose();};el.onmouseleave=function(){popupHover=false;scheduleHoverClose();};}\n", "  function bindPopupHover(){}\n", 1)
+          s = s.replace("setTimeout(bindPopupHover,0);", "", 1)
+
+          marker_zoom = "map.on('zoomstart movestart',function(){if(!popupPinned)hideCard();});"
+          if marker_zoom in s:
+              s = s.replace(marker_zoom, "map.on('zoomstart movestart',function(){hideCard();});", 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit generated Explorer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Build CMS Explorer test output [skip ci]" || exit 0
+          git push origin cms-v2
