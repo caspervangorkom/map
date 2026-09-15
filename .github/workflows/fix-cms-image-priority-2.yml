@@ -1,0 +1,34 @@
+name: Retry CMS image priority fix
+
+on:
+  push:
+    branches: [cms-v2]
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.event.head_commit.message != 'Fix CMS image priority output v2 [skip ci]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cms-v2
+      - name: Patch image priority
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          old="""    if(noPhotoKeys[key])return '';\n    \n    return cleanImageUrl(c && c.image ? c.image : '') || POPUP_IMAGES_BY_KEY[key] || '';"""
+          new="""    var cmsImage=cleanImageUrl(c && c.image ? c.image : '');\n    if(cmsImage)return cmsImage;\n    if(noPhotoKeys[key])return '';\n    \n    return POPUP_IMAGES_BY_KEY[key] || '';"""
+          if old not in s:
+              raise SystemExit('Expected image priority lines not found')
+          p.write_text(s.replace(old,new,1),encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix CMS image priority output v2 [skip ci]"
+          git push origin cms-v2
