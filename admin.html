@@ -72,14 +72,7 @@ function makeCmsButtonsClearer(){
     actions.insertBefore(topNew,actions.firstChild);
   }
   var style=document.createElement('style');
-  style.textContent=`
-    .form-actions button[onclick="newCase()"]{background:#C5322C!important;color:#fff!important;border-color:#C5322C!important;box-shadow:none!important}
-    .form-actions button[onclick="newCase()"]:hover{background:#a92b26!important;border-color:#a92b26!important}
-    .form-actions button[onclick="saveCase()"]{background:#2f7d4a!important;color:#fff!important;border-color:#2f7d4a!important;box-shadow:none!important}
-    .form-actions button[onclick="saveCase()"]:hover{background:#25643b!important;border-color:#25643b!important}
-    .githubbox .form-actions button[onclick="saveToCMS()"]{background:#166534!important;color:#fff!important;border-color:#166534!important;padding:11px 16px!important;box-shadow:none!important}
-    .githubbox .form-actions button[onclick="saveToCMS()"]:hover{background:#14532d!important;border-color:#14532d!important}
-  `;
+  style.textContent='\n    .form-actions button[onclick="newCase()"]{background:#C5322C!important;color:#fff!important;border-color:#C5322C!important;box-shadow:none!important}\n    .form-actions button[onclick="newCase()"]:hover{background:#a92b26!important;border-color:#a92b26!important}\n    .form-actions button[onclick="saveCase()"]{background:#2f7d4a!important;color:#fff!important;border-color:#2f7d4a!important;box-shadow:none!important}\n    .form-actions button[onclick="saveCase()"]:hover{background:#25643b!important;border-color:#25643b!important}\n    .githubbox .form-actions button[onclick="saveToCMS()"]{background:#166534!important;color:#fff!important;border-color:#166534!important;padding:11px 16px!important;box-shadow:none!important}\n    .githubbox .form-actions button[onclick="saveToCMS()"]:hover{background:#14532d!important;border-color:#14532d!important}\n  ';
   document.head.appendChild(style);
   var apply=document.querySelector('button[onclick="saveCase()"]');
   if(apply)apply.textContent='Zaak opslaan';
@@ -109,7 +102,7 @@ async function cleanupDuplicateCases(){
     var r=await fetch('/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cases:cases})});
     var j=await r.json().catch(function(){return {}});
     if(!r.ok)throw Error(j.error||'HTTP '+r.status);
-    if(status)status.innerHTML='<span class="oktext">✓ Oude dossierloze links zijn vervangen door het tipformulier. '+String(j.count??cases.length)+' zaken opgeslagen.</span>';
+    if(status)status.innerHTML='<span class="oktext">✓ Oude dossierloze links zijn vervangen door het tipformulier. '+String(j.count!=null?j.count:cases.length)+' zaken opgeslagen.</span>';
   }catch(e){
     if(status)status.innerHTML='<span class="dangertext">Opruimen mislukt: '+esc(e.message)+'</span>';
   }
