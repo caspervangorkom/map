@@ -60,7 +60,7 @@ var originalNewCase=newCase;
 newCase=function(){
   originalNewCase();
   var linkField=$('link');
-  if(linkField&&!linkField.value.trim())linkField.value=TIP_URL;
+  if(linkField){linkField.value=TIP_URL;linkField.setAttribute('value',TIP_URL);}
 };
 function makeCmsButtonsClearer(){
   var topNew=document.querySelector('button[onclick="newCase()"]');
@@ -96,7 +96,7 @@ function makeCmsButtonsClearer(){
     }
   }
   var linkInput=document.getElementById('link');
-  if(linkInput&&!linkInput.value.trim())linkInput.value=TIP_URL;
+  if(linkInput&&!linkInput.value.trim()){linkInput.value=TIP_URL;linkInput.setAttribute('value',TIP_URL);}
 }
 async function cleanupDuplicateCases(){
   var normalized=normalizeTipLinks();
@@ -133,6 +133,13 @@ init().then(function(){makeCmsButtonsClearer();return cleanupDuplicateCases();})
       script.textContent=oldScript.textContent;
       document.body.appendChild(script);
     });
+    setTimeout(function(){
+      var linkField=document.getElementById('link');
+      if(linkField&&!linkField.value.trim()){
+        linkField.value=TIP_URL;
+        linkField.setAttribute('value',TIP_URL);
+      }
+    },300);
   }catch(e){
     document.body.innerHTML='<div style="font-family:Arial,sans-serif;color:#224576;padding:30px;max-width:700px;margin:auto"><h2>Coldcase CMS tijdelijk niet beschikbaar</h2><p>'+String(e.message||e)+'</p></div>';
   }
