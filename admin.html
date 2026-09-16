@@ -57,9 +57,21 @@ async function makeCmsButtonsClearer(){
     var actions=deleteBtn.parentElement;
     actions.insertBefore(topNew,actions.firstChild);
   }
+  var style=document.createElement('style');
+  style.textContent=`
+    .form-actions button[onclick="newCase()"]{background:#C5322C!important;color:#fff!important;border-color:#C5322C!important;box-shadow:none!important}
+    .form-actions button[onclick="newCase()"]:hover{background:#a92b26!important;border-color:#a92b26!important}
+    .form-actions button[onclick="saveCase()"]{background:#2f7d4a!important;color:#fff!important;border-color:#2f7d4a!important;box-shadow:none!important}
+    .form-actions button[onclick="saveCase()"]:hover{background:#25643b!important;border-color:#25643b!important}
+    .githubbox .form-actions button[onclick="saveToCMS()"]{background:#166534!important;color:#fff!important;border-color:#166534!important;padding:11px 16px!important;box-shadow:none!important}
+    .githubbox .form-actions button[onclick="saveToCMS()"]:hover{background:#14532d!important;border-color:#14532d!important}
+  `;
+  document.head.appendChild(style);
   var apply=document.querySelector('button[onclick="saveCase()"]');
-  if(apply){apply.textContent='Zaak opslaan';apply.style.background='#2f7d4a';apply.style.color='#fff';apply.style.borderColor='#2f7d4a';}
-  if(topNew){topNew.style.background='#C5322C';topNew.style.color='#fff';topNew.style.borderColor='#C5322C';}
+  if(apply)apply.textContent='Zaak opslaan';
+  if(topNew)topNew.textContent='+ Nieuwe zaak';
+  var cmsSave=document.querySelector('button[onclick="saveToCMS()"]');
+  if(cmsSave)cmsSave.textContent='✓ Opslaan naar CMS';
   var linkLabel=document.querySelector('label[for="link"]');
   if(linkLabel)linkLabel.textContent='Link naar dossier of tipformulier';
   else{
