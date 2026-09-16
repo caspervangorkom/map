@@ -1,32 +1,23 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coldcase Explorer</title></head><body><script>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coldcase Explorer</title><style>html,body{margin:0;padding:0;width:100%;background:#fff}iframe{display:block;width:100%;min-height:700px;height:1200px;border:0}</style></head><body><iframe id="explorerFrame" title="Coldcase Explorer" allowfullscreen></iframe><script>
 (async function(){
   var source='https://raw.githubusercontent.com/caspervangorkom/map/8ca569796d0f91a51f7859fdb428298845a8c989/index.html';
   var TIP_URL='https://www.coldcasezaken.nl/meld-informatie-anoniem';
+  var frame=document.getElementById('explorerFrame');
   try{
     var r=await fetch(source,{cache:'no-store'});
     if(!r.ok)throw new Error('Bronpagina kon niet worden geladen ('+r.status+').');
     var html=await r.text();
 
-    /* Altijd de actuele test-cases.json gebruiken. */
-    var nativeFetch=window.fetch.bind(window);
-    window.fetch=function(input,init){
-      var u=typeof input==='string'?input:(input&&input.url)||'';
-      if(/\/cases\.json(?:\?|$)/i.test(String(u))){
-        var opts=Object.assign({},init||{},{cache:'no-store'});
-        return nativeFetch('./cases.json?cb='+Date.now(),opts);
-      }
-      return nativeFetch(input,init);
-    };
+    /* De testversie gebruikt altijd de lokale cms-v2/cases.json. */
     html=html.replace(
       "fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json')",
       "fetch('./cases.json?cb='+Date.now(),{cache:'no-store'})"
     );
 
-    /* Lijst: echte dossiers op dossier-URL uniek; tipzaken op titel+locatie uniek.
-       De gedeelde tip-formulier-URL mag dus niet meer alle nieuwe tipzaken wegfilteren. */
+    /* Lijst: echte dossiers op dossier-URL uniek; tipzaken op titel+locatie uniek. */
     var oldList=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
-      if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
+      if(!wanted || /\\/zaak-zonder-dossier(?:$|\\?)/i.test(wanted))return false;
       var meta=caseMetaFor(c);
       if(!meta)return false;
       var key=popupUrlKey(meta.link||wanted);`;
@@ -34,41 +25,43 @@
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted)return false;
       var meta=caseMetaFor(c);
-      var isTip=/\/meld-informatie-anoniem(?:$|\?)/i.test(wanted)||/\/tip-stichting-coldcasezaken(?:$|\?)/i.test(wanted)||/\/zaak-zonder-dossier(?:$|\?)/i.test(wanted);
+      var isTip=/\\/meld-informatie-anoniem(?:$|\\?)/i.test(wanted)||/\\/tip-stichting-coldcasezaken(?:$|\\?)/i.test(wanted)||/\\/zaak-zonder-dossier(?:$|\\?)/i.test(wanted);
       var key=isTip
         ? 'tip|'+normalizeName(c.title||c.name||'')+'|'+normalizeName(c.place||c.location||c.city||'')+'|'+normalizeName(c.address||'')
         : popupUrlKey((meta&&meta.link)||wanted);`;
-    if(html.indexOf(oldList)===-1)throw new Error('De lijstcode kon niet veilig worden aangepast.');
-    html=html.replace(oldList,newList);
+    if(html.indexOf(oldList)!==-1)html=html.replace(oldList,newList);
 
     var oldListLink=String.raw`if(d.href && d.href.indexOf('/zaak-zonder-dossier')===-1){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';a.textContent='Bekijk dossier »';a.setAttribute('aria-label','Bekijk dossier');content.appendChild(a)}`;
     var newListLink=String.raw`if(d.href){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';var isTip=String(d.href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1||String(d.href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1||String(d.href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1;a.textContent=isTip?'Geef een tip »':'Bekijk dossier »';a.setAttribute('aria-label',isTip?'Geef een tip':'Bekijk dossier');content.appendChild(a)}`;
-    if(html.indexOf(oldListLink)===-1)throw new Error('De lijstlink kon niet veilig worden aangepast.');
-    html=html.replace(oldListLink,newListLink);
+    if(html.indexOf(oldListLink)!==-1)html=html.replace(oldListLink,newListLink);
 
-    var oldPhoto=String.raw`if(/geen sitedossier/i.test(rawTitle) || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return '';`;
-    var newPhoto=String.raw`if(/\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return '';`;
-    if(html.indexOf(oldPhoto)===-1)throw new Error('De fotofilter kon niet veilig worden aangepast.');
-    html=html.replace(oldPhoto,newPhoto);
+    var oldPhoto=String.raw`if(/geen sitedossier/i.test(rawTitle) || /\\/zaak-zonder-dossier(?:$|\\?)/i.test(wanted))return '';`;
+    var newPhoto=String.raw`if(/\\/zaak-zonder-dossier(?:$|\\?)/i.test(wanted))return '';`;
+    if(html.indexOf(oldPhoto)!==-1)html=html.replace(oldPhoto,newPhoto);
 
-    var oldPopup=String.raw`var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class="cc-leaflet-link" href="'+esc(href)+'" target="_top" rel="noopener">Bekijk dossier »</a>':'<a class="cc-leaflet-link" href="https://www.coldcasezaken.nl/tip-stichting-coldcasezaken" target="_top" rel="noopener">Geef een tip »</a>';`;
-    var newPopup=String.raw`var isTip=String(href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1||String(href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1||String(href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1; var link=href?'<a class="cc-leaflet-link" href="'+esc(href.indexOf('/zaak-zonder-dossier')!==-1?TIP_URL:href)+'" target="_top" rel="noopener">'+(isTip?'Geef een tip »':'Bekijk dossier »')+'</a>':'';`;
-    if(html.indexOf(oldPopup)===-1)throw new Error('De popup-link kon niet veilig worden aangepast.');
-    html=html.replace(oldPopup,newPopup);
+    var oldPopup=String.raw`var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class=\"cc-leaflet-link\" href=\"'+esc(href)+'\" target=\"_top\" rel=\"noopener\">Bekijk dossier »</a>':'<a class=\"cc-leaflet-link\" href=\"https://www.coldcasezaken.nl/tip-stichting-coldcasezaken\" target=\"_top\" rel=\"noopener\">Geef een tip »</a>';`;
+    var newPopup=String.raw`var isTip=String(href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1||String(href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1||String(href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1; var link=href?'<a class=\"cc-leaflet-link\" href=\"'+esc(href.indexOf('/zaak-zonder-dossier')!==-1?TIP_URL:href)+'\" target=\"_top\" rel=\"noopener\">'+(isTip?'Geef een tip »':'Bekijk dossier »')+'</a>':'';`;
+    if(html.indexOf(oldPopup)!==-1)html=html.replace(oldPopup,newPopup);
 
     var oldMap=String.raw`renderAllCases(cases); cases.forEach(function(c){`;
     var newMap=String.raw`cases=cases.map(function(c){if(!c)return c;var u=String(c.link||c.url||'').trim().toLowerCase();if(u==='https://www.coldcasezaken.nl/zaak-zonder-dossier'){c.link=TIP_URL;delete c.url;}return c;}); renderAllCases(cases); cases.forEach(function(c){`;
-    if(html.indexOf(oldMap)===-1)throw new Error('De kaartcode kon niet veilig worden aangepast.');
-    html=html.replace(oldMap,newMap);
+    if(html.indexOf(oldMap)!==-1)html=html.replace(oldMap,newMap);
 
-    var oldYear=String.raw`+(year?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
-    var newYear=String.raw`+(year && String(year).trim()!=='0'?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
-    if(html.indexOf(oldYear)===-1)throw new Error('De jaarweergave kon niet veilig worden aangepast.');
-    html=html.replace(oldYear,newYear);
+    var oldYear=String.raw`+(year?'<div class=\"cc-leaflet-year\">'+esc(year)+'</div>':'')`;
+    var newYear=String.raw`+(year && String(year).trim()!=='0'?'<div class=\"cc-leaflet-year\">'+esc(year)+'</div>':'')`;
+    if(html.indexOf(oldYear)!==-1)html=html.replace(oldYear,newYear);
 
-    document.open();document.write(html);document.close();
+    frame.srcdoc=html;
   }catch(e){
     document.body.innerHTML='<div style="font-family:Arial,sans-serif;color:#224576;padding:30px;max-width:700px;margin:auto"><h2>Coldcase Explorer tijdelijk niet beschikbaar</h2><p>'+String(e.message||e)+'</p></div>';
+    return;
   }
+
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='cc-explorer-height')return;
+    var h=Math.max(600,Math.min(3000,Number(e.data.height)||1200));
+    frame.style.height=h+'px';
+    try{window.parent.postMessage({type:'cc-explorer-height',height:h},'*')}catch(err){}
+  });
 })();
 </script></body></html>
