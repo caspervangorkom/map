@@ -7,6 +7,15 @@
     var r=await fetch(source,{cache:'no-store'});
     if(!r.ok)throw new Error('Bronpagina kon niet worden geladen ('+r.status+').');
     var html=await r.text();
+
+    /* BELANGRIJK: laat de Explorer zijn cases.json vanaf deze GitHub Pages-pagina laden.
+       Zo blijft de kaart op cms-v2 gekoppeld aan de actuele CMS-data en vermijden we
+       een cross-origin/raw-GitHub fetch die in de browser kan blokkeren. */
+    var oldCasesFetch=String.raw`fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json')`;
+    var newCasesFetch=String.raw`fetch('./cases.json?cb='+Date.now(),{cache:'no-store'})`;
+    if(html.indexOf(oldCasesFetch)===-1)throw new Error('De gegevenskoppeling van de Explorer kon niet veilig worden aangepast.');
+    html=html.replace(oldCasesFetch,newCasesFetch);
+
     var old=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
