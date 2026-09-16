@@ -72,14 +72,14 @@ function makeCmsButtonsClearer(){
     actions.insertBefore(topNew,actions.firstChild);
   }
   var style=document.createElement('style');
-  style.textContent=[
-    '.form-actions button[onclick="newCase()"]{background:#C5322C!important;color:#fff!important;border-color:#C5322C!important;box-shadow:none!important}',
-    '.form-actions button[onclick="newCase()"]:hover{background:#a92b26!important;border-color:#a92b26!important}',
-    '.form-actions button[onclick="saveCase()"]{background:#2f7d4a!important;color:#fff!important;border-color:#2f7d4a!important;box-shadow:none!important}',
-    '.form-actions button[onclick="saveCase()"]:hover{background:#25643b!important;border-color:#25643b!important}',
-    '.githubbox .form-actions button[onclick="saveToCMS()"]{background:#166534!important;color:#fff!important;border-color:#166534!important;padding:11px 16px!important;box-shadow:none!important}',
-    '.githubbox .form-actions button[onclick="saveToCMS()"]:hover{background:#14532d!important;border-color:#14532d!important}'
-  ].join('');
+  style.textContent=`
+    .form-actions button[onclick="newCase()"]{background:#C5322C!important;color:#fff!important;border-color:#C5322C!important;box-shadow:none!important}
+    .form-actions button[onclick="newCase()"]:hover{background:#a92b26!important;border-color:#a92b26!important}
+    .form-actions button[onclick="saveCase()"]{background:#2f7d4a!important;color:#fff!important;border-color:#2f7d4a!important;box-shadow:none!important}
+    .form-actions button[onclick="saveCase()"]:hover{background:#25643b!important;border-color:#25643b!important}
+    .githubbox .form-actions button[onclick="saveToCMS()"]{background:#166534!important;color:#fff!important;border-color:#166534!important;padding:11px 16px!important;box-shadow:none!important}
+    .githubbox .form-actions button[onclick="saveToCMS()"]:hover{background:#14532d!important;border-color:#14532d!important}
+  `;
   document.head.appendChild(style);
   var apply=document.querySelector('button[onclick="saveCase()"]');
   if(apply)apply.textContent='Zaak opslaan';
@@ -117,6 +117,7 @@ async function cleanupDuplicateCases(){
 init().then(function(){makeCmsButtonsClearer();return cleanupDuplicateCases();});`;
     if(html.indexOf(old)===-1)throw new Error('De startfunctie van het CMS is niet gevonden; er is niets aangepast.');
     html=html.replace(old,injected);
+    html=html.replace('<input id="link" type="url" autocomplete="off">','<input id="link" type="url" autocomplete="off" value="'+TIP_URL+'">');
 
     var parsed=new DOMParser().parseFromString(html,'text/html');
     document.title=parsed.title||'Coldcase Kaart — Beheer';
