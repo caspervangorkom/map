@@ -58,7 +58,8 @@ async function makeCmsButtonsClearer(){
     actions.insertBefore(topNew,actions.firstChild);
   }
   var apply=document.querySelector('button[onclick="saveCase()"]');
-  if(apply)apply.textContent='Zaak opslaan';
+  if(apply){apply.textContent='Zaak opslaan';apply.style.background='#2f7d4a';apply.style.color='#fff';apply.style.borderColor='#2f7d4a';}
+  if(topNew){topNew.style.background='#C5322C';topNew.style.color='#fff';topNew.style.borderColor='#C5322C';}
   var linkLabel=document.querySelector('label[for="link"]');
   if(linkLabel)linkLabel.textContent='Link naar dossier of tipformulier';
   else{
