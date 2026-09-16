@@ -1,4 +1,12 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coldcase Kaart — Beheer</title></head><body><script>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coldcase Kaart — Beheer</title>
+</head>
+<body>
+<script>
 (async function(){
   var source='https://raw.githubusercontent.com/caspervangorkom/map/fdb67c702291e3482bf4d607d787b1bd0e016918/admin.html';
   var TIP_URL='https://www.coldcasezaken.nl/meld-informatie-anoniem';
@@ -54,7 +62,7 @@ newCase=function(){
   var linkField=$('link');
   if(linkField&&!linkField.value.trim())linkField.value=TIP_URL;
 };
-async function makeCmsButtonsClearer(){
+function makeCmsButtonsClearer(){
   var topNew=document.querySelector('button[onclick="newCase()"]');
   var json=document.querySelector('button[onclick="downloadJson()"]');
   var deleteBtn=document.getElementById('deleteBtn');
@@ -109,9 +117,25 @@ async function cleanupDuplicateCases(){
 init().then(function(){makeCmsButtonsClearer();return cleanupDuplicateCases();});`;
     if(html.indexOf(old)===-1)throw new Error('De startfunctie van het CMS is niet gevonden; er is niets aangepast.');
     html=html.replace(old,injected);
-    document.open();document.write(html);document.close();
+
+    var parsed=new DOMParser().parseFromString(html,'text/html');
+    document.title=parsed.title||'Coldcase Kaart — Beheer';
+    document.head.innerHTML=parsed.head.innerHTML;
+    document.body.innerHTML='';
+    Array.from(parsed.body.childNodes).forEach(function(node){
+      if(node.tagName&&node.tagName.toLowerCase()==='script')return;
+      document.body.appendChild(document.importNode(node,true));
+    });
+    Array.from(parsed.body.querySelectorAll('script')).forEach(function(oldScript){
+      var script=document.createElement('script');
+      Array.from(oldScript.attributes).forEach(function(attr){script.setAttribute(attr.name,attr.value)});
+      script.textContent=oldScript.textContent;
+      document.body.appendChild(script);
+    });
   }catch(e){
     document.body.innerHTML='<div style="font-family:Arial,sans-serif;color:#224576;padding:30px;max-width:700px;margin:auto"><h2>Coldcase CMS tijdelijk niet beschikbaar</h2><p>'+String(e.message||e)+'</p></div>';
   }
 })();
-</script></body></html>
+</script>
+</body>
+</html>
