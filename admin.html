@@ -33,6 +33,18 @@ saveCase=function(){
   originalSaveCase();
   dedupeCases();
 };
+async function makeCmsButtonsClearer(){
+  var topNew=document.querySelector('button[onclick="newCase()"]');
+  var json=document.querySelector('button[onclick="downloadJson()"]');
+  var deleteBtn=document.getElementById('deleteBtn');
+  if(json)json.remove();
+  if(topNew&&deleteBtn){
+    var actions=deleteBtn.parentElement;
+    actions.insertBefore(topNew,actions.firstChild);
+  }
+  var apply=document.querySelector('button[onclick="saveCase()"]');
+  if(apply)apply.textContent='Wijziging toepassen';
+}
 async function cleanupDuplicateCases(){
   var removedLegacy=removeLegacyPeppi();
   var removedDuplicates=dedupeCases();
@@ -48,11 +60,7 @@ async function cleanupDuplicateCases(){
     if(status)status.innerHTML='<span class="dangertext">Opruimen mislukt: '+esc(e.message)+'</span>';
   }
 }
-async function makeCmsButtonClearer(){
-  var b=document.querySelector('button[onclick="saveCase()"]');
-  if(b)b.textContent='Wijziging toepassen';
-}
-init().then(function(){makeCmsButtonClearer();return cleanupDuplicateCases();});`;
+init().then(function(){makeCmsButtonsClearer();return cleanupDuplicateCases();});`;
     if(html.indexOf(old)===-1)throw new Error('De startfunctie van het CMS is niet gevonden; er is niets aangepast.');
     html=html.replace(old,injected);
     document.open();document.write(html);document.close();
