@@ -48,6 +48,10 @@ saveCase=function(){
   originalSaveCase();
   dedupeCases();
 };
+function setDefaultTipLink(){
+  var linkField=$('link');
+  if(linkField&&!linkField.value.trim())linkField.value=TIP_URL;
+}
 async function makeCmsButtonsClearer(){
   var topNew=document.querySelector('button[onclick="newCase()"]');
   var json=document.querySelector('button[onclick="downloadJson()"]');
@@ -68,6 +72,8 @@ async function makeCmsButtonsClearer(){
       if(label)label.textContent='Link naar dossier of tipformulier';
     }
   }
+  var newBtn=document.querySelector('button[onclick="newCase()"]');
+  if(newBtn)newBtn.addEventListener('click',function(){setTimeout(setDefaultTipLink,0);});
 }
 async function cleanupDuplicateCases(){
   var normalized=normalizeTipLinks();
@@ -85,7 +91,7 @@ async function cleanupDuplicateCases(){
     if(status)status.innerHTML='<span class="dangertext">Opruimen mislukt: '+esc(e.message)+'</span>';
   }
 }
-init().then(function(){makeCmsButtonsClearer();return cleanupDuplicateCases();});`;
+init().then(function(){makeCmsButtonsClearer();setDefaultTipLink();return cleanupDuplicateCases();});`;
     if(html.indexOf(old)===-1)throw new Error('De startfunctie van het CMS is niet gevonden; er is niets aangepast.');
     html=html.replace(old,injected);
     document.open();document.write(html);document.close();
