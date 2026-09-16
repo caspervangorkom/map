@@ -2,44 +2,47 @@
 (async function(){
   var source='https://raw.githubusercontent.com/caspervangorkom/map/8ca569796d0f91a51f7859fdb428298845a8c989/index.html';
   var TIP_URL='https://www.coldcasezaken.nl/meld-informatie-anoniem';
-  var GENERIC_URL='https://www.coldcasezaken.nl/zaak-zonder-dossier';
   try{
     var r=await fetch(source,{cache:'no-store'});
     if(!r.ok)throw new Error('Bronpagina kon niet worden geladen ('+r.status+').');
     var html=await r.text();
 
-    /* Zorg dat de ingeladen Explorer altijd de actuele test-cases.json gebruikt. */
+    /* Altijd de actuele test-cases.json gebruiken. */
     var nativeFetch=window.fetch.bind(window);
     window.fetch=function(input,init){
       var u=typeof input==='string'?input:(input&&input.url)||'';
       if(/\/cases\.json(?:\?|$)/i.test(String(u))){
-        var opts=Object.assign({},init||{}, {cache:'no-store'});
+        var opts=Object.assign({},init||{},{cache:'no-store'});
         return nativeFetch('./cases.json?cb='+Date.now(),opts);
       }
       return nativeFetch(input,init);
     };
+    html=html.replace(
+      "fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json')",
+      "fetch('./cases.json?cb='+Date.now(),{cache:'no-store'})"
+    );
 
-    var oldCasesFetch=String.raw`fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json')`;
-    var newCasesFetch=String.raw`fetch('./cases.json?cb='+Date.now(),{cache:'no-store'})`;
-    if(html.indexOf(oldCasesFetch)===-1)throw new Error('De gegevenskoppeling van de Explorer kon niet veilig worden aangepast.');
-    html=html.replace(oldCasesFetch,newCasesFetch);
-
-    var old=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
+    /* Lijst: echte dossiers op dossier-URL uniek; tipzaken op titel+locatie uniek.
+       De gedeelde tip-formulier-URL mag dus niet meer alle nieuwe tipzaken wegfilteren. */
+    var oldList=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted || /\/zaak-zonder-dossier(?:$|\?)/i.test(wanted))return false;
       var meta=caseMetaFor(c);
       if(!meta)return false;
       var key=popupUrlKey(meta.link||wanted);`;
-    var replacement=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
+    var newList=String.raw`var listCases=(Array.isArray(cases)?cases:[]).filter(function(c){
       var wanted=c&&(c.link||c.url||'')||'';
       if(!wanted)return false;
       var meta=caseMetaFor(c);
-      var key=popupUrlKey((meta&&meta.link)||wanted);`;
-    if(html.indexOf(old)===-1)throw new Error('De lijstcode kon niet veilig worden aangepast.');
-    html=html.replace(old,replacement);
+      var isTip=/\/meld-informatie-anoniem(?:$|\?)/i.test(wanted)||/\/tip-stichting-coldcasezaken(?:$|\?)/i.test(wanted)||/\/zaak-zonder-dossier(?:$|\?)/i.test(wanted);
+      var key=isTip
+        ? 'tip|'+normalizeName(c.title||c.name||'')+'|'+normalizeName(c.place||c.location||c.city||'')+'|'+normalizeName(c.address||'')
+        : popupUrlKey((meta&&meta.link)||wanted);`;
+    if(html.indexOf(oldList)===-1)throw new Error('De lijstcode kon niet veilig worden aangepast.');
+    html=html.replace(oldList,newList);
 
     var oldListLink=String.raw`if(d.href && d.href.indexOf('/zaak-zonder-dossier')===-1){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';a.textContent='Bekijk dossier »';a.setAttribute('aria-label','Bekijk dossier');content.appendChild(a)}`;
-    var newListLink=String.raw`if(d.href){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';var isTip=String(d.href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1 || String(d.href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1 || String(d.href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1;a.textContent=isTip?'Geef een tip »':'Bekijk dossier »';a.setAttribute('aria-label',isTip?'Geef een tip':'Bekijk dossier');content.appendChild(a)}`;
+    var newListLink=String.raw`if(d.href){var a=document.createElement('a');a.className='cc-link';a.href=d.href;a.target='_top';a.rel='noopener';var isTip=String(d.href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1||String(d.href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1||String(d.href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1;a.textContent=isTip?'Geef een tip »':'Bekijk dossier »';a.setAttribute('aria-label',isTip?'Geef een tip':'Bekijk dossier');content.appendChild(a)}`;
     if(html.indexOf(oldListLink)===-1)throw new Error('De lijstlink kon niet veilig worden aangepast.');
     html=html.replace(oldListLink,newListLink);
 
@@ -49,19 +52,19 @@
     html=html.replace(oldPhoto,newPhoto);
 
     var oldPopup=String.raw`var link=(href&&href.indexOf('/zaak-zonder-dossier')===-1)?'<a class="cc-leaflet-link" href="'+esc(href)+'" target="_top" rel="noopener">Bekijk dossier »</a>':'<a class="cc-leaflet-link" href="https://www.coldcasezaken.nl/tip-stichting-coldcasezaken" target="_top" rel="noopener">Geef een tip »</a>';`;
-    var newPopup=String.raw`var isTip=String(href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1 || String(href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1 || String(href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1; var link=href?'<a class="cc-leaflet-link" href="'+esc(href.indexOf('/zaak-zonder-dossier')!==-1?TIP_URL:href)+'" target="_top" rel="noopener">'+(isTip?'Geef een tip »':'Bekijk dossier »')+'</a>':'';`;
+    var newPopup=String.raw`var isTip=String(href).toLowerCase().indexOf('/meld-informatie-anoniem')!==-1||String(href).toLowerCase().indexOf('/tip-stichting-coldcasezaken')!==-1||String(href).toLowerCase().indexOf('/zaak-zonder-dossier')!==-1; var link=href?'<a class="cc-leaflet-link" href="'+esc(href.indexOf('/zaak-zonder-dossier')!==-1?TIP_URL:href)+'" target="_top" rel="noopener">'+(isTip?'Geef een tip »':'Bekijk dossier »')+'</a>':'';`;
     if(html.indexOf(oldPopup)===-1)throw new Error('De popup-link kon niet veilig worden aangepast.');
     html=html.replace(oldPopup,newPopup);
 
-    var mapOld=String.raw`renderAllCases(cases); cases.forEach(function(c){`;
-    var mapReplacement=String.raw`cases=cases.map(function(c){if(!c)return c;var u=String(c.link||c.url||'').trim().toLowerCase();if(u==='https://www.coldcasezaken.nl/zaak-zonder-dossier'){c.link='https://www.coldcasezaken.nl/meld-informatie-anoniem';delete c.url;}return c;}); renderAllCases(cases); cases.forEach(function(c){`;
-    if(html.indexOf(mapOld)===-1)throw new Error('De kaartcode kon niet veilig worden aangepast.');
-    html=html.replace(mapOld,mapReplacement);
+    var oldMap=String.raw`renderAllCases(cases); cases.forEach(function(c){`;
+    var newMap=String.raw`cases=cases.map(function(c){if(!c)return c;var u=String(c.link||c.url||'').trim().toLowerCase();if(u==='https://www.coldcasezaken.nl/zaak-zonder-dossier'){c.link=TIP_URL;delete c.url;}return c;}); renderAllCases(cases); cases.forEach(function(c){`;
+    if(html.indexOf(oldMap)===-1)throw new Error('De kaartcode kon niet veilig worden aangepast.');
+    html=html.replace(oldMap,newMap);
 
-    var yearOld=String.raw`+(year?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
-    var yearReplacement=String.raw`+(year && String(year).trim()!=='0'?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
-    if(html.indexOf(yearOld)===-1)throw new Error('De jaarweergave kon niet veilig worden aangepast.');
-    html=html.replace(yearOld,yearReplacement);
+    var oldYear=String.raw`+(year?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
+    var newYear=String.raw`+(year && String(year).trim()!=='0'?'<div class="cc-leaflet-year">'+esc(year)+'</div>':'')`;
+    if(html.indexOf(oldYear)===-1)throw new Error('De jaarweergave kon niet veilig worden aangepast.');
+    html=html.replace(oldYear,newYear);
 
     document.open();document.write(html);document.close();
   }catch(e){
