@@ -48,6 +48,12 @@ saveCase=function(){
   originalSaveCase();
   dedupeCases();
 };
+var originalNewCase=newCase;
+newCase=function(){
+  originalNewCase();
+  var linkField=$('link');
+  if(linkField&&!linkField.value.trim())linkField.value=TIP_URL;
+};
 async function makeCmsButtonsClearer(){
   var topNew=document.querySelector('button[onclick="newCase()"]');
   var json=document.querySelector('button[onclick="downloadJson()"]');
@@ -81,6 +87,8 @@ async function makeCmsButtonsClearer(){
       if(label)label.textContent='Link naar dossier of tipformulier';
     }
   }
+  var linkInput=document.getElementById('link');
+  if(linkInput&&!linkInput.value.trim())linkInput.value=TIP_URL;
 }
 async function cleanupDuplicateCases(){
   var normalized=normalizeTipLinks();
