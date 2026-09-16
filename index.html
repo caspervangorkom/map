@@ -8,9 +8,17 @@
     if(!r.ok)throw new Error('Bronpagina kon niet worden geladen ('+r.status+').');
     var html=await r.text();
 
-    /* BELANGRIJK: laat de Explorer zijn cases.json vanaf deze GitHub Pages-pagina laden.
-       Zo blijft de kaart op cms-v2 gekoppeld aan de actuele CMS-data en vermijden we
-       een cross-origin/raw-GitHub fetch die in de browser kan blokkeren. */
+    /* Zorg dat de ingeladen Explorer altijd de actuele test-cases.json gebruikt. */
+    var nativeFetch=window.fetch.bind(window);
+    window.fetch=function(input,init){
+      var u=typeof input==='string'?input:(input&&input.url)||'';
+      if(/\/cases\.json(?:\?|$)/i.test(String(u))){
+        var opts=Object.assign({},init||{}, {cache:'no-store'});
+        return nativeFetch('./cases.json?cb='+Date.now(),opts);
+      }
+      return nativeFetch(input,init);
+    };
+
     var oldCasesFetch=String.raw`fetch('https://raw.githubusercontent.com/caspervangorkom/map/cms-v2/cases.json')`;
     var newCasesFetch=String.raw`fetch('./cases.json?cb='+Date.now(),{cache:'no-store'})`;
     if(html.indexOf(oldCasesFetch)===-1)throw new Error('De gegevenskoppeling van de Explorer kon niet veilig worden aangepast.');
