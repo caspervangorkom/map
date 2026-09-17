@@ -1,2656 +1,494 @@
 [
-  {
-    "lat": 51.661241,
-    "lng": 5.390367,
-    "title": "De moord op Ingrid Hakkert",
-    "link": "https://www.coldcasezaken.nl/ingrid-hakkert"
-  },
-  {
-    "lat": 51.938211,
-    "lng": 4.537739,
-    "title": "Verdwijning van Geertje Vliegenthart",
-    "link": "https://www.coldcasezaken.nl/geertje-vliegenthart-roest"
-  },
-  {
-    "lat": 52.090298,
-    "lng": 5.34139,
-    "title": "Verdwijning Hanno van Mil",
-    "link": "https://www.coldcasezaken.nl/hanno-van-mil"
-  },
-  {
-    "lat": 51.499324,
-    "lng": 5.317251,
-    "title": "De moord op Jan Schoenmakers 1967",
-    "link": "https://www.coldcasezaken.nl/jan-schoenmakers"
-  },
-  {
-    "lat": 53.199036,
-    "lng": 5.808656,
-    "title": "De moord op Hinke van der Velde 1970",
-    "link": "https://www.coldcasezaken.nl/hinke-van-der-velde"
-  },
-  {
-    "lat": 52.400926,
-    "lng": 4.941733,
-    "title": "De vermissing van Alwin Sterk 1972",
-    "link": "https://www.coldcasezaken.nl/alwin-sterk"
-  },
-  {
-    "lat": 50.963459,
-    "lng": 5.842801,
-    "title": "De vermissing van Marjo Winkens 1975 (exacte vermissingslocatie onbekend)",
-    "link": "https://www.coldcasezaken.nl/marjo-winkens"
-  },
-  {
-    "lat": 52.36453,
-    "lng": 4.959137,
-    "title": "De moord op Angela Mangot 1970",
-    "link": "https://www.coldcasezaken.nl/angela-mangot"
-  },
-  {
-    "lat": 52.054126,
-    "lng": 5.405424,
-    "title": "Het onbekende Heulmeisje 1976",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje"
-  },
-  {
-    "lat": 52.374718,
-    "lng": 4.882874,
-    "title": "De moord op Gerhardus Goldschmeding 1976",
-    "link": "https://www.coldcasezaken.nl/gerhardus-goldschmeding"
-  },
-  {
-    "lat": 51.657248,
-    "lng": 5.820145,
-    "title": "De moord op Riky Bartels 1977",
-    "link": "https://www.coldcasezaken.nl/riky-bartels"
-  },
-  {
-    "lat": 52.376807,
-    "lng": 4.872332,
-    "title": "De vermissing van Willemijntje van der Meer 1978",
-    "link": "https://www.coldcasezaken.nl/willemijntje-van-der-meer"
-  },
-  {
-    "lat": 52.160489,
-    "lng": 4.495714,
-    "title": "De moord op Levie 'Louis' van Amerongen 1978",
-    "link": "https://www.coldcasezaken.nl/levie-van-amerongen"
-  },
-  {
-    "lat": 52.221188,
-    "lng": 5.991024,
-    "title": "De moord op Wendy Hart 1981",
-    "link": "https://www.coldcasezaken.nl/wendy-hart"
-  },
-  {
-    "lat": 51.921858,
-    "lng": 4.505902,
-    "title": "De moord op Petra van den Berg 1982",
-    "link": "https://www.coldcasezaken.nl/petra-van-den-berg"
-  },
-  {
-    "lat": 52.371674,
-    "lng": 4.897259,
-    "title": "Het onbekende 'Kelderlijk' 1982",
-    "link": "https://www.coldcasezaken.nl/het-kelderlijk"
-  },
-  {
-    "lat": 50.968009,
-    "lng": 5.821182,
-    "title": "De vermissing van Riet de Vries 1982",
-    "link": "https://www.coldcasezaken.nl/riet-de-vries"
-  },
-  {
-    "lat": 52.488178,
-    "lng": 5.026449,
-    "title": "De moord op Peter Oort 1982",
-    "link": "https://www.coldcasezaken.nl/petertje-oort"
-  },
-  {
-    "lat": 52.388154,
-    "lng": 4.888985,
-    "title": "De moord op Fred Halsema 1983",
-    "link": "https://www.coldcasezaken.nl/fred-halsema"
-  },
-  {
-    "lat": 52.454331,
-    "lng": 6.059085,
-    "title": "De vermissing van Eefke Wolf 1983",
-    "link": "https://www.coldcasezaken.nl/eefke-wolf"
-  },
-  {
-    "lat": 51.907803,
-    "lng": 4.466083,
-    "title": "De moord op Coby Toet 1984",
-    "link": "https://www.coldcasezaken.nl/coby-toet"
-  },
-  {
-    "lat": 52.31027,
-    "lng": 5.489108,
-    "title": "De moord op Gerda Merchel 1984",
-    "link": "https://www.coldcasezaken.nl/gerda-merchel"
-  },
-  {
-    "lat": 51.783292,
-    "lng": 4.911504,
-    "title": "De vermissing van Germa van den Boom 1984",
-    "link": "https://www.coldcasezaken.nl/germa-van-den-boom"
-  },
-  {
-    "lat": 51.891041,
-    "lng": 4.462702,
-    "title": "De moord op Ahmed Korkmaz 1984",
-    "link": "https://www.coldcasezaken.nl/ahmed-korkmaz"
-  },
-  {
-    "lat": 52.379169,
-    "lng": 4.893049,
-    "title": "De moord op Willem Klein 1986",
-    "link": "https://www.coldcasezaken.nl/willem-klein"
-  },
-  {
-    "lat": 53.243306,
-    "lng": 6.654623,
-    "title": "De moord op Wijtske Bauer-Hiemstra 1986",
-    "link": "https://www.coldcasezaken.nl/wijtske-bauer-hiemstra"
-  },
-  {
-    "lat": 53.024928,
-    "lng": 4.74631,
-    "title": "De vermissing van Piet Beentjes 1987",
-    "link": "https://www.coldcasezaken.nl/piet-beentjes"
-  },
-  {
-    "lat": 51.337499,
-    "lng": 3.825393,
-    "title": "De moord op Helena Mendonca, Guarda Lupe Espinal en Rosanna Hidalgo Manzuela 1987",
-    "link": "https://www.coldcasezaken.nl/helena-mendonca"
-  },
-  {
-    "lat": 51.576193,
-    "lng": 4.712502,
-    "title": "De moord op Sjef Delahaije 1987",
-    "link": "https://www.coldcasezaken.nl/sjef-delahaije"
-  },
-  {
-    "lat": 52.012829,
-    "lng": 4.815627,
-    "title": "De vermissing van Alie Spruit Roelofsen 1988",
-    "link": "https://www.coldcasezaken.nl/alie-spruit-roelofsen"
-  },
-  {
-    "lat": 52.070652,
-    "lng": 4.267779,
-    "title": "De moord op Johannes Schrijvers 1988",
-    "link": "https://www.coldcasezaken.nl/johannes-schrijvers"
-  },
-  {
-    "lat": 52.095079,
-    "lng": 4.333025,
-    "title": "De moord op Alida Christiana Koopmans 1988",
-    "link": "https://www.coldcasezaken.nl/alida-christiana-koopmans"
-  },
-  {
-    "lat": 51.930482,
-    "lng": 4.502341,
-    "title": "De moord op Chris Boelsen 1989",
-    "link": "https://www.coldcasezaken.nl/chris-boelsen"
-  },
-  {
-    "lat": 50.910171,
-    "lng": 6.075965,
-    "title": "De moord op Yvonne Plasmans 1989",
-    "link": "https://www.coldcasezaken.nl/yvonne-plasmans"
-  },
-  {
-    "lat": 52.005255,
-    "lng": 4.372905,
-    "title": "De moord op Wilma Bres 1989",
-    "link": "https://www.coldcasezaken.nl/wilma-bres"
-  },
-  {
-    "lat": 52.342912,
-    "lng": 4.969061,
-    "title": "De moord op studente Ellen 1989",
-    "link": "https://www.coldcasezaken.nl/studente-ellen"
-  },
-  {
-    "lat": 51.365218,
-    "lng": 5.428329,
-    "title": "De moord op Marie-Louise (Wies) Hensen 1989",
-    "link": "https://www.coldcasezaken.nl/marie-louise-wies-hensen"
-  },
-  {
-    "lat": 52.334658,
-    "lng": 5.025206,
-    "title": "De vermissing van Mieke 'Harmina' Gulien 1989",
-    "link": "https://www.coldcasezaken.nl/mieke-gulien"
-  },
-  {
-    "lat": 52.144553,
-    "lng": 6.197426,
-    "title": "De vermissing van Duncan Zwakke 1989",
-    "link": "https://www.coldcasezaken.nl/duncan-zwakke"
-  },
-  {
-    "lat": 52.37211,
-    "lng": 4.889508,
-    "title": "De moord op Marie Christine Jonas 1989",
-    "link": "https://www.coldcasezaken.nl/marie-christine-jonas"
-  },
-  {
-    "lat": 53.33995,
-    "lng": 5.825846,
-    "title": "De moord op Simone de Laat 1989",
-    "link": "https://www.coldcasezaken.nl/simone-de-laat"
-  },
-  {
-    "lat": 52.087409,
-    "lng": 5.134385,
-    "title": "De moord op Robert Obermeijer 1989",
-    "link": "https://www.coldcasezaken.nl/robert-obermeijer"
-  },
-  {
-    "lat": 51.245891,
-    "lng": 5.669127,
-    "title": "De moord op Anouschka Weezenbeek 1990",
-    "link": "https://www.coldcasezaken.nl/anouschka-weezenbeek"
-  },
-  {
-    "lat": 51.91363,
-    "lng": 4.450196,
-    "title": "De moord op Hans van der Mee 1990",
-    "link": "https://www.coldcasezaken.nl/hans-van-der-mee"
-  },
-  {
-    "lat": 52.26049,
-    "lng": 4.707197,
-    "title": "De moord op Yvonne Honders 1990",
-    "link": "https://www.coldcasezaken.nl/yvonne-honders"
-  },
-  {
-    "lat": 52.096698,
-    "lng": 4.344192,
-    "title": "De moord op Jan de Niet 1990",
-    "link": "https://www.coldcasezaken.nl/jan-de-niet"
-  },
-  {
-    "lat": 51.92172,
-    "lng": 4.459374,
-    "title": "De moord op Natascha Meijer 1990",
-    "link": "https://www.coldcasezaken.nl/natascha-meijer"
-  },
-  {
-    "lat": 52.077907,
-    "lng": 4.318385,
-    "title": "De moord op Petronella Huijbens 1990",
-    "link": "https://www.coldcasezaken.nl/petronella-huijbens"
-  },
-  {
-    "lat": 52.09337,
-    "lng": 4.3059,
-    "title": "De moord op Edward Moonen 1990",
-    "link": "https://www.coldcasezaken.nl/edward-moonen"
-  },
-  {
-    "lat": 51.931933,
-    "lng": 4.497412,
-    "title": "De moord op Maarten Nelisse 1991",
-    "link": "https://www.coldcasezaken.nl/maarten-nelisse"
-  },
-  {
-    "lat": 51.324254,
-    "lng": 3.850452,
-    "title": "De moord op Saadet Secmen 1991",
-    "link": "https://www.coldcasezaken.nl/saadet-secmen"
-  },
-  {
-    "lat": 51.82956,
-    "lng": 4.702107,
-    "title": "De moord op Vera van der Lee 1991",
-    "link": "https://www.coldcasezaken.nl/vera-van-der-lee-van-soldt"
-  },
-  {
-    "lat": 52.061723,
-    "lng": 4.330217,
-    "title": "De moord op Cornelia Bergen-Groenewold 1991",
-    "link": "https://www.coldcasezaken.nl/cornelia-van-den-bergen-groenewold"
-  },
-  {
-    "lat": 51.424745,
-    "lng": 5.302941,
-    "title": "De moord op Gerrie Schellekens 1991",
-    "link": "http://coldcasezaken.nl/gerrie-schellekens"
-  },
-  {
-    "lat": 53.199195,
-    "lng": 5.434905,
-    "title": "De dood van Bettus Louis Lemstra 1991",
-    "link": "https://www.coldcasezaken.nl/louis-lemstra"
-  },
-  {
-    "lat": 52.368474,
-    "lng": 4.627561,
-    "title": "De moord op Theo Kroon 1991",
-    "link": "https://www.coldcasezaken.nl/theo-kroon"
-  },
-  {
-    "lat": 52.282842,
-    "lng": 5.18836,
-    "title": "Onbekende dode man 1991",
-    "link": "https://www.coldcasezaken.nl/onbekende-dode-man-naarden"
-  },
-  {
-    "lat": 52.359777,
-    "lng": 4.925548,
-    "title": "De moord op A. van Veen 1991",
-    "link": "https://www.coldcasezaken.nl/a-van-veen"
-  },
-  {
-    "lat": 52.700007,
-    "lng": 6.30817,
-    "title": "De vermissing van Willeke Dost 1992",
-    "link": "https://www.coldcasezaken.nl/willeke-dost"
-  },
-  {
-    "lat": 52.0679,
-    "lng": 4.291675,
-    "title": "De moord op Louis 'Loek' van Dam 1992",
-    "link": "https://www.coldcasezaken.nl/louis-van-dam"
-  },
-  {
-    "lat": 51.42747,
-    "lng": 5.464378,
-    "title": "De moord op Wim Timmermans 1992",
-    "link": "https://www.coldcasezaken.nl/wim-timmermans"
-  },
-  {
-    "lat": 51.3705,
-    "lng": 5.234028,
-    "title": "De moord op Miet van Bommel 1992",
-    "link": "https://www.coldcasezaken.nl/miet-van-bommel"
-  },
-  {
-    "lat": 52.364706,
-    "lng": 4.860305,
-    "title": "Onbekende vermoorde man 1992",
-    "link": "https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam"
-  },
-  {
-    "lat": 52.391973,
-    "lng": 4.629955,
-    "title": "De vermissing van Lisette Vroege",
-    "link": "https://www.coldcasezaken.nl/lisette-vroege"
-  },
-  {
-    "lat": 50.923591,
-    "lng": 5.979022,
-    "title": "De moord op Marina Denzler 1992",
-    "link": "https://www.coldcasezaken.nl/marina-denzler"
-  },
-  {
-    "lat": 52.06573,
-    "lng": 4.321655,
-    "title": "De moord op Francina Hoogland 1992",
-    "link": "https://www.coldcasezaken.nl/francina-hoogland"
-  },
-  {
-    "lat": 53.095506,
-    "lng": 6.170115,
-    "title": "De moord op Folkert Veenstra 1992",
-    "link": "https://www.coldcasezaken.nl/folkert-veenstra"
-  },
-  {
-    "lat": 52.374361,
-    "lng": 4.804741,
-    "title": "De moord op Emmy Hogema Diepenbrock 1992",
-    "link": "https://www.coldcasezaken.nl/emerentia-hogema-diepenbrock"
-  },
-  {
-    "lat": 51.641825,
-    "lng": 4.858479,
-    "title": "De vermissing van Theo van den Oetelaar 1992",
-    "link": "https://www.coldcasezaken.nl/theo-van-den-oetelaar"
-  },
-  {
-    "lat": 50.819649,
-    "lng": 4.400959,
-    "title": "De moord op Christiane Heiser 1992",
-    "link": "https://www.coldcasezaken.nl/christiane-heiser"
-  },
-  {
-    "lat": 51.677567,
-    "lng": 5.804639,
-    "title": "De moord op Mariëtte Peters 1992",
-    "link": "https://www.coldcasezaken.nl/mariette-peters"
-  },
-  {
-    "lat": 53.209842,
-    "lng": 5.784082,
-    "title": "De moord op Roelof Steinvoorte 1992",
-    "link": "https://www.coldcasezaken.nl/roelof-steinvoorte"
-  },
-  {
-    "lat": 51.488438,
-    "lng": 3.513735,
-    "title": "De moord op Marinus Terwoert ",
-    "link": "https://www.coldcasezaken.nl/marinus-terwoert"
-  },
-  {
-    "lat": 51.95724,
-    "lng": 6.214027,
-    "title": "Suicide onbekende man",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-treinspoor-didam"
-  },
-  {
-    "lat": 52.195579,
-    "lng": 4.47234,
-    "title": "De moord op Lieneke Troost 1993",
-    "link": "https://www.coldcasezaken.nl/lieneke-troost"
-  },
-  {
-    "lat": 51.961844,
-    "lng": 4.03192,
-    "title": "De vermissing van Imelda Becerro 1993",
-    "link": "https://www.coldcasezaken.nl/imelda-becerro"
-  },
-  {
-    "lat": 51.590467,
-    "lng": 5.088211,
-    "title": "De moord op Jenneke de Wind 1993",
-    "link": "https://www.coldcasezaken.nl/jenneke-de-wind"
-  },
-  {
-    "lat": 51.19098,
-    "lng": 4.428324,
-    "title": "De moord op Tania van Kerkhoven",
-    "link": "https://www.coldcasezaken.nl/tania-van-kerkhoven"
-  },
-  {
-    "lat": 52.385005,
-    "lng": 4.643171,
-    "title": "De moord op Dirk Schaap 1993",
-    "link": "https://www.coldcasezaken.nl/dirk-schaap"
-  },
-  {
-    "lat": 52.070422,
-    "lng": 4.29775,
-    "title": "De moord op Fatiha Hasnaoui 1993",
-    "link": "https://www.coldcasezaken.nl/fatiha-hasnaoui"
-  },
-  {
-    "lat": 52.50858,
-    "lng": 5.765456,
-    "title": "De moord op Judit Nyari 1993",
-    "link": "https://www.coldcasezaken.nl/judit-nyari"
-  },
-  {
-    "lat": 51.682419,
-    "lng": 5.290512,
-    "title": "Onbekend babylijkje 1994",
-    "link": "https://www.coldcasezaken.nl/babylijkje-den-bosch"
-  },
-  {
-    "lat": 50.876253,
-    "lng": 4.35692,
-    "title": "De moord op Herman Meert 1994",
-    "link": "https://www.coldcasezaken.nl/herman-meert"
-  },
-  {
-    "lat": 52.298028,
-    "lng": 4.858616,
-    "title": "De moord op Lydia Baneke Knap 1994",
-    "link": "https://www.coldcasezaken.nl/lydia-baneke-knap"
-  },
-  {
-    "lat": 52.097774,
-    "lng": 4.335318,
-    "title": "De moord op Pieter Hornstra 1994",
-    "link": "https://www.coldcasezaken.nl/pieter-hornstra"
-  },
-  {
-    "lat": 52.375656,
-    "lng": 4.628003,
-    "title": "De moord op Daniël Manion 1994",
-    "link": "https://www.coldcasezaken.nl/daniel-manion"
-  },
-  {
-    "lat": 51.922797,
-    "lng": 4.436401,
-    "title": "De moord op Mario das Dores 1994",
-    "link": "https://www.coldcasezaken.nl/mario-das-dores"
-  },
-  {
-    "lat": 51.496818,
-    "lng": 5.669788,
-    "title": "De moord op Jessica 'Yecca' de Roij",
-    "link": "https://www.coldcasezaken.nl/jessica-de-roij"
-  },
-  {
-    "lat": 51.963775,
-    "lng": 6.308425,
-    "title": "De moord op Cafer Güngör 1994",
-    "link": "https://www.coldcasezaken.nl/cafer-gungor"
-  },
-  {
-    "lat": 51.491227,
-    "lng": 8.06226,
-    "title": "De dood van Maria van der Zanden 1994",
-    "link": "https://www.coldcasezaken.nl/maria-van-der-zanden"
-  },
-  {
-    "lat": 51.906011,
-    "lng": 4.320167,
-    "title": "De moord op Johanna de Vos 1994",
-    "link": "https://www.coldcasezaken.nl/johanna-de-vos"
-  },
-  {
-    "lat": 52.069469,
-    "lng": 4.2841,
-    "title": "De moord op Mohamed Baksoellah",
-    "link": "https://www.coldcasezaken.nl/mohamed-baksoellah"
-  },
-  {
-    "lat": 51.907454,
-    "lng": 4.505935,
-    "title": "De moord op Frank Christiaan Petrus Meijeren 1995",
-    "link": "https://www.coldcasezaken.nl/frank-christiaan-petrus-meijeren"
-  },
-  {
-    "lat": 52.362795,
-    "lng": 5.210834,
-    "title": "De moord op Glenn Crawfurd 1995",
-    "link": "https://www.coldcasezaken.nl/glenn-crawfurd"
-  },
-  {
-    "lat": 52.046795,
-    "lng": 5.120411,
-    "title": "De moord op Sjaak Gerwig 1995",
-    "link": "https://www.coldcasezaken.nl/sjaak-gerwig"
-  },
-  {
-    "lat": 52.104595,
-    "lng": 4.271737,
-    "title": "De moord op Kumral Bagci 1995",
-    "link": "https://www.coldcasezaken.nl/kumral-bagci"
-  },
-  {
-    "lat": 53.239395,
-    "lng": 6.569789,
-    "title": "De moord op Anna Heemenga 1995",
-    "link": "https://www.coldcasezaken.nl/anna-heemenga"
-  },
-  {
-    "lat": 52.035768,
-    "lng": 4.170375,
-    "title": "De vermissing van Jaïr Soares 1995",
-    "link": "https://www.coldcasezaken.nl/jair-soares"
-  },
-  {
-    "lat": 52.354422,
-    "lng": 4.759508,
-    "title": "De moord op Hayrettin Sahin 1995",
-    "link": "https://www.coldcasezaken.nl/hayrettin-sahin"
-  },
-  {
-    "lat": 51.502863,
-    "lng": 5.67054,
-    "title": "De moord op Manon Seijkens 1995",
-    "link": "https://www.coldcasezaken.nl/manon-seijkens"
-  },
-  {
-    "lat": 50.933692,
-    "lng": 5.944588,
-    "title": "De moord op Sjef Klee 1995",
-    "link": "https://www.coldcasezaken.nl/jozef-sjef-klee"
-  },
-  {
-    "lat": 52.068758,
-    "lng": 4.312142,
-    "title": "De moord op Martin de Bruijn 1995",
-    "link": "https://www.coldcasezaken.nl/martin-de-bruijn"
-  },
-  {
-    "lat": 52.252085,
-    "lng": 6.161692,
-    "title": "De moord op Hugo Bootsma 1995",
-    "link": "https://www.coldcasezaken.nl/hugo-bootsma"
-  },
-  {
-    "lat": 52.509886,
-    "lng": 6.096092,
-    "title": "De moord op Harry Zunnebelt 1995",
-    "link": "https://www.coldcasezaken.nl/harry-zunnebeld"
-  },
-  {
-    "lat": 51.359262,
-    "lng": 5.938117,
-    "title": "De moord op Mien Berden",
-    "link": "https://www.coldcasezaken.nl/mien-berden"
-  },
-  {
-    "lat": 52.081204,
-    "lng": 4.27166,
-    "title": "De moord op Peternella Hanegraaff 1996",
-    "link": "https://www.coldcasezaken.nl/peternella-hanegraaff"
-  },
-  {
-    "lat": 51.903369,
-    "lng": 4.504061,
-    "title": "De moord op Kim Veronica Camarines",
-    "link": "https://www.coldcasezaken.nl/veronica-camarines"
-  },
-  {
-    "lat": 51.064087,
-    "lng": 4.43063,
-    "title": "De vermissing van Liam Vanden Branden 1996 ",
-    "link": "https://www.coldcasezaken.nl/liam-vanden-branden"
-  },
-  {
-    "lat": 50.995314,
-    "lng": 5.888636,
-    "title": "De vermissing van Rosa van der Palen 1996",
-    "link": "https://www.coldcasezaken.nl/rosa-van-der-palen"
-  },
-  {
-    "lat": 52.355845,
-    "lng": 4.84935,
-    "title": "De vermissing van Marina Schulein 1996",
-    "link": "https://www.coldcasezaken.nl/marina-schulein"
-  },
-  {
-    "lat": 51.618348,
-    "lng": 4.01045,
-    "title": "De moord op Sabrina Pelizzon 1996",
-    "link": "https://www.coldcasezaken.nl/sabrina-pelizzon"
-  },
-  {
-    "lat": 53.23963,
-    "lng": 6.049462,
-    "title": "De moord op Reinder Lulofs 1996",
-    "link": "https://www.coldcasezaken.nl/reinder-lulofs"
-  },
-  {
-    "lat": 52.284658,
-    "lng": 4.505566,
-    "title": "De moord op Renate Schauerhammer 1996",
-    "link": "https://www.coldcasezaken.nl/renate-schauerhammer"
-  },
-  {
-    "lat": 50.887116,
-    "lng": 5.953352,
-    "title": "De moord op Simone Riedel 1997",
-    "link": "https://www.coldcasezaken.nl/simone-riedel"
-  },
-  {
-    "lat": 51.624786,
-    "lng": 4.587239,
-    "title": "De moord op Orhan Kirac 1997",
-    "link": "https://www.coldcasezaken.nl/orhan-kirac"
-  },
-  {
-    "lat": 51.792886,
-    "lng": 4.651223,
-    "title": "De moord op Ancharee Sripho 1997",
-    "link": "https://www.coldcasezaken.nl/ancharee-sripho"
-  },
-  {
-    "lat": 52.365864,
-    "lng": 4.931904,
-    "title": "Onbekend baby lijkje 1997",
-    "link": "https://www.coldcasezaken.nl/dode-baby-celebesstraat-amsterdam"
-  },
-  {
-    "lat": 52.359034,
-    "lng": 4.872472,
-    "title": "De moord op Piet Bosters 1997",
-    "link": "https://www.coldcasezaken.nl/piet-bosters"
-  },
-  {
-    "lat": 51.87149,
-    "lng": 4.528697,
-    "title": "De moord op Mirjam Möller 1997",
-    "link": "https://www.coldcasezaken.nl/mirjam-moeller"
-  },
-  {
-    "lat": 51.587629,
-    "lng": 4.776726,
-    "title": "De moord op Marcel Carton 1997",
-    "link": "https://www.coldcasezaken.nl/marcel-carton"
-  },
-  {
-    "lat": 51.505929,
-    "lng": 5.416371,
-    "title": "De moord op een onbekende man 1997",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-in-best"
-  },
-  {
-    "lat": 50.859898,
-    "lng": 5.664273,
-    "title": "De moord op Maria Simons 1997",
-    "link": "https://www.coldcasezaken.nl/maria-simons"
-  },
-  {
-    "lat": 52.312592,
-    "lng": 5.446256,
-    "title": "De moord op Jacqueline Antes 1997",
-    "link": "https://www.coldcasezaken.nl/jacqueline-antes"
-  },
-  {
-    "lat": 51.555496,
-    "lng": 5.090427,
-    "title": "De moord op Justus Hertig 1997",
-    "link": "https://www.coldcasezaken.nl/justus-hertig"
-  },
-  {
-    "lat": 51.923331,
-    "lng": 4.426347,
-    "title": "De vermissing van Michel Rubarth 1997",
-    "link": "https://www.coldcasezaken.nl/michel-rubarth"
-  },
-  {
-    "lat": 52.515382,
-    "lng": 5.005054,
-    "title": "De moord op Salvatore Nicolosi 1998",
-    "link": "https://www.coldcasezaken.nl/salvatore-nicolosi"
-  },
-  {
-    "lat": 53.229263,
-    "lng": 6.560007,
-    "title": "De vermissing van Jolanda Meijer 1998",
-    "link": "https://www.coldcasezaken.nl/jolanda-meijer"
-  },
-  {
-    "lat": 52.398772,
-    "lng": 4.947474,
-    "title": "De moord op een onbekende man 1998",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-met-draaktattoo"
-  },
-  {
-    "lat": 51.452711,
-    "lng": 4.915422,
-    "title": "Onbekend babylijkje 1998",
-    "link": "https://www.coldcasezaken.nl/babylijkje-baarle-nassau"
-  },
-  {
-    "lat": 52.320265,
-    "lng": 4.732472,
-    "title": "De moord op Kanadid Gaste 1998",
-    "link": "https://www.coldcasezaken.nl/kanadid-ahmed-gaste"
-  },
-  {
-    "lat": 53.219891,
-    "lng": 6.552274,
-    "title": "De moord op Cornelis Booisma 1998",
-    "link": "https://www.coldcasezaken.nl/cor-booisma"
-  },
-  {
-    "lat": 51.875397,
-    "lng": 5.313799,
-    "title": "De moord op Daan van Kranenburg 1998",
-    "link": "https://www.coldcasezaken.nl/daan-van-kranenburg"
-  },
-  {
-    "lat": 52.253698,
-    "lng": 6.151723,
-    "title": "De moord op Muharem Cazim Hebib 1999",
-    "link": "https://www.coldcasezaken.nl/muharem-cazim-hebib"
-  },
-  {
-    "lat": 52.532661,
-    "lng": 5.515928,
-    "title": "De moord op Alex van Cittert 1999",
-    "link": "https://www.coldcasezaken.nl/alex-van-cittert"
-  },
-  {
-    "lat": 51.994013,
-    "lng": 5.892761,
-    "title": "De moord op Hans Blüml 1999",
-    "link": "https://www.coldcasezaken.nl/hans-bluml"
-  },
-  {
-    "lat": 52.254744,
-    "lng": 5.46598,
-    "title": "De moord op een onbekende man 1999",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-arkervaart"
-  },
-  {
-    "lat": 51.909033,
-    "lng": 4.436739,
-    "title": "De moord op Jeanette Sip 1999",
-    "link": "https://www.coldcasezaken.nl/jeanette-sip"
-  },
-  {
-    "lat": 51.928151,
-    "lng": 6.078521,
-    "title": "De moord op Linda Mens 1999",
-    "link": "https://www.coldcasezaken.nl/linda-mens"
-  },
-  {
-    "lat": 51.445297,
-    "lng": 5.438142,
-    "title": "De moord op Ine Wijnen 1999",
-    "link": "https://www.coldcasezaken.nl/ine-wijnen"
-  },
-  {
-    "lat": 52.331816,
-    "lng": 5.015276,
-    "title": "De kliko-bak-moord 1999",
-    "link": "https://www.coldcasezaken.nl/klikobak-moord"
-  },
-  {
-    "lat": 51.927157,
-    "lng": 4.247239,
-    "title": "De moord op Riet Poot",
-    "link": "https://www.coldcasezaken.nl/riet-poot"
-  },
-  {
-    "lat": 51.08014,
-    "lng": 5.955305,
-    "title": "De moord op Nadia Mehallaoui 2000",
-    "link": "https://www.coldcasezaken.nl/nadia-mehallaoui"
-  },
-  {
-    "lat": 51.919225,
-    "lng": 6.349154,
-    "title": "De moord op Tonny ter Horst 2000",
-    "link": "https://www.coldcasezaken.nl/tonny-ter-horst"
-  },
-  {
-    "lat": 51.919555,
-    "lng": 4.402153,
-    "title": "De moord op Amarantha Verhoeff 2000",
-    "link": "https://www.coldcasezaken.nl/amarantha-verhoeff"
-  },
-  {
-    "lat": 51.806361,
-    "lng": 4.562029,
-    "title": "De moord op Jan Groeneveld 2000",
-    "link": "https://www.coldcasezaken.nl/jan-patat-groeneveld"
-  },
-  {
-    "lat": 52.377756,
-    "lng": 4.895854,
-    "title": "De moord op Hans Alfred Meijer 2000",
-    "link": "https://www.coldcasezaken.nl/hans-alfred-meijer"
-  },
-  {
-    "lat": 52.37888,
-    "lng": 4.882082,
-    "title": "De moord op een onbekende baby 2000",
-    "link": "https://www.coldcasezaken.nl/babylijkje-karthuizerstraat"
-  },
-  {
-    "lat": 52.63643,
-    "lng": 4.743,
-    "title": "De moord op Fabian Brands 2001",
-    "link": "https://www.coldcasezaken.nl/fabian-brands"
-  },
-  {
-    "lat": 52.195635,
-    "lng": 5.834867,
-    "title": "De moord op Dyora Bosgra 2001",
-    "link": "https://www.coldcasezaken.nl/dyora-bosgra"
-  },
-  {
-    "lat": 51.213612,
-    "lng": 2.897358,
-    "title": "De vermissing van Ringo Deman 2001",
-    "link": "https://www.coldcasezaken.nl/ringo-deman"
-  },
-  {
-    "lat": 51.882969,
-    "lng": 4.484085,
-    "title": "De moord op Mariska Klompenhouwer 2001",
-    "link": "https://www.coldcasezaken.nl/maartje-mariska-klompenhouwer"
-  },
-  {
-    "lat": 51.938272,
-    "lng": 4.538273,
-    "title": "De vermissing van Geertje Vliegenthart 2001",
-    "link": "Edmond van Hellenraadstraat Geertje Vliegenthart"
-  },
-  {
-    "lat": 50.957989,
-    "lng": 5.693238,
-    "title": "De vermissing van Tino Pokrivac 2001",
-    "link": "https://www.coldcasezaken.nl/tino-pokrivac"
-  },
-  {
-    "lat": 52.067092,
-    "lng": 4.304252,
-    "title": "De vermissing van Meryem Ulusoy 2001",
-    "link": "https://www.coldcasezaken.nl/meryem-ulusoy"
-  },
-  {
-    "lat": 51.658913,
-    "lng": 5.375541,
-    "title": "De moord op Ingrid hakkert 2001",
-    "link": "https://www.coldcasezaken.nl/ingrid-hakkert"
-  },
-  {
-    "lat": 50.937679,
-    "lng": 5.994783,
-    "title": "De moord op Ilona Quaedflieg 2001",
-    "link": "https://www.coldcasezaken.nl/ilona-quaedflieg"
-  },
-  {
-    "lat": 52.226391,
-    "lng": 5.177212,
-    "title": "De vermissing van Wendy Whitehead 2001",
-    "link": "https://www.coldcasezaken.nl/wendy-whitehead"
-  },
-  {
-    "lat": 52.21185,
-    "lng": 5.158689,
-    "title": "De moord op Martien van der Meijs 2002",
-    "link": "https://www.coldcasezaken.nl/martien-van-der-meijs"
-  },
-  {
-    "lat": 51.967341,
-    "lng": 5.918742,
-    "title": "De moord op Şeyhmus Elmas 2002",
-    "link": "https://www.coldcasezaken.nl/seyhmus-elmas"
-  },
-  {
-    "lat": 51.915333,
-    "lng": 4.60124,
-    "title": "De moord op Cornelis Speksnijder 2002",
-    "link": "https://www.coldcasezaken.nl/cornelis-speksnijder"
-  },
-  {
-    "lat": 53.239012,
-    "lng": 6.568898,
-    "title": "De overblijfselen van onbekende dode man 2002",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-boterdiep"
-  },
-  {
-    "lat": 4.467678,
-    "lng": 101.384529,
-    "title": "De vermissing van Carel Jan van Wezel 2003",
-    "link": "https://www.coldcasezaken.nl/carel-jan-van-wezel"
-  },
-  {
-    "lat": 52.460168,
-    "lng": 4.608775,
-    "title": "De moord op Annie Visman Venema 2003",
-    "link": "https://www.coldcasezaken.nl/annie-visman-venema"
-  },
-  {
-    "lat": 51.835884,
-    "lng": 5.051405,
-    "title": "De moord op Jeanette Derksen 2003",
-    "link": "https://www.coldcasezaken.nl/jeanette-derksen"
-  },
-  {
-    "lat": 52.338073,
-    "lng": 4.891832,
-    "title": "De vermissing van Deborah Rosiek 2003",
-    "link": "https://www.coldcasezaken.nl/deborah-rosiek"
-  },
-  {
-    "lat": 52.385175,
-    "lng": 4.822849,
-    "title": "De moord op Judy Pineda 2003",
-    "link": "https://www.coldcasezaken.nl/judy-pineda"
-  },
-  {
-    "lat": 52.631581,
-    "lng": 4.750163,
-    "title": "De moord op Mark Kerssens 2003",
-    "link": "https://www.coldcasezaken.nl/mark-kerssens"
-  },
-  {
-    "lat": 50.889642,
-    "lng": 5.950223,
-    "title": "De moord op Samira van de Wal 2003",
-    "link": "https://www.coldcasezaken.nl/samira-van-de-wal"
-  },
-  {
-    "lat": 51.171205,
-    "lng": 6.008842,
-    "title": "De moord op Piet Mergelsberg 2003",
-    "link": "https://www.coldcasezaken.nl/piet-mergelsberg"
-  },
-  {
-    "lat": 51.39424,
-    "lng": 6.136406,
-    "title": "De moord op Bernie Bersch 2003",
-    "link": "https://www.coldcasezaken.nl/bernie-bersch"
-  },
-  {
-    "lat": 51.913934,
-    "lng": 4.401911,
-    "title": "De moord op Alaaddin Olcer 2003",
-    "link": "https://www.coldcasezaken.nl/alaaddin-olcer"
-  },
-  {
-    "lat": 51.891639,
-    "lng": 4.480495,
-    "title": "De moord op Muhammed Erdogan 2003",
-    "link": "https://www.coldcasezaken.nl/muhammed-erdogan"
-  },
-  {
-    "lat": 53.036707,
-    "lng": 6.306852,
-    "title": "De moord op Fokko Werkman 2003",
-    "link": "https://www.coldcasezaken.nl/fokko-werkman"
-  },
-  {
-    "lat": 53.212007,
-    "lng": 6.537541,
-    "title": "De moord op Ben Stubbe 2003",
-    "link": "https://www.coldcasezaken.nl/ben-stubbe"
-  },
-  {
-    "lat": 52.397335,
-    "lng": 4.933729,
-    "title": "De moord op Cornelia Brielsman 2004",
-    "link": "https://www.coldcasezaken.nl/cornelia-brielsman"
-  },
-  {
-    "lat": 52.326303,
-    "lng": 4.987328,
-    "title": "De moord op Rhea Ann Mattice 2004",
-    "link": "https://www.coldcasezaken.nl/rhea-ann-mattice"
-  },
-  {
-    "lat": 50.897623,
-    "lng": 6.015342,
-    "title": "De moord op Isabelle Pongs 2004",
-    "link": "https://www.coldcasezaken.nl/isabelle-pongs"
-  },
-  {
-    "lat": 50.856629,
-    "lng": 5.794079,
-    "title": "De moord op Sjef Leukel 2004",
-    "link": "https://www.coldcasezaken.nl/sjef-leukel"
-  },
-  {
-    "lat": 52.361834,
-    "lng": 4.733456,
-    "title": "De moord op Jan van der Pool 2004",
-    "link": "https://www.coldcasezaken.nl/jan-van-der-pool"
-  },
-  {
-    "lat": 52.372541,
-    "lng": 4.898378,
-    "title": "De moord op Nung Lung Withoon Richtert 2004",
-    "link": "https://www.coldcasezaken.nl/nung-lung-withoon-richtert"
-  },
-  {
-    "lat": 52.20279,
-    "lng": 4.857999,
-    "title": "De vermissing van Arhimou Selma Ameziane 2004",
-    "link": "https://www.coldcasezaken.nl/selma-ameziane"
-  },
-  {
-    "lat": 52.295603,
-    "lng": 4.854941,
-    "title": "De moord op Anton van Tienhoven 2004",
-    "link": "https://www.coldcasezaken.nl/anton-van-tienhoven"
-  },
-  {
-    "lat": 50.981008,
-    "lng": 5.813344,
-    "title": "De moord op Henri Nieboer 2005",
-    "link": "https://www.coldcasezaken.nl/henri-nieboer"
-  },
-  {
-    "lat": 51.93101,
-    "lng": 4.473291,
-    "title": "De moord op Cornelis Regter 2005",
-    "link": "https://www.coldcasezaken.nl/cornelis-regter"
-  },
-  {
-    "lat": 52.099823,
-    "lng": 5.11472,
-    "title": "De moord op Ger 'oma' Bindi 2005",
-    "link": "https://www.coldcasezaken.nl/ger-oma-bindi"
-  },
-  {
-    "lat": 52.367028,
-    "lng": 4.888193,
-    "title": "De moord op Damien Mooney 2005",
-    "link": "https://www.coldcasezaken.nl/damien-mooney"
-  },
-  {
-    "lat": 51.928202,
-    "lng": 4.140062,
-    "title": "De moord op Caroline van Toledo 2005",
-    "link": "https://www.coldcasezaken.nl/caroline-van-toledo"
-  },
-  {
-    "lat": 52.145614,
-    "lng": 5.96142,
-    "title": "De vermissing van Henk Wildeman 2005",
-    "link": "https://www.coldcasezaken.nl/hendrik-wildeman"
-  },
-  {
-    "lat": 50.477686,
-    "lng": 5.378302,
-    "title": "De moord op Tamara Morris 2006",
-    "link": "https://www.coldcasezaken.nl/tamara-morris"
-  },
-  {
-    "lat": 52.841922,
-    "lng": 6.757838,
-    "title": "De moord op Daniel Hilbrands 2006",
-    "link": "https://www.coldcasezaken.nl/daniel-hilbrands"
-  },
-  {
-    "lat": 51.22701,
-    "lng": 4.447451,
-    "title": "De moord op Ann Bourgoin 2006",
-    "link": "https://www.coldcasezaken.nl/ann-bourgoin"
-  },
-  {
-    "lat": 50.445063,
-    "lng": 3.950925,
-    "title": "De moord op Claude Mahieu 2006",
-    "link": "https://www.coldcasezaken.nl/claude-mahieu"
-  },
-  {
-    "lat": 52.113727,
-    "lng": 5.059717,
-    "title": "Een onbekend babylijkje 2006",
-    "link": "https://www.coldcasezaken.nl/renee-van-utrecht"
-  },
-  {
-    "lat": 51.707596,
-    "lng": 5.248204,
-    "title": "Een onbekend babylijkje 2006",
-    "link": "https://www.coldcasezaken.nl/engeltje-van-het-meer"
-  },
-  {
-    "lat": 52.031722,
-    "lng": 4.261194,
-    "title": "De moord op Maarten Redeker 2007",
-    "link": "https://www.coldcasezaken.nl/maarten-redeker"
-  },
-  {
-    "lat": 52.401016,
-    "lng": 5.198465,
-    "title": "De moord op Cassandra van Schaijk 2007",
-    "link": "https://www.coldcasezaken.nl/cassandra-van-schaijk"
-  },
-  {
-    "lat": 52.078219,
-    "lng": 4.313915,
-    "title": "De moord op Harry Wiersinga 2007",
-    "link": "https://www.coldcasezaken.nl/harry-wiersinga"
-  },
-  {
-    "lat": 53.220727,
-    "lng": 6.560612,
-    "title": "De moord op Roeland Oosten",
-    "link": "https://www.coldcasezaken.nl/roeland-oosten"
-  },
-  {
-    "lat": 52.228085,
-    "lng": 5.17858,
-    "title": "De moord op Kim Veerman 2007",
-    "link": "https://www.coldcasezaken.nl/kim-veerman"
-  },
-  {
-    "lat": 51.491449,
-    "lng": 5.652061,
-    "title": "De moord op Theo van Berlo 2007",
-    "link": "https://www.coldcasezaken.nl/theo-van-berlo"
-  },
-  {
-    "lat": 51.973651,
-    "lng": 4.170972,
-    "title": "Een onbekende dode man 2007",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-staelduinse-bos"
-  },
-  {
-    "lat": 51.505851,
-    "lng": 5.71102,
-    "title": "De vermissing van Rosa Maria Da Silvav 2008",
-    "link": "https://www.coldcasezaken.nl/rosa-maria-venda-da-silva"
-  },
-  {
-    "lat": 51.567104,
-    "lng": 4.785024,
-    "title": "De vermissing van James Patrick Grealis 2008",
-    "link": "https://www.coldcasezaken.nl/james-patrick-grealis"
-  },
-  {
-    "lat": 52.310113,
-    "lng": 6.921923,
-    "title": "De moord op Diana Winkel 2008",
-    "link": "https://www.coldcasezaken.nl/diana-winkel"
-  },
-  {
-    "lat": 52.374303,
-    "lng": 4.899829,
-    "title": "De moord op Bernadett Szabo 2008",
-    "link": "https://www.coldcasezaken.nl/bernadett-szabo"
-  },
-  {
-    "lat": 50.878846,
-    "lng": 5.73678,
-    "title": "De moord op Rein Weehuizen 2009",
-    "link": "https://www.coldcasezaken.nl/rein-weehuizen"
-  },
-  {
-    "lat": 52.103192,
-    "lng": 4.337242,
-    "title": "Onbekende babylijkje Robin van Clingendael 2009",
-    "link": "https://www.coldcasezaken.nl/robin-van-clingendael"
-  },
-  {
-    "lat": 50.348353,
-    "lng": 4.296553,
-    "title": "De moord op Anne Beckmann 2009",
-    "link": "https://www.coldcasezaken.nl/anne-beckmann"
-  },
-  {
-    "lat": 51.218997,
-    "lng": 4.426926,
-    "title": "De moord op Dan Dielis 2009",
-    "link": "https://www.coldcasezaken.nl/dan-dielis"
-  },
-  {
-    "lat": 53.208381,
-    "lng": 6.59579,
-    "title": "De vermissing van Marian Kusters 2009",
-    "link": "https://www.coldcasezaken.nl/marian-kusters"
-  },
-  {
-    "lat": 52.958144,
-    "lng": 4.746186,
-    "title": "De vermissing van Christiaan Weststeijn 2010",
-    "link": "https://www.coldcasezaken.nl/christiaan-weststeijn"
-  },
-  {
-    "lat": 51.927269,
-    "lng": 4.472548,
-    "title": "De moord op Sandra Martinez Burbano 2010",
-    "link": "https://www.coldcasezaken.nl/sandra-martinez-burbano"
-  },
-  {
-    "lat": 51.387226,
-    "lng": 3.584305,
-    "title": "De vermissing van Herman Ploegstra 2010",
-    "link": "https://www.coldcasezaken.nl/herman-ploegstra"
-  },
-  {
-    "lat": 50.925421,
-    "lng": 5.439779,
-    "title": "De mysterieuze dood van Stefan Brants 2010",
-    "link": "https://www.coldcasezaken.nl/stefan-brants"
-  },
-  {
-    "lat": 52.060997,
-    "lng": 4.473084,
-    "title": "De moord op Yvonne Beer 2010",
-    "link": "https://www.coldcasezaken.nl/yvonne-beer"
-  },
-  {
-    "lat": 51.974213,
-    "lng": 5.915272,
-    "title": "De moord op Ida Sjamsudin 2010",
-    "link": "https://www.coldcasezaken.nl/ida-sjamsudin"
-  },
-  {
-    "lat": 51.6518,
-    "lng": 5.02163,
-    "title": "De moord op Heidy Goedhart 2010",
-    "link": "https://www.coldcasezaken.nl/heidy-goedhart"
-  },
-  {
-    "lat": 52.018568,
-    "lng": 4.709984,
-    "title": "De moord op Arnold van Buuren 2010",
-    "link": "https://www.coldcasezaken.nl/arnold-van-buuren"
-  },
-  {
-    "lat": 53.089485,
-    "lng": 6.867498,
-    "title": "De moord op Derk Kiers 2011",
-    "link": "https://www.coldcasezaken.nl/derk-kiers"
-  },
-  {
-    "lat": 52.037213,
-    "lng": 5.668946,
-    "title": "De moord op Cees Lieftink 2011",
-    "link": "https://www.coldcasezaken.nl/cees-lieftink"
-  },
-  {
-    "lat": 52.357596,
-    "lng": 4.887067,
-    "title": "De vermissing van Stefanie Blijd 2011",
-    "link": "https://www.coldcasezaken.nl/stefanie-blijd"
-  },
-  {
-    "lat": 50.595622,
-    "lng": 5.870123,
-    "title": "De moord op Christelle Sandervorst 2011",
-    "link": "https://www.coldcasezaken.nl/christelle-sandervorst"
-  },
-  {
-    "lat": 52.218735,
-    "lng": 5.195304,
-    "title": "De moord op Pablo Hermeler 2011",
-    "link": "https://www.coldcasezaken.nl/pablo-hermeler"
-  },
-  {
-    "lat": 51.589879,
-    "lng": 4.793228,
-    "title": "De moord op Samba Fall 2011",
-    "link": "https://www.coldcasezaken.nl/samba-fall"
-  },
-  {
-    "lat": 51.824314,
-    "lng": 4.651927,
-    "title": "De moord op Edward Maat 2011",
-    "link": "https://www.coldcasezaken.nl/edward-maat"
-  },
-  {
-    "lat": 52.375601,
-    "lng": 4.794837,
-    "title": "De moord op Hennie Schellenberg 2011",
-    "link": "https://www.coldcasezaken.nl/hennie-schellenberg"
-  },
-  {
-    "lat": 52.440209,
-    "lng": 4.875544,
-    "title": "De moord op Herman Jansen 2011",
-    "link": "https://www.coldcasezaken.nl/herman-jansen"
-  },
-  {
-    "lat": 51.977324,
-    "lng": 5.744835,
-    "title": "De vermissing van Nelie van der Schouw 2011",
-    "link": "https://www.coldcasezaken.nl/nelie-van-der-schouw"
-  },
-  {
-    "lat": 52.73928,
-    "lng": 4.748938,
-    "title": "De moord op Koos Engel 2012",
-    "link": "https://www.coldcasezaken.nl/koos-engel"
-  },
-  {
-    "lat": 43.389336,
-    "lng": 19.649357,
-    "title": "De vermissing van Floris Dierdorp 2012",
-    "link": "https://www.coldcasezaken.nl/floris-dierdorp"
-  },
-  {
-    "lat": 51.584293,
-    "lng": 5.35536,
-    "title": "Onbekend babylijkje Sterre van de Laarakker 2012",
-    "link": "https://www.coldcasezaken.nl/sterre-van-de-laarakker"
-  },
-  {
-    "lat": 52.63683,
-    "lng": 5.023703,
-    "title": "De moord op George Ilahi 2012",
-    "link": "https://www.coldcasezaken.nl/george-ilahi"
-  },
-  {
-    "lat": 51.769902,
-    "lng": 5.547575,
-    "title": "De moord op Marja Nijholt 2013",
-    "link": "https://www.coldcasezaken.nl/marja-nijholt"
-  },
-  {
-    "lat": 7.896177,
-    "lng": 98.2954,
-    "title": "De moord op Stephan Bucynski 2013",
-    "link": "https://www.coldcasezaken.nl/stephan-buczynski"
-  },
-  {
-    "lat": 51.772973,
-    "lng": 5.563259,
-    "title": "De moord op Tamara Plehn 2013",
-    "link": "https://www.coldcasezaken.nl/tamara-plehn"
-  },
-  {
-    "lat": 53.212195,
-    "lng": 5.802935,
-    "title": "De moord op Onke de Boer 2013",
-    "link": "https://www.coldcasezaken.nl/onke-de-boer"
-  },
-  {
-    "lat": 50.63902,
-    "lng": 5.565612,
-    "title": "De moord op Antoine Thys 2013",
-    "link": "https://www.coldcasezaken.nl/antoine-thys"
-  },
-  {
-    "lat": 51.827752,
-    "lng": 4.573166,
-    "title": "De vermissing van Rebecca Groenendijk 2014",
-    "link": "https://www.coldcasezaken.nl/rebecca-groenendijk"
-  },
-  {
-    "lat": 51.246614,
-    "lng": 4.363882,
-    "title": "De mysterieuze dood van Germain Mboyo Bombole 2014",
-    "link": "https://www.coldcasezaken.nl/germain-steven-mboyo-bombole"
-  },
-  {
-    "lat": 51.962045,
-    "lng": 4.138241,
-    "title": "De moord op Tomasz Zawierucha 2014",
-    "link": "https://www.coldcasezaken.nl/tomasz-zawierucha"
-  },
-  {
-    "lat": 52.087127,
-    "lng": 5.339955,
-    "title": "De vermissing van Hanno van Mil 2014",
-    "link": "https://www.coldcasezaken.nl/hanno-van-mil"
-  },
-  {
-    "lat": 53.325778,
-    "lng": 5.803039,
-    "title": "De vermissing van Sicco Cuperus 2014",
-    "link": "https://www.coldcasezaken.nl/sicco-cuperus"
-  },
-  {
-    "lat": 52.375801,
-    "lng": 6.672714,
-    "title": "De moord op Sumbat Dawood Boghos 2014",
-    "link": "https://www.coldcasezaken.nl/sumbat-dawood-boghos"
-  },
-  {
-    "lat": 51.681515,
-    "lng": 6.159709,
-    "title": "De vermissing van Arne Hermsen 2015",
-    "link": "https://www.coldcasezaken.nl/arne-hermsen"
-  },
-  {
-    "lat": 52.996862,
-    "lng": 6.56384,
-    "title": "De moord op Tom de Munter 2015",
-    "link": "https://www.coldcasezaken.nl/tom-de-munter"
-  },
-  {
-    "lat": 51.839657,
-    "lng": 4.694236,
-    "title": "De moord op baby Elise Smit 2015",
-    "link": "https://www.coldcasezaken.nl/elise-smit"
-  },
-  {
-    "lat": 52.126785,
-    "lng": 5.070989,
-    "title": "Lichaam van onbekende dode man 2015",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-vecht"
-  },
-  {
-    "lat": 52.375317,
-    "lng": 5.835978,
-    "title": "De moord op Susanna Boon",
-    "link": "https://www.coldcasezaken.nl/susanna-boon"
-  },
-  {
-    "lat": 51.488233,
-    "lng": 5.689187,
-    "title": "De moord op Marielle Markgraaff 2016",
-    "link": "https://www.coldcasezaken.nl/marielle-markgraaff"
-  },
-  {
-    "lat": 52.205887,
-    "lng": 5.995876,
-    "title": "De moord op Marlon Fidanque 2016",
-    "link": "https://www.coldcasezaken.nl/marlon-fidanque"
-  },
-  {
-    "lat": 53.149115,
-    "lng": 7.028219,
-    "title": "De moord op Sietze Grave 2016",
-    "link": "https://www.coldcasezaken.nl/sietze-grave"
-  },
-  {
-    "lat": 52.30461,
-    "lng": 4.971006,
-    "title": "De moord op Rosleny Magdalena 2016",
-    "link": "https://www.coldcasezaken.nl/rosleny-magdalena"
-  },
-  {
-    "lat": 45.946244,
-    "lng": 15.730564,
-    "title": "De moord op Viktor Jajcanin 2016",
-    "link": "https://www.coldcasezaken.nl/viktor-jajcanin"
-  },
-  {
-    "lat": 52.395009,
-    "lng": 4.638856,
-    "title": "De moord op Dumitru Sirbu 2017",
-    "link": "https://www.coldcasezaken.nl/dumitru-sirbu"
-  },
-  {
-    "lat": 52.671103,
-    "lng": 6.795018,
-    "title": "De moord op Ralf Meinema 2017",
-    "link": "https://www.coldcasezaken.nl/ralf-meinema"
-  },
-  {
-    "lat": 52.749715,
-    "lng": 4.914394,
-    "title": "De moord op Hannie Bakker 2017",
-    "link": "https://www.coldcasezaken.nl/hannie-bakker"
-  },
-  {
-    "lat": 52.041625,
-    "lng": 4.282169,
-    "title": "De moord op Corrie van Geesbergen 2019",
-    "link": "https://www.coldcasezaken.nl/corrie-van-geesbergen"
-  },
-  {
-    "lat": 52.396118,
-    "lng": 4.907667,
-    "title": "De moord op Saban Berk 2019",
-    "link": "https://www.coldcasezaken.nl/saban-berk"
-  },
-  {
-    "lat": 53.241768,
-    "lng": 5.782766,
-    "title": "De mysterieuze dood van Karin Grijpstra 2020",
-    "link": "https://www.coldcasezaken.nl/karin-grijpstra-1"
-  },
-  {
-    "lat": 51.456564,
-    "lng": 3.571972,
-    "title": "De moord op Roshentlie Rosaria 2021",
-    "link": "https://www.coldcasezaken.nl/roshentlie-rosaria"
-  },
-  {
-    "lat": 51.659664,
-    "lng": 5.190779,
-    "title": "De moord op Peter van Dongen 2022",
-    "link": "https://www.coldcasezaken.nl/peter-van-dongen"
-  },
-  {
-    "lat": 52.054889,
-    "lng": 5.402557,
-    "title": "De moord op het onbekende Heulmeisje 1976",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje"
-  },
-  {
-    "lat": 52.377535,
-    "lng": 4.895505,
-    "title": "Onbekende dode man 1986",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-nieuwezijds-voorburgwal"
-  },
-  {
-    "lat": 51.599583,
-    "lng": 4.829213,
-    "title": "De moord op een onbekend meisje 1990",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-teteringen"
-  },
-  {
-    "lat": 51.408255,
-    "lng": 5.983157,
-    "title": "De moord op een onbekende man 1991",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sevenum"
-  },
-  {
-    "lat": 50.598193,
-    "lng": 7.437855,
-    "title": "Onbekende dode vrouw 1991",
-    "link": "https://www.coldcasezaken.nl/duitse-jane-doe"
-  },
-  {
-    "lat": 52.36471,
-    "lng": 4.860343,
-    "title": "De moord op een onbekende man 1992",
-    "link": "https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam"
-  },
-  {
-    "lat": 51.600269,
-    "lng": 6.024709,
-    "title": "De moord op een onbekende man 1994",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bergen"
-  },
-  {
-    "lat": 52.322485,
-    "lng": 4.961828,
-    "title": "Onbekende dode man 1994",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-strandvlietpad"
-  },
-  {
-    "lat": 52.319939,
-    "lng": 4.875384,
-    "title": "De moord op een onbekende vrouw 1995",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amstelveen"
-  },
-  {
-    "lat": 52.387892,
-    "lng": 4.892213,
-    "title": "Onbekende dode man 1995",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westerdoksdijk"
-  },
-  {
-    "lat": 51.24538,
-    "lng": 5.290023,
-    "title": "De moord op een onbekende dode man 1996",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-lommel"
-  },
-  {
-    "lat": 52.38919,
-    "lng": 4.838516,
-    "title": "De moord op een onbekende dode man 1997",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sloterdijk"
-  },
-  {
-    "lat": 52.363663,
-    "lng": 4.866586,
-    "title": "Mogelijke moord op onbekende vrouw 1998",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amsterdam-5"
-  },
-  {
-    "lat": 52.328551,
-    "lng": 4.852171,
-    "title": "De moord op een onbekende man 1998",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amstelveen"
-  },
-  {
-    "lat": 52.362597,
-    "lng": 4.948907,
-    "title": "De moord op een onbekende man 1998",
-    "link": "https://www.coldcasezaken.nl/onbekende-man-flevopark"
-  },
-  {
-    "lat": 52.304677,
-    "lng": 5.019833,
-    "title": "De moord op een onbekende vrouw in een kliko 1999",
-    "link": "https://www.coldcasezaken.nl/klikobak-moord"
-  },
-  {
-    "lat": 52.38071,
-    "lng": 4.90391,
-    "title": "De moord op een onbekende man 2000",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-t-ij-amsterdam"
-  },
-  {
-    "lat": 51.888013,
-    "lng": 5.455712,
-    "title": "Onbekende dode man 2003",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-tiel"
-  },
-  {
-    "lat": 52.062219,
-    "lng": 4.301614,
-    "title": "De moord op een onbekende man 2004",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-den-haag"
-  },
-  {
-    "lat": 52.380124,
-    "lng": 4.906597,
-    "title": "De moord op een onbekende vrouw 2004",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-ij-amsterdam"
-  },
-  {
-    "lat": 52.289608,
-    "lng": 5.220459,
-    "title": "De moord op een onbekende dode man 2005",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-huizen"
-  },
-  {
-    "lat": 50.737807,
-    "lng": 5.676887,
-    "title": "De moord op een onbekende vrouw 2009",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-albertkanaal-vise"
-  },
-  {
-    "lat": 52.43879,
-    "lng": 4.761542,
-    "title": "Onbekende dode jongeman 2010",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westzaan"
-  },
-  {
-    "lat": 52.378755,
-    "lng": 4.897402,
-    "title": "De moord op een onbekende man 2010",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-12"
-  },
-  {
-    "lat": 50.825385,
-    "lng": 5.699019,
-    "title": "De moord op een onbekende vrouw 2013",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-pietersplas"
-  },
-  {
-    "lat": 50.611801,
-    "lng": 5.351747,
-    "title": "Onbekende dode man 2018",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bij-luik"
-  },
-  {
-    "lat": 51.236189,
-    "lng": 2.925549,
-    "title": "Onbekende dode man 2019",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-oostende"
-  },
-  {
-    "lat": 52.358564,
-    "lng": 4.904076,
-    "title": "Onbekende dode man 2022",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-torontobrug"
-  },
-  {
-    "lat": 51.751362,
-    "lng": 5.139025,
-    "title": "De moord op een onbekende man 2023",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-nederhemert-zuid"
-  },
-  {
-    "lat": 51.889545,
-    "lng": 5.715029,
-    "title": "Onbekende dode vrouw 2025",
-    "link": "https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-waal-winssen"
-  },
-  {
-    "lat": 51.460525,
-    "lng": 3.577323,
-    "title": "De moord op Jan Kloet 1984 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.828425,
-    "lng": 5.093024,
-    "title": "De moord op André Brilleman 1985 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.383783,
-    "lng": 4.907589,
-    "title": "De moord op Joanne Wilson 1985 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.098549,
-    "lng": 4.393695,
-    "title": "De moord op Anna Maria Kolstee-Sluiter 1986 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.535676,
-    "lng": 4.715792,
-    "title": "De moord op Jan en Henk van Reken 1989 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.221428,
-    "lng": 6.580344,
-    "title": "De moord op Salah Tayebi 1990 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.078677,
-    "lng": 5.832459,
-    "title": "De moord op Ria de Vries 1990 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.363897,
-    "lng": 4.881252,
-    "title": "De moord op Roy Adkins 1990 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.829643,
-    "lng": 5.585239,
-    "title": "De moord op Joyce Labruyère 1991 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.076084,
-    "lng": 4.866561,
-    "title": "De moord op Rudolphine de Ranitz 1991 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.452287,
-    "lng": 6.415204,
-    "title": "De moord op Jeanette van Bentum-Coers 1992 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.630716,
-    "lng": 4.752279,
-    "title": "De moord op Jaap van der Heijden 1993 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.938455,
-    "lng": 4.444489,
-    "title": "De moord op Johan van den Bosch 1993 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.919818,
-    "lng": 4.409092,
-    "title": "De moord op Helio Stewart 1993 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.091606,
-    "lng": 4.27605,
-    "title": "De moord op Robert Willem van den Berg 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.545375,
-    "lng": 5.162132,
-    "title": "De moord op Antonio Brizzi 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.045395,
-    "lng": 4.230506,
-    "title": "De moord op Nazim Isik 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.153094,
-    "lng": 5.386855,
-    "title": "De moord op Ricky Hok A Hin 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.435756,
-    "lng": 4.853163,
-    "title": "De moord op Sahin Adhami 1995 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.214386,
-    "lng": 6.579603,
-    "title": "De moord op Antoinette Bont 1995 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.370879,
-    "lng": 4.888494,
-    "title": "De moord op Bert Bons 1996 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 48.694194,
-    "lng": 2.192963,
-    "title": "De moord op Caroline Pino 1996 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.357061,
-    "lng": 5.874764,
-    "title": "De moord op Chris van de Werken 1996 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.828512,
-    "lng": 4.944669,
-    "title": "De moord op Piet Baams 1996 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.229991,
-    "lng": 6.556451,
-    "title": "Shirley Hereijgers 1997 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.041788,
-    "lng": 4.231963,
-    "title": "De moord op Wim Koenen 1997 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.375004,
-    "lng": 4.900561,
-    "title": "De moord op Ina Vos 1997",
-    "link": "https://www.coldcasezaken.nl/ina-vos"
-  },
-  {
-    "lat": 52.2281,
-    "lng": 5.946749,
-    "title": "De moord op Henk Gerritsen 1998 ",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.532972,
-    "lng": 5.119041,
-    "title": "De moord op Polle en Frank Taminiau, Rinus den Boer en Nico van Golde 1998 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.908195,
-    "lng": 4.503504,
-    "title": "De moord op Josina Rave 1998 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.616982,
-    "lng": 4.186269,
-    "title": "De moord op Cedric Zimmerman 1999 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.382465,
-    "lng": 4.707538,
-    "title": "De moord op Sefer Yildirim 1999 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.094782,
-    "lng": 5.137888,
-    "title": "De moord op Klaas Makkinje 1999 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.131531,
-    "lng": 4.7062,
-    "title": "De moord op Hans Schonewille 1999 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.355948,
-    "lng": 4.778686,
-    "title": "De moord op Debora Horstman 1999 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.64152,
-    "lng": 4.658338,
-    "title": "De moord op Willem Wijker 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.504752,
-    "lng": 5.486081,
-    "title": "De moord op Habib M'Hedhbi 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.568427,
-    "lng": 5.062627,
-    "title": "De moord op Sjef, Piet en Ria Verhagen 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.383225,
-    "lng": 4.886255,
-    "title": "De moord op Jan Jacobus Femer 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.331825,
-    "lng": 4.879206,
-    "title": "De moord op Sam Klepper 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.920567,
-    "lng": 4.47339,
-    "title": "De moord op Cafer Dereli 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.295975,
-    "lng": 4.988864,
-    "title": "De moord op Abdul Majeed Khan 2001 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.388942,
-    "lng": 6.108528,
-    "title": "De moord op Dogan Manan 2001 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.80972,
-    "lng": 5.808133,
-    "title": "De moord op Leon Kok 2002 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.580414,
-    "lng": 4.755198,
-    "title": "De moord op Corné Balemans 2002 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 50.886434,
-    "lng": 5.973747,
-    "title": "De moord op Patrick van der Bolt 2002 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.87364,
-    "lng": 4.47716,
-    "title": "De moord op Sedar Soares 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.65756,
-    "lng": 5.020661,
-    "title": "De moord op Leon Rombouts en Manita Koenen 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.920731,
-    "lng": 4.462225,
-    "title": "De moord op Geert Raeymaeker 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.331304,
-    "lng": 3.826851,
-    "title": "De moord op John Wijngaarde 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.349216,
-    "lng": 4.937679,
-    "title": "De moord op Bertus Lüske 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.306066,
-    "lng": 4.855991,
-    "title": "De moord op Jules Jie en vriendin 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.646433,
-    "lng": 5.049051,
-    "title": "De moord op Martin Hoogland 2004 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.367986,
-    "lng": 4.531724,
-    "title": "De moord op Gijs van Dam jr.2004 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.369461,
-    "lng": 6.212122,
-    "title": "De moord op Bulent Derendeli 2004 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.340823,
-    "lng": 4.893218,
-    "title": "De moord op Nordin Ben Salah 2004 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.3506,
-    "lng": 4.876998,
-    "title": "De moord op Willem Endstra 2004 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.348848,
-    "lng": 4.873378,
-    "title": "De moord op Evert Hingst 2005 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.332561,
-    "lng": 4.855231,
-    "title": "De moord op George van Kleef 2005 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.359494,
-    "lng": 4.917002,
-    "title": "De moord op Jacques Versnel 2005 (geen sitedossier",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.588935,
-    "lng": 5.084056,
-    "title": "De moord op Hakki Adnan Yesilkagit 2006 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.918814,
-    "lng": 4.463106,
-    "title": "De moord op Karim Bouhmala en Sabah El Fadili 2006 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.120631,
-    "lng": 4.663111,
-    "title": "De moord op Tamara Wolvers 2006 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.062183,
-    "lng": 4.328492,
-    "title": "De moord op Anandkoemar Koebar en Claudia Yvette Edoo 2006 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.312829,
-    "lng": 3.858891,
-    "title": "De moord op Nermin Kutlu 2006 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.99153,
-    "lng": 4.36032,
-    "title": "De moord op Jacobus Drevijn 2007 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.501428,
-    "lng": 4.516747,
-    "title": "De moord op Sheikmoes Sindy 2007 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.891033,
-    "lng": 4.555777,
-    "title": "De moord op Ahmad Al-Saidy 2007 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.061283,
-    "lng": 4.218364,
-    "title": "De moord op Tineke Verhagen 2007 (geen sidedossier",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.201202,
-    "lng": 5.797955,
-    "title": "De moord op Tevfik Igli 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.845812,
-    "lng": 6.043596,
-    "title": "De moord op Ida Klijnstra 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.454678,
-    "lng": 3.582212,
-    "title": "De moord op Ilonka Toth 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.332029,
-    "lng": 4.887363,
-    "title": "De moord op August Adjoeba 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.454371,
-    "lng": 5.452759,
-    "title": "De moord op Fred Ruijzenaars 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.358096,
-    "lng": 4.863468,
-    "title": "De moord op Robert Woei a Tsoi 2008 (geen sitedosser) ",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.280466,
-    "lng": 5.752173,
-    "title": "De moord op Daan van Es 2009 ",
-    "link": "https://www.coldcasezaken.nl/daan-van-es"
-  },
-  {
-    "lat": 52.664243,
-    "lng": 4.761645,
-    "title": "De moord op Johnny Neslo 2009 (geen sitedossier",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.834208,
-    "lng": 5.830268,
-    "title": "De moord op Harry Schrievers 2010 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.340836,
-    "lng": 4.929194,
-    "title": "De moord op Stanley Hillis 2011 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.025795,
-    "lng": 5.139267,
-    "title": "De moord op Pieter Vos en Jaap Zillig 2011 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.830525,
-    "lng": 4.882519,
-    "title": "De moord op Johan de Waal 2012 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.235308,
-    "lng": 3.826232,
-    "title": "De moord op Michaël ten Napel 2012 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.829267,
-    "lng": 5.790558,
-    "title": "De moord op Kevin Amerika 2012 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.096528,
-    "lng": 5.038948,
-    "title": "De moord op Altan Soysal 2013 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.377669,
-    "lng": 4.821395,
-    "title": "De moord op Aytas Goraler 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.188309,
-    "lng": 5.407025,
-    "title": "De moord op Mohammed Alarasi 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.481412,
-    "lng": 4.659405,
-    "title": "De moord op Hans Nijman 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.288164,
-    "lng": 4.826862,
-    "title": "De moord op Luana Luz Xavier 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.359203,
-    "lng": 4.796104,
-    "title": "De moord op Augustine Nyantakyi 2015 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.307142,
-    "lng": 4.975456,
-    "title": "De moord op Siegmar Flanuer 2015 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.401669,
-    "lng": 5.67356,
-    "title": "De moord op Esther Paul 2017 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.436253,
-    "lng": 5.513576,
-    "title": "De moord op Johan van Boxtel 2017 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.494453,
-    "lng": 5.39559,
-    "title": "De moord op Dennis Struijk 2017 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.078975,
-    "lng": 4.331415,
-    "title": "De moord op Ahmad Mola Nissi 2017 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.182127,
-    "lng": 5.401315,
-    "title": "De moord op Samir Jabli 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.92378,
-    "lng": 5.018486,
-    "title": "De vermissing van Sidney Lute 2016",
-    "link": "https://www.coldcasezaken.nl/sidney-luten"
-  },
-  {
-    "lat": 51.716409,
-    "lng": 5.327277,
-    "title": "De vermissing van Jules Clement 1984 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.58924,
-    "lng": 5.14505,
-    "title": "De vermissing van Wim van den Hurk 1989 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.540508,
-    "lng": 4.461306,
-    "title": "De vermissing van Maarten Geurts 1990 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.95918,
-    "lng": 5.636642,
-    "title": "De vermissing van Kees Epker 1993 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.233852,
-    "lng": 6.556646,
-    "title": "De vermissing van Ineke Fleurke 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.8859,
-    "lng": 4.458741,
-    "title": "De vermissing van Gerard Hulscher 1998 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.001777,
-    "lng": 5.860584,
-    "title": "De vermissing van Jan Nebbeling 2000 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.301083,
-    "lng": 4.675825,
-    "title": "De vermissing van Yvonne Catsburg2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.651201,
-    "lng": 4.835633,
-    "title": "De vermissing van John Heijboer 2005 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.962183,
-    "lng": 4.569196,
-    "title": "De vermissing van Remco van der Torre 2008 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.273395,
-    "lng": 6.228495,
-    "title": "De vermissing van Michael de Vrieze 2010 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.327865,
-    "lng": 4.856951,
-    "title": "De vermissing van Roel van Otten 2010 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.072173,
-    "lng": 5.028128,
-    "title": "De vermissing van Hugo Charles 2012 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.528837,
-    "lng": 6.023257,
-    "title": "De vermissing van Zoryana Tupis 2013 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.397187,
-    "lng": 4.941888,
-    "title": "De vermissing van Rachid Zaoudi 2013 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.328014,
-    "lng": 5.632334,
-    "title": "De vermissing van Henk Vierwind 2013 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.44619,
-    "lng": 5.445892,
-    "title": "De vermissing van Henry Pfaff 2015 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.982968,
-    "lng": 6.568453,
-    "title": "De vermissing van Hugo van Dijk 2015 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.30259,
-    "lng": 4.968214,
-    "title": "De vermissing van Sabrina Oosterbeek 2017 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.040068,
-    "lng": 4.324935,
-    "title": "De vermissing van Mohamed Anaya 2018 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.253602,
-    "lng": 4.767016,
-    "title": "De vermissing van Frederik Pallesen 2019 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.982111,
-    "lng": 4.362262,
-    "title": "De vermissing van Jakob Johan de Bruijn 2022 ",
-    "link": "https://www.coldcasezaken.nl/jakob-johan-de-bruijn"
-  },
-  {
-    "lat": 51.82713,
-    "lng": 4.942457,
-    "title": "De vermissing van Yoran Krol 2023",
-    "link": "https://www.coldcasezaken.nl/yoran-krol"
-  },
-  {
-    "lat": 50.963108,
-    "lng": 5.713263,
-    "title": "De moord op Angelique Hendrix 1990",
-    "link": "https://www.coldcasezaken.nl/angelique-hendrix"
-  },
-  {
-    "lat": 51.568754,
-    "lng": 3.517343,
-    "title": "De moord op Annie van der Poel 2019",
-    "link": "https://www.coldcasezaken.nl/annie-van-der-poel"
-  },
-  {
-    "lat": 52.87801,
-    "lng": 5.795247,
-    "title": "De moord op Ronnie Spa 1994 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.364722,
-    "lng": 4.939533,
-    "title": "De moord op Virgil Schot 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 50.853387,
-    "lng": 5.684319,
-    "title": "De vermissing van Tanja Groen 1993 ",
-    "link": "https://www.coldcasezaken.nl/tanja-groen"
-  },
-  {
-    "lat": 50.947374,
-    "lng": 5.954921,
-    "title": "De moord op Leon Reubzaet 1987  ",
-    "link": "https://www.coldcasezaken.nl/leon-reubzaet"
-  },
-  {
-    "lat": 51.375441,
-    "lng": 6.147173,
-    "title": "De moord op Rudy van der Hoeven 2006 ",
-    "link": "https://www.coldcasezaken.nl/rudy-van-der-hoeven"
-  },
-  {
-    "lat": 52.448797,
-    "lng": 4.595967,
-    "title": "De vermissing van cheryl morriën 1986 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.40302,
-    "lng": 4.653009,
-    "title": "De moord op W. Scholtemeijer 1997 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.545756,
-    "lng": 5.814808,
-    "title": "De vermissing van Marc Jaskulski 2024 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.436388,
-    "lng": 4.821726,
-    "title": "De moord op William Caceres Marcano 2025 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.974088,
-    "lng": 5.66407,
-    "title": "De vermissing van Hendrik Jan van Houten 2003 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.060852,
-    "lng": 5.133585,
-    "title": "De vermissing van Churisan Allen 2018 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.034094,
-    "lng": 3.637569,
-    "title": "De vermissing van Mieke Kuijpers 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.730242,
-    "lng": 5.877778,
-    "title": "De vermissing van Jan en Riet Kelders 1989 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 53.202554,
-    "lng": 6.56888,
-    "title": "De moord op Annet van Akkeren 1982 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.154197,
-    "lng": 4.946079,
-    "title": "De moord op Irene Bernet 1984",
-    "link": "https://www.coldcasezaken.nl/irene-bernet"
-  },
-  {
-    "lat": 51.948614,
-    "lng": 6.34661,
-    "title": "De moord op Rinie Wielheesen 1970 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 52.468731,
-    "lng": 6.708808,
-    "title": "De vermissing Frans Olthof 1995 ",
-    "link": "https://www.coldcasezaken.nl/frans-olthof"
-  },
-  {
-    "lat": 52.036506,
-    "lng": 4.701798,
-    "title": "De moord op Ewoud Siegers 2014 (geen sitedossier)",
-    "link": "https://www.coldcasezaken.nl/zaak-zonder-dossier"
-  },
-  {
-    "lat": 51.083053,
-    "lng": 4.135659,
-    "title": "De moord op Lodewijk Genbrugge 1994",
-    "link": "https://www.coldcasezaken.nl/lodewijk-louis-genbrugge"
-  },
-  {
-    "lat": 52.372612,
-    "lng": 4.897087,
-    "title": "De moord op Geert Jacobus Gernand 1984",
-    "link": "https://www.coldcasezaken.nl/geert-gernand"
-  },
-  {
-    "lat": 52.227394,
-    "lng": 5.176696,
-    "title": "De vermissing Marcel Putman 2001 ",
-    "link": "https://www.coldcasezaken.nl/marcel-putman"
-  },
-  {
-    "lat": 52.3381209,
-    "lng": 4.9670655,
-    "title": "Verdwijning van Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Diemen",
-    "address": "Nicolaas Lublinkstraat 12"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  },
-  {
-    "lat": 52.3676322,
-    "lng": 4.8503424,
-    "title": "Verdwijning Bart van Hoorn",
-    "link": "https://www.coldcasezaken.nl/meld-informatie-anoniem",
-    "place": "Amsterdam",
-    "address": "Orteliusstraat 376"
-  }
+  {"lat":51.661241,"lng":5.390367,"title":"De moord op Ingrid Hakkert","link":"https://www.coldcasezaken.nl/ingrid-hakkert"},
+  {"lat":51.938211,"lng":4.537739,"title":"Verdwijning van Geertje Vliegenthart","link":"https://www.coldcasezaken.nl/geertje-vliegenthart-roest"},
+  {"lat":52.090298,"lng":5.341390,"title":"Verdwijning Hanno van Mil","link":"https://www.coldcasezaken.nl/hanno-van-mil"},
+  {"lat":51.499324,"lng":5.317251,"title":"De moord op Jan Schoenmakers 1967","link":"https://www.coldcasezaken.nl/jan-schoenmakers"},
+  {"lat":53.199036,"lng":5.808656,"title":"De moord op Hinke van der Velde 1970","link":"https://www.coldcasezaken.nl/hinke-van-der-velde"},
+  {"lat":52.400926,"lng":4.941733,"title":"De vermissing van Alwin Sterk 1972","link":"https://www.coldcasezaken.nl/alwin-sterk"},
+  {"lat":50.963459,"lng":5.842801,"title":"De vermissing van Marjo Winkens 1975 (exacte vermissingslocatie onbekend)","link":"https://www.coldcasezaken.nl/marjo-winkens"},
+  {"lat":52.364530,"lng":4.959137,"title":"De moord op Angela Mangot 1970","link":"https://www.coldcasezaken.nl/angela-mangot"},
+  {"lat":52.054126,"lng":5.405424,"title":"Het onbekende Heulmeisje 1976","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje"},
+  {"lat":52.374718,"lng":4.882874,"title":"De moord op Gerhardus Goldschmeding 1976","link":"https://www.coldcasezaken.nl/gerhardus-goldschmeding"},
+  {"lat":51.657248,"lng":5.820145,"title":"De moord op Riky Bartels 1977","link":"https://www.coldcasezaken.nl/riky-bartels"},
+  {"lat":52.376807,"lng":4.872332,"title":"De vermissing van Willemijntje van der Meer 1978","link":"https://www.coldcasezaken.nl/willemijntje-van-der-meer"},
+  {"lat":52.160489,"lng":4.495714,"title":"De moord op Levie 'Louis' van Amerongen 1978","link":"https://www.coldcasezaken.nl/levie-van-amerongen"},
+  {"lat":52.221188,"lng":5.991024,"title":"De moord op Wendy Hart 1981","link":"https://www.coldcasezaken.nl/wendy-hart"},
+  {"lat":51.921858,"lng":4.505902,"title":"De moord op Petra van den Berg 1982","link":"https://www.coldcasezaken.nl/petra-van-den-berg"},
+  {"lat":52.371674,"lng":4.897259,"title":"Het onbekende 'Kelderlijk' 1982","link":"https://www.coldcasezaken.nl/het-kelderlijk"},
+  {"lat":50.968009,"lng":5.821182,"title":"De vermissing van Riet de Vries 1982","link":"https://www.coldcasezaken.nl/riet-de-vries"},
+  {"lat":52.488178,"lng":5.026449,"title":"De moord op Peter Oort 1982","link":"https://www.coldcasezaken.nl/petertje-oort"},
+  {"lat":52.388154,"lng":4.888985,"title":"De moord op Fred Halsema 1983","link":"https://www.coldcasezaken.nl/fred-halsema"},
+  {"lat":52.454331,"lng":6.059085,"title":"De vermissing van Eefke Wolf 1983","link":"https://www.coldcasezaken.nl/eefke-wolf"},
+  {"lat":51.907803,"lng":4.466083,"title":"De moord op Coby Toet 1984","link":"https://www.coldcasezaken.nl/coby-toet"},
+  {"lat":52.310270,"lng":5.489108,"title":"De moord op Gerda Merchel 1984","link":"https://www.coldcasezaken.nl/gerda-merchel"},
+  {"lat":51.783292,"lng":4.911504,"title":"De vermissing van Germa van den Boom 1984","link":"https://www.coldcasezaken.nl/germa-van-den-boom"},
+  {"lat":51.891041,"lng":4.462702,"title":"De moord op Ahmed Korkmaz 1984","link":"https://www.coldcasezaken.nl/ahmed-korkmaz"},
+  {"lat":52.379169,"lng":4.893049,"title":"De moord op Willem Klein 1986","link":"https://www.coldcasezaken.nl/willem-klein"},
+  {"lat":53.243306,"lng":6.654623,"title":"De moord op Wijtske Bauer-Hiemstra 1986","link":"https://www.coldcasezaken.nl/wijtske-bauer-hiemstra"},
+  {"lat":53.024928,"lng":4.746310,"title":"De vermissing van Piet Beentjes 1987","link":"https://www.coldcasezaken.nl/piet-beentjes"},
+  {"lat":51.337499,"lng":3.825393,"title":"De moord op Helena Mendonca, Guarda Lupe Espinal en Rosanna Hidalgo Manzuela 1987","link":"https://www.coldcasezaken.nl/helena-mendonca"},
+  {"lat":51.576193,"lng":4.712502,"title":"De moord op Sjef Delahaije 1987","link":"https://www.coldcasezaken.nl/sjef-delahaije"},
+  {"lat":52.012829,"lng":4.815627,"title":"De vermissing van Alie Spruit Roelofsen 1988","link":"https://www.coldcasezaken.nl/alie-spruit-roelofsen"},
+  {"lat":52.070652,"lng":4.267779,"title":"De moord op Johannes Schrijvers 1988","link":"https://www.coldcasezaken.nl/johannes-schrijvers"},
+  {"lat":52.095079,"lng":4.333025,"title":"De moord op Alida Christiana Koopmans 1988","link":"https://www.coldcasezaken.nl/alida-christiana-koopmans"},
+  {"lat":51.930482,"lng":4.502341,"title":"De moord op Chris Boelsen 1989","link":"https://www.coldcasezaken.nl/chris-boelsen"},
+  {"lat":50.910171,"lng":6.075965,"title":"De moord op Yvonne Plasmans 1989","link":"https://www.coldcasezaken.nl/yvonne-plasmans"},
+  {"lat":52.005255,"lng":4.372905,"title":"De moord op Wilma Bres 1989","link":"https://www.coldcasezaken.nl/wilma-bres"},
+  {"lat":52.342912,"lng":4.969061,"title":"De moord op studente Ellen 1989","link":"https://www.coldcasezaken.nl/studente-ellen"},
+  {"lat":51.365218,"lng":5.428329,"title":"De moord op Marie-Louise (Wies) Hensen 1989","link":"https://www.coldcasezaken.nl/marie-louise-wies-hensen"},
+  {"lat":52.334658,"lng":5.025206,"title":"De vermissing van Mieke 'Harmina' Gulien 1989","link":"https://www.coldcasezaken.nl/mieke-gulien"},
+  {"lat":52.144553,"lng":6.197426,"title":"De vermissing van Duncan Zwakke 1989","link":"https://www.coldcasezaken.nl/duncan-zwakke"},
+  {"lat":52.372110,"lng":4.889508,"title":"De moord op Marie Christine Jonas 1989","link":"https://www.coldcasezaken.nl/marie-christine-jonas"},
+  {"lat":53.339950,"lng":5.825846,"title":"De moord op Simone de Laat 1989","link":"https://www.coldcasezaken.nl/simone-de-laat"},
+  {"lat":52.087409,"lng":5.134385,"title":"De moord op Robert Obermeijer 1989","link":"https://www.coldcasezaken.nl/robert-obermeijer"},
+  {"lat":51.245891,"lng":5.669127,"title":"De moord op Anouschka Weezenbeek 1990","link":"https://www.coldcasezaken.nl/anouschka-weezenbeek"},
+  {"lat":51.913630,"lng":4.450196,"title":"De moord op Hans van der Mee 1990","link":"https://www.coldcasezaken.nl/hans-van-der-mee"},
+  {"lat":52.260490,"lng":4.707197,"title":"De moord op Yvonne Honders 1990","link":"https://www.coldcasezaken.nl/yvonne-honders"},
+  {"lat":52.096698,"lng":4.344192,"title":"De moord op Jan de Niet 1990","link":"https://www.coldcasezaken.nl/jan-de-niet"},
+  {"lat":51.921720,"lng":4.459374,"title":"De moord op Natascha Meijer 1990","link":"https://www.coldcasezaken.nl/natascha-meijer"},
+  {"lat":52.077907,"lng":4.318385,"title":"De moord op Petronella Huijbens 1990","link":"https://www.coldcasezaken.nl/petronella-huijbens"},
+  {"lat":52.093370,"lng":4.305900,"title":"De moord op Edward Moonen 1990","link":"https://www.coldcasezaken.nl/edward-moonen"},
+  {"lat":51.931933,"lng":4.497412,"title":"De moord op Maarten Nelisse 1991","link":"https://www.coldcasezaken.nl/maarten-nelisse"},
+  {"lat":51.324254,"lng":3.850452,"title":"De moord op Saadet Secmen 1991","link":"https://www.coldcasezaken.nl/saadet-secmen"},
+  {"lat":51.829560,"lng":4.702107,"title":"De moord op Vera van der Lee 1991","link":"https://www.coldcasezaken.nl/vera-van-der-lee-van-soldt"},
+  {"lat":52.061723,"lng":4.330217,"title":"De moord op Cornelia Bergen-Groenewold 1991","link":"https://www.coldcasezaken.nl/cornelia-van-den-bergen-groenewold"},
+  {"lat":51.424745,"lng":5.302941,"title":"De moord op Gerrie Schellekens 1991","link":"http://coldcasezaken.nl/gerrie-schellekens"},
+  {"lat":53.199195,"lng":5.434905,"title":"De dood van Bettus Louis Lemstra 1991","link":"https://www.coldcasezaken.nl/louis-lemstra"},
+  {"lat":52.368474,"lng":4.627561,"title":"De moord op Theo Kroon 1991","link":"https://www.coldcasezaken.nl/theo-kroon"},
+  {"lat":52.282842,"lng":5.188360,"title":"Onbekende dode man 1991","link":"https://www.coldcasezaken.nl/onbekende-dode-man-naarden"},
+  {"lat":52.359777,"lng":4.925548,"title":"De moord op A. van Veen 1991","link":"https://www.coldcasezaken.nl/a-van-veen"},
+  {"lat":52.700007,"lng":6.308170,"title":"De vermissing van Willeke Dost 1992","link":"https://www.coldcasezaken.nl/willeke-dost"},
+  {"lat":52.067900,"lng":4.291675,"title":"De moord op Louis 'Loek' van Dam 1992","link":"https://www.coldcasezaken.nl/louis-van-dam"},
+  {"lat":51.427470,"lng":5.464378,"title":"De moord op Wim Timmermans 1992","link":"https://www.coldcasezaken.nl/wim-timmermans"},
+  {"lat":51.370500,"lng":5.234028,"title":"De moord op Miet van Bommel 1992","link":"https://www.coldcasezaken.nl/miet-van-bommel"},
+  {"lat":52.364706,"lng":4.860305,"title":"Onbekende vermoorde man 1992","link":"https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam"},
+  {"lat":52.391973,"lng":4.629955,"title":"De vermissing van Lisette Vroege","link":"https://www.coldcasezaken.nl/lisette-vroege"},
+  {"lat":50.923591,"lng":5.979022,"title":"De moord op Marina Denzler 1992","link":"https://www.coldcasezaken.nl/marina-denzler"},
+  {"lat":52.065730,"lng":4.321655,"title":"De moord op Francina Hoogland 1992","link":"https://www.coldcasezaken.nl/francina-hoogland"},
+  {"lat":53.095506,"lng":6.170115,"title":"De moord op Folkert Veenstra 1992","link":"https://www.coldcasezaken.nl/folkert-veenstra"},
+  {"lat":52.374361,"lng":4.804741,"title":"De moord op Emmy Hogema Diepenbrock 1992","link":"https://www.coldcasezaken.nl/emerentia-hogema-diepenbrock"},
+  {"lat":51.641825,"lng":4.858479,"title":"De vermissing van Theo van den Oetelaar 1992","link":"https://www.coldcasezaken.nl/theo-van-den-oetelaar"},
+  {"lat":50.819649,"lng":4.400959,"title":"De moord op Christiane Heiser 1992","link":"https://www.coldcasezaken.nl/christiane-heiser"},
+  {"lat":51.677567,"lng":5.804639,"title":"De moord op Mariëtte Peters 1992","link":"https://www.coldcasezaken.nl/mariette-peters"},
+  {"lat":53.209842,"lng":5.784082,"title":"De moord op Roelof Steinvoorte 1992","link":"https://www.coldcasezaken.nl/roelof-steinvoorte"},
+  {"lat":51.488438,"lng":3.513735,"title":"De moord op Marinus Terwoert ","link":"https://www.coldcasezaken.nl/marinus-terwoert"},
+  {"lat":51.957240,"lng":6.214027,"title":"Suicide onbekende man","link":"https://www.coldcasezaken.nl/onbekende-man-treinspoor-didam"},
+  {"lat":52.195579,"lng":4.472340,"title":"De moord op Lieneke Troost 1993","link":"https://www.coldcasezaken.nl/lieneke-troost"},
+  {"lat":51.961844,"lng":4.031920,"title":"De vermissing van Imelda Becerro 1993","link":"https://www.coldcasezaken.nl/imelda-becerro"},
+  {"lat":51.590467,"lng":5.088211,"title":"De moord op Jenneke de Wind 1993","link":"https://www.coldcasezaken.nl/jenneke-de-wind"},
+  {"lat":51.190980,"lng":4.428324,"title":"De moord op Tania van Kerkhoven","link":"https://www.coldcasezaken.nl/tania-van-kerkhoven"},
+  {"lat":52.385005,"lng":4.643171,"title":"De moord op Dirk Schaap 1993","link":"https://www.coldcasezaken.nl/dirk-schaap"},
+  {"lat":52.070422,"lng":4.297750,"title":"De moord op Fatiha Hasnaoui 1993","link":"https://www.coldcasezaken.nl/fatiha-hasnaoui"},
+  {"lat":52.508580,"lng":5.765456,"title":"De moord op Judit Nyari 1993","link":"https://www.coldcasezaken.nl/judit-nyari"},
+  {"lat":51.682419,"lng":5.290512,"title":"Onbekend babylijkje 1994","link":"https://www.coldcasezaken.nl/babylijkje-den-bosch"},
+  {"lat":50.876253,"lng":4.356920,"title":"De moord op Herman Meert 1994","link":"https://www.coldcasezaken.nl/herman-meert"},
+  {"lat":52.298028,"lng":4.858616,"title":"De moord op Lydia Baneke Knap 1994","link":"https://www.coldcasezaken.nl/lydia-baneke-knap"},
+  {"lat":52.097774,"lng":4.335318,"title":"De moord op Pieter Hornstra 1994","link":"https://www.coldcasezaken.nl/pieter-hornstra"},
+  {"lat":52.375656,"lng":4.628003,"title":"De moord op Daniël Manion 1994","link":"https://www.coldcasezaken.nl/daniel-manion"},
+  {"lat":51.922797,"lng":4.436401,"title":"De moord op Mario das Dores 1994","link":"https://www.coldcasezaken.nl/mario-das-dores"},
+  {"lat":51.496818,"lng":5.669788,"title":"De moord op Jessica 'Yecca' de Roij","link":"https://www.coldcasezaken.nl/jessica-de-roij"},
+  {"lat":51.963775,"lng":6.308425,"title":"De moord op Cafer Güngör 1994","link":"https://www.coldcasezaken.nl/cafer-gungor"},
+  {"lat":51.491227,"lng":8.062260,"title":"De dood van Maria van der Zanden 1994","link":"https://www.coldcasezaken.nl/maria-van-der-zanden"},
+  {"lat":51.906011,"lng":4.320167,"title":"De moord op Johanna de Vos 1994","link":"https://www.coldcasezaken.nl/johanna-de-vos"},
+  {"lat":52.069469,"lng":4.284100,"title":"De moord op Mohamed Baksoellah","link":"https://www.coldcasezaken.nl/mohamed-baksoellah"},
+  {"lat":51.907454,"lng":4.505935,"title":"De moord op Frank Christiaan Petrus Meijeren 1995","link":"https://www.coldcasezaken.nl/frank-christiaan-petrus-meijeren"},
+  {"lat":52.362795,"lng":5.210834,"title":"De moord op Glenn Crawfurd 1995","link":"https://www.coldcasezaken.nl/glenn-crawfurd"},
+  {"lat":52.046795,"lng":5.120411,"title":"De moord op Sjaak Gerwig 1995","link":"https://www.coldcasezaken.nl/sjaak-gerwig"},
+  {"lat":52.104595,"lng":4.271737,"title":"De moord op Kumral Bagci 1995","link":"https://www.coldcasezaken.nl/kumral-bagci"},
+  {"lat":53.239395,"lng":6.569789,"title":"De moord op Anna Heemenga 1995","link":"https://www.coldcasezaken.nl/anna-heemenga"},
+  {"lat":52.035768,"lng":4.170375,"title":"De vermissing van Jaïr Soares 1995","link":"https://www.coldcasezaken.nl/jair-soares"},
+  {"lat":52.354422,"lng":4.759508,"title":"De moord op Hayrettin Sahin 1995","link":"https://www.coldcasezaken.nl/hayrettin-sahin"},
+  {"lat":51.502863,"lng":5.670540,"title":"De moord op Manon Seijkens 1995","link":"https://www.coldcasezaken.nl/manon-seijkens"},
+  {"lat":50.933692,"lng":5.944588,"title":"De moord op Sjef Klee 1995","link":"https://www.coldcasezaken.nl/jozef-sjef-klee"},
+  {"lat":52.068758,"lng":4.312142,"title":"De moord op Martin de Bruijn 1995","link":"https://www.coldcasezaken.nl/martin-de-bruijn"},
+  {"lat":52.252085,"lng":6.161692,"title":"De moord op Hugo Bootsma 1995","link":"https://www.coldcasezaken.nl/hugo-bootsma"},
+  {"lat":52.509886,"lng":6.096092,"title":"De moord op Harry Zunnebelt 1995","link":"https://www.coldcasezaken.nl/harry-zunnebeld"},
+  {"lat":51.359262,"lng":5.938117,"title":"De moord op Mien Berden","link":"https://www.coldcasezaken.nl/mien-berden"},
+  {"lat":52.081204,"lng":4.271660,"title":"De moord op Peternella Hanegraaff 1996","link":"https://www.coldcasezaken.nl/peternella-hanegraaff"},
+  {"lat":51.903369,"lng":4.504061,"title":"De moord op Kim Veronica Camarines","link":"https://www.coldcasezaken.nl/veronica-camarines"},
+    {"lat":51.064087,"lng":4.430630,"title":"De vermissing van Liam Vanden Branden 1996 ","link":"https://www.coldcasezaken.nl/liam-vanden-branden"},
+  {"lat":50.995314,"lng":5.888636,"title":"De vermissing van Rosa van der Palen 1996","link":"https://www.coldcasezaken.nl/rosa-van-der-palen"},
+  {"lat":52.355845,"lng":4.849350,"title":"De vermissing van Marina Schulein 1996","link":"https://www.coldcasezaken.nl/marina-schulein"},
+  {"lat":51.618348,"lng":4.010450,"title":"De moord op Sabrina Pelizzon 1996","link":"https://www.coldcasezaken.nl/sabrina-pelizzon"},
+  {"lat":53.239630,"lng":6.049462,"title":"De moord op Reinder Lulofs 1996","link":"https://www.coldcasezaken.nl/reinder-lulofs"},
+  {"lat":52.284658,"lng":4.505566,"title":"De moord op Renate Schauerhammer 1996","link":"https://www.coldcasezaken.nl/renate-schauerhammer"},
+  {"lat":50.887116,"lng":5.953352,"title":"De moord op Simone Riedel 1997","link":"https://www.coldcasezaken.nl/simone-riedel"},
+  {"lat":51.624786,"lng":4.587239,"title":"De moord op Orhan Kirac 1997","link":"https://www.coldcasezaken.nl/orhan-kirac"},
+  {"lat":51.792886,"lng":4.651223,"title":"De moord op Ancharee Sripho 1997","link":"https://www.coldcasezaken.nl/ancharee-sripho"},
+  {"lat":52.365864,"lng":4.931904,"title":"Onbekend baby lijkje 1997","link":"https://www.coldcasezaken.nl/dode-baby-celebesstraat-amsterdam"},
+  {"lat":52.359034,"lng":4.872472,"title":"De moord op Piet Bosters 1997","link":"https://www.coldcasezaken.nl/piet-bosters"},
+  {"lat":51.871490,"lng":4.528697,"title":"De moord op Mirjam Möller 1997","link":"https://www.coldcasezaken.nl/mirjam-moeller"},
+  {"lat":51.587629,"lng":4.776726,"title":"De moord op Marcel Carton 1997","link":"https://www.coldcasezaken.nl/marcel-carton"},
+  {"lat":51.505929,"lng":5.416371,"title":"De moord op een onbekende man 1997","link":"https://www.coldcasezaken.nl/onbekende-man-in-best"},
+  {"lat":50.859898,"lng":5.664273,"title":"De moord op Maria Simons 1997","link":"https://www.coldcasezaken.nl/maria-simons"},
+  {"lat":52.312592,"lng":5.446256,"title":"De moord op Jacqueline Antes 1997","link":"https://www.coldcasezaken.nl/jacqueline-antes"},
+  {"lat":51.555496,"lng":5.090427,"title":"De moord op Justus Hertig 1997","link":"https://www.coldcasezaken.nl/justus-hertig"},
+  {"lat":51.923331,"lng":4.426347,"title":"De vermissing van Michel Rubarth 1997","link":"https://www.coldcasezaken.nl/michel-rubarth"},
+  {"lat":52.515382,"lng":5.005054,"title":"De moord op Salvatore Nicolosi 1998","link":"https://www.coldcasezaken.nl/salvatore-nicolosi"},
+  {"lat":53.229263,"lng":6.560007,"title":"De vermissing van Jolanda Meijer 1998","link":"https://www.coldcasezaken.nl/jolanda-meijer"},
+  {"lat":52.398772,"lng":4.947474,"title":"De moord op een onbekende man 1998","link":"https://www.coldcasezaken.nl/onbekende-man-met-draaktattoo"},
+  {"lat":51.452711,"lng":4.915422,"title":"Onbekend babylijkje 1998","link":"https://www.coldcasezaken.nl/babylijkje-baarle-nassau"},
+  {"lat":52.320265,"lng":4.732472,"title":"De moord op Kanadid Gaste 1998","link":"https://www.coldcasezaken.nl/kanadid-ahmed-gaste"},
+  {"lat":53.219891,"lng":6.552274,"title":"De moord op Cornelis Booisma 1998","link":"https://www.coldcasezaken.nl/cor-booisma"},
+  {"lat":52.362742,"lng":4.949256,"title":"De moord op een onbekende man 1998","link":"https://www.coldcasezaken.nl/onbekende-man-flevopark"},
+  {"lat":51.875397,"lng":5.313799,"title":"De moord op Daan van Kranenburg 1998","link":"https://www.coldcasezaken.nl/daan-van-kranenburg"},
+  {"lat":52.253698,"lng":6.151723,"title":"De moord op Muharem Cazim Hebib 1999","link":"https://www.coldcasezaken.nl/muharem-cazim-hebib"},
+  {"lat":52.532661,"lng":5.515928,"title":"De moord op Alex van Cittert 1999","link":"https://www.coldcasezaken.nl/alex-van-cittert"},
+  {"lat":51.994013,"lng":5.892761,"title":"De moord op Hans Blüml 1999","link":"https://www.coldcasezaken.nl/hans-bluml"},
+  {"lat":52.254744,"lng":5.465980,"title":"De moord op een onbekende man 1999","link":"https://www.coldcasezaken.nl/onbekende-man-arkervaart"},
+  {"lat":51.909033,"lng":4.436739,"title":"De moord op Jeanette Sip 1999","link":"https://www.coldcasezaken.nl/jeanette-sip"},
+  {"lat":51.928151,"lng":6.078521,"title":"De moord op Linda Mens 1999","link":"https://www.coldcasezaken.nl/linda-mens"},
+  {"lat":51.445297,"lng":5.438142,"title":"De moord op Ine Wijnen 1999","link":"https://www.coldcasezaken.nl/ine-wijnen"},
+  {"lat":52.331816,"lng":5.015276,"title":"De kliko-bak-moord 1999","link":"https://www.coldcasezaken.nl/klikobak-moord"},
+  {"lat":51.927157,"lng":4.247239,"title":"De moord op Riet Poot","link":"https://www.coldcasezaken.nl/riet-poot"},
+  {"lat":51.080140,"lng":5.955305,"title":"De moord op Nadia Mehallaoui 2000","link":"https://www.coldcasezaken.nl/nadia-mehallaoui"},
+  {"lat":51.919225,"lng":6.349154,"title":"De moord op Tonny ter Horst 2000","link":"https://www.coldcasezaken.nl/tonny-ter-horst"},
+  {"lat":51.919555,"lng":4.402153,"title":"De moord op Amarantha Verhoeff 2000","link":"https://www.coldcasezaken.nl/amarantha-verhoeff"},
+  {"lat":51.806361,"lng":4.562029,"title":"De moord op Jan Groeneveld 2000","link":"https://www.coldcasezaken.nl/jan-patat-groeneveld"},
+  {"lat":52.377756,"lng":4.895854,"title":"De moord op Hans Alfred Meijer 2000","link":"https://www.coldcasezaken.nl/hans-alfred-meijer"},
+  {"lat":52.378880,"lng":4.882082,"title":"De moord op een onbekende baby 2000","link":"https://www.coldcasezaken.nl/babylijkje-karthuizerstraat"},
+  {"lat":52.636430,"lng":4.743000,"title":"De moord op Fabian Brands 2001","link":"https://www.coldcasezaken.nl/fabian-brands"},
+  {"lat":52.195635,"lng":5.834867,"title":"De moord op Dyora Bosgra 2001","link":"https://www.coldcasezaken.nl/dyora-bosgra"},
+  {"lat":51.213612,"lng":2.897358,"title":"De vermissing van Ringo Deman 2001","link":"https://www.coldcasezaken.nl/ringo-deman"},
+  {"lat":51.882969,"lng":4.484085,"title":"De moord op Mariska Klompenhouwer 2001","link":"https://www.coldcasezaken.nl/maartje-mariska-klompenhouwer"},
+  {"lat":51.938272,"lng":4.538273,"title":"De vermissing van Geertje Vliegenthart 2001","link":"Edmond van Hellenraadstraat Geertje Vliegenthart"},
+  {"lat":50.957989,"lng":5.693238,"title":"De vermissing van Tino Pokrivac 2001","link":"https://www.coldcasezaken.nl/tino-pokrivac"},
+  {"lat":52.067092,"lng":4.304252,"title":"De vermissing van Meryem Ulusoy 2001","link":"https://www.coldcasezaken.nl/meryem-ulusoy"},
+  {"lat":51.658913,"lng":5.375541,"title":"De moord op Ingrid hakkert 2001","link":"https://www.coldcasezaken.nl/ingrid-hakkert"},
+  {"lat":50.937679,"lng":5.994783,"title":"De moord op Ilona Quaedflieg 2001","link":"https://www.coldcasezaken.nl/ilona-quaedflieg"},
+  {"lat":52.226391,"lng":5.177212,"title":"De vermissing van Wendy Whitehead 2001","link":"https://www.coldcasezaken.nl/wendy-whitehead"},
+  {"lat":52.211850,"lng":5.158689,"title":"De moord op Martien van der Meijs 2002","link":"https://www.coldcasezaken.nl/martien-van-der-meijs"},
+  {"lat":51.967341,"lng":5.918742,"title":"De moord op Şeyhmus Elmas 2002","link":"https://www.coldcasezaken.nl/seyhmus-elmas"},
+  {"lat":51.915333,"lng":4.601240,"title":"De moord op Cornelis Speksnijder 2002","link":"https://www.coldcasezaken.nl/cornelis-speksnijder"},
+  {"lat":53.239012,"lng":6.568898,"title":"De overblijfselen van onbekende dode man 2002","link":"https://www.coldcasezaken.nl/onbekende-man-boterdiep"},
+  {"lat":4.467678,"lng":101.384529,"title":"De vermissing van Carel Jan van Wezel 2003","link":"https://www.coldcasezaken.nl/carel-jan-van-wezel"},
+  {"lat":52.460168,"lng":4.608775,"title":"De moord op Annie Visman Venema 2003","link":"https://www.coldcasezaken.nl/annie-visman-venema"},
+  {"lat":51.835884,"lng":5.051405,"title":"De moord op Jeanette Derksen 2003","link":"https://www.coldcasezaken.nl/jeanette-derksen"},
+  {"lat":52.338073,"lng":4.891832,"title":"De vermissing van Deborah Rosiek 2003","link":"https://www.coldcasezaken.nl/deborah-rosiek"},
+  {"lat":52.385175,"lng":4.822849,"title":"De moord op Judy Pineda 2003","link":"https://www.coldcasezaken.nl/judy-pineda"},
+  {"lat":52.631581,"lng":4.750163,"title":"De moord op Mark Kerssens 2003","link":"https://www.coldcasezaken.nl/mark-kerssens"},
+  {"lat":50.889642,"lng":5.950223,"title":"De moord op Samira van de Wal 2003","link":"https://www.coldcasezaken.nl/samira-van-de-wal"},
+  {"lat":51.171205,"lng":6.008842,"title":"De moord op Piet Mergelsberg 2003","link":"https://www.coldcasezaken.nl/piet-mergelsberg"},
+  {"lat":51.394240,"lng":6.136406,"title":"De moord op Bernie Bersch 2003","link":"https://www.coldcasezaken.nl/bernie-bersch"},
+  {"lat":51.913934,"lng":4.401911,"title":"De moord op Alaaddin Olcer 2003","link":"https://www.coldcasezaken.nl/alaaddin-olcer"},
+  {"lat":51.891639,"lng":4.480495,"title":"De moord op Muhammed Erdogan 2003","link":"https://www.coldcasezaken.nl/muhammed-erdogan"},
+  {"lat":53.036707,"lng":6.306852,"title":"De moord op Fokko Werkman 2003","link":"https://www.coldcasezaken.nl/fokko-werkman"},
+  {"lat":53.212007,"lng":6.537541,"title":"De moord op Ben Stubbe 2003","link":"https://www.coldcasezaken.nl/ben-stubbe"},
+  {"lat":52.397335,"lng":4.933729,"title":"De moord op Cornelia Brielsman 2004","link":"https://www.coldcasezaken.nl/cornelia-brielsman"},
+  {"lat":52.326303,"lng":4.987328,"title":"De moord op Rhea Ann Mattice 2004","link":"https://www.coldcasezaken.nl/rhea-ann-mattice"},
+  {"lat":50.897623,"lng":6.015342,"title":"De moord op Isabelle Pongs 2004","link":"https://www.coldcasezaken.nl/isabelle-pongs"},
+  {"lat":50.856629,"lng":5.794079,"title":"De moord op Sjef Leukel 2004","link":"https://www.coldcasezaken.nl/sjef-leukel"},
+  {"lat":52.361834,"lng":4.733456,"title":"De moord op Jan van der Pool 2004","link":"https://www.coldcasezaken.nl/jan-van-der-pool"},
+  {"lat":52.372541,"lng":4.898378,"title":"De moord op Nung Lung Withoon Richtert 2004","link":"https://www.coldcasezaken.nl/nung-lung-withoon-richtert"},
+  {"lat":52.202790,"lng":4.857999,"title":"De vermissing van Arhimou Selma Ameziane 2004","link":"https://www.coldcasezaken.nl/selma-ameziane"},
+  {"lat":52.295603,"lng":4.854941,"title":"De moord op Anton van Tienhoven 2004","link":"https://www.coldcasezaken.nl/anton-van-tienhoven"},
+  {"lat":50.981008,"lng":5.813344,"title":"De moord op Henri Nieboer 2005","link":"https://www.coldcasezaken.nl/henri-nieboer"},
+  {"lat":51.931010,"lng":4.473291,"title":"De moord op Cornelis Regter 2005","link":"https://www.coldcasezaken.nl/cornelis-regter"},
+  {"lat":52.099823,"lng":5.114720,"title":"De moord op Ger 'oma' Bindi 2005","link":"https://www.coldcasezaken.nl/ger-oma-bindi"},
+  {"lat":52.367028,"lng":4.888193,"title":"De moord op Damien Mooney 2005","link":"https://www.coldcasezaken.nl/damien-mooney"},
+  {"lat":51.928202,"lng":4.140062,"title":"De moord op Caroline van Toledo 2005","link":"https://www.coldcasezaken.nl/caroline-van-toledo"},
+  {"lat":52.145614,"lng":5.961420,"title":"De vermissing van Henk Wildeman 2005","link":"https://www.coldcasezaken.nl/hendrik-wildeman"},
+  {"lat":50.477686,"lng":5.378302,"title":"De moord op Tamara Morris 2006","link":"https://www.coldcasezaken.nl/tamara-morris"},
+  {"lat":52.841922,"lng":6.757838,"title":"De moord op Daniel Hilbrands 2006","link":"https://www.coldcasezaken.nl/daniel-hilbrands"},
+  {"lat":51.227010,"lng":4.447451,"title":"De moord op Ann Bourgoin 2006","link":"https://www.coldcasezaken.nl/ann-bourgoin"},
+  {"lat":50.445063,"lng":3.950925,"title":"De moord op Claude Mahieu 2006","link":"https://www.coldcasezaken.nl/claude-mahieu"},
+  {"lat":52.113727,"lng":5.059717,"title":"Een onbekend babylijkje 2006","link":"https://www.coldcasezaken.nl/renee-van-utrecht"},
+  {"lat":51.707596,"lng":5.248204,"title":"Een onbekend babylijkje 2006","link":"https://www.coldcasezaken.nl/engeltje-van-het-meer"},
+  {"lat":52.031722,"lng":4.261194,"title":"De moord op Maarten Redeker 2007","link":"https://www.coldcasezaken.nl/maarten-redeker"},
+  {"lat":52.401016,"lng":5.198465,"title":"De moord op Cassandra van Schaijk 2007","link":"https://www.coldcasezaken.nl/cassandra-van-schaijk"},
+  {"lat":52.078219,"lng":4.313915,"title":"De moord op Harry Wiersinga 2007","link":"https://www.coldcasezaken.nl/harry-wiersinga"},
+  {"lat":53.220727,"lng":6.560612,"title":"De moord op Roeland Oosten","link":"https://www.coldcasezaken.nl/roeland-oosten"},
+  {"lat":52.228085,"lng":5.178580,"title":"De moord op Kim Veerman 2007","link":"https://www.coldcasezaken.nl/kim-veerman"},
+  {"lat":51.491449,"lng":5.652061,"title":"De moord op Theo van Berlo 2007","link":"https://www.coldcasezaken.nl/theo-van-berlo"},
+  {"lat":51.973651,"lng":4.170972,"title":"Een onbekende dode man 2007","link":"https://www.coldcasezaken.nl/onbekende-man-staelduinse-bos"},
+  {"lat":51.505851,"lng":5.711020,"title":"De vermissing van Rosa Maria Da Silvav 2008","link":"https://www.coldcasezaken.nl/rosa-maria-venda-da-silva"},
+  {"lat":51.567104,"lng":4.785024,"title":"De vermissing van James Patrick Grealis 2008","link":"https://www.coldcasezaken.nl/james-patrick-grealis"},
+  {"lat":52.310113,"lng":6.921923,"title":"De moord op Diana Winkel 2008","link":"https://www.coldcasezaken.nl/diana-winkel"},
+  {"lat":52.374303,"lng":4.899829,"title":"De moord op Bernadett Szabo 2008","link":"https://www.coldcasezaken.nl/bernadett-szabo"},
+  {"lat":50.878846,"lng":5.736780,"title":"De moord op Rein Weehuizen 2009","link":"https://www.coldcasezaken.nl/rein-weehuizen"},
+  {"lat":52.103192,"lng":4.337242,"title":"Onbekende babylijkje Robin van Clingendael 2009","link":"https://www.coldcasezaken.nl/robin-van-clingendael"},
+  {"lat":50.348353,"lng":4.296553,"title":"De moord op Anne Beckmann 2009","link":"https://www.coldcasezaken.nl/anne-beckmann"},
+  {"lat":51.218997,"lng":4.426926,"title":"De moord op Dan Dielis 2009","link":"https://www.coldcasezaken.nl/dan-dielis"},
+  {"lat":53.208381,"lng":6.595790,"title":"De vermissing van Marian Kusters 2009","link":"https://www.coldcasezaken.nl/marian-kusters"},
+  {"lat":52.958144,"lng":4.746186,"title":"De vermissing van Christiaan Weststeijn 2010","link":"https://www.coldcasezaken.nl/christiaan-weststeijn"},
+  {"lat":51.927269,"lng":4.472548,"title":"De moord op Sandra Martinez Burbano 2010","link":"https://www.coldcasezaken.nl/sandra-martinez-burbano"},
+  {"lat":51.387226,"lng":3.584305,"title":"De vermissing van Herman Ploegstra 2010","link":"https://www.coldcasezaken.nl/herman-ploegstra"},
+  {"lat":50.925421,"lng":5.439779,"title":"De mysterieuze dood van Stefan Brants 2010","link":"https://www.coldcasezaken.nl/stefan-brants"},
+  {"lat":52.060997,"lng":4.473084,"title":"De moord op Yvonne Beer 2010","link":"https://www.coldcasezaken.nl/yvonne-beer"},
+  {"lat":51.974213,"lng":5.915272,"title":"De moord op Ida Sjamsudin 2010","link":"https://www.coldcasezaken.nl/ida-sjamsudin"},
+  {"lat":51.651800,"lng":5.021630,"title":"De moord op Heidy Goedhart 2010","link":"https://www.coldcasezaken.nl/heidy-goedhart"},
+  {"lat":52.018568,"lng":4.709984,"title":"De moord op Arnold van Buuren 2010","link":"https://www.coldcasezaken.nl/arnold-van-buuren"},
+  {"lat":53.089485,"lng":6.867498,"title":"De moord op Derk Kiers 2011","link":"https://www.coldcasezaken.nl/derk-kiers"},
+  {"lat":52.037213,"lng":5.668946,"title":"De moord op Cees Lieftink 2011","link":"https://www.coldcasezaken.nl/cees-lieftink"},
+  {"lat":52.357596,"lng":4.887067,"title":"De vermissing van Stefanie Blijd 2011","link":"https://www.coldcasezaken.nl/stefanie-blijd"},
+  {"lat":50.595622,"lng":5.870123,"title":"De moord op Christelle Sandervorst 2011","link":"https://www.coldcasezaken.nl/christelle-sandervorst"},
+  {"lat":52.218735,"lng":5.195304,"title":"De moord op Pablo Hermeler 2011","link":"https://www.coldcasezaken.nl/pablo-hermeler"},
+  {"lat":51.589879,"lng":4.793228,"title":"De moord op Samba Fall 2011","link":"https://www.coldcasezaken.nl/samba-fall"},
+  {"lat":51.824314,"lng":4.651927,"title":"De moord op Edward Maat 2011","link":"https://www.coldcasezaken.nl/edward-maat"},
+  {"lat":52.375601,"lng":4.794837,"title":"De moord op Hennie Schellenberg 2011","link":"https://www.coldcasezaken.nl/hennie-schellenberg"},
+  {"lat":52.440209,"lng":4.875544,"title":"De moord op Herman Jansen 2011","link":"https://www.coldcasezaken.nl/herman-jansen"},
+  {"lat":51.977324,"lng":5.744835,"title":"De vermissing van Nelie van der Schouw 2011","link":"https://www.coldcasezaken.nl/nelie-van-der-schouw"},
+  {"lat":52.739280,"lng":4.748938,"title":"De moord op Koos Engel 2012","link":"https://www.coldcasezaken.nl/koos-engel"},
+  {"lat":43.389336,"lng":19.649357,"title":"De vermissing van Floris Dierdorp 2012","link":"https://www.coldcasezaken.nl/floris-dierdorp"},
+  {"lat":51.584293,"lng":5.355360,"title":"Onbekend babylijkje Sterre van de Laarakker 2012","link":"https://www.coldcasezaken.nl/sterre-van-de-laarakker"},
+  {"lat":52.636830,"lng":5.023703,"title":"De moord op George Ilahi 2012","link":"https://www.coldcasezaken.nl/george-ilahi"},
+  {"lat":51.769902,"lng":5.547575,"title":"De moord op Marja Nijholt 2013","link":"https://www.coldcasezaken.nl/marja-nijholt"},
+  {"lat":7.896177,"lng":98.295400,"title":"De moord op Stephan Bucynski 2013","link":"https://www.coldcasezaken.nl/stephan-buczynski"},
+  {"lat":51.772973,"lng":5.563259,"title":"De moord op Tamara Plehn 2013","link":"https://www.coldcasezaken.nl/tamara-plehn"},
+  {"lat":53.212195,"lng":5.802935,"title":"De moord op Onke de Boer 2013","link":"https://www.coldcasezaken.nl/onke-de-boer"},
+  {"lat":50.639020,"lng":5.565612,"title":"De moord op Antoine Thys 2013","link":"https://www.coldcasezaken.nl/antoine-thys"},
+  {"lat":51.827752,"lng":4.573166,"title":"De vermissing van Rebecca Groenendijk 2014","link":"https://www.coldcasezaken.nl/rebecca-groenendijk"},
+  {"lat":51.246614,"lng":4.363882,"title":"De mysterieuze dood van Germain Mboyo Bombole 2014","link":"https://www.coldcasezaken.nl/germain-steven-mboyo-bombole"},
+  {"lat":51.962045,"lng":4.138241,"title":"De moord op Tomasz Zawierucha 2014","link":"https://www.coldcasezaken.nl/tomasz-zawierucha"},
+  {"lat":52.087127,"lng":5.339955,"title":"De vermissing van Hanno van Mil 2014","link":"https://www.coldcasezaken.nl/hanno-van-mil"},
+  {"lat":53.325778,"lng":5.803039,"title":"De vermissing van Sicco Cuperus 2014","link":"https://www.coldcasezaken.nl/sicco-cuperus"},
+  {"lat":52.375801,"lng":6.672714,"title":"De moord op Sumbat Dawood Boghos 2014","link":"https://www.coldcasezaken.nl/sumbat-dawood-boghos"},
+  {"lat":51.681515,"lng":6.159709,"title":"De vermissing van Arne Hermsen 2015","link":"https://www.coldcasezaken.nl/arne-hermsen"},
+  {"lat":52.996862,"lng":6.563840,"title":"De moord op Tom de Munter 2015","link":"https://www.coldcasezaken.nl/tom-de-munter"},
+  {"lat":51.839657,"lng":4.694236,"title":"De moord op baby Elise Smit 2015","link":"https://www.coldcasezaken.nl/elise-smit"},
+  {"lat":52.126785,"lng":5.070989,"title":"Lichaam van onbekende dode man 2015","link":"https://www.coldcasezaken.nl/onbekende-man-vecht"},
+  {"lat":52.375317,"lng":5.835978,"title":"De moord op Susanna Boon","link":"https://www.coldcasezaken.nl/susanna-boon"},
+  {"lat":51.488233,"lng":5.689187,"title":"De moord op Marielle Markgraaff 2016","link":"https://www.coldcasezaken.nl/marielle-markgraaff"},
+  {"lat":52.205887,"lng":5.995876,"title":"De moord op Marlon Fidanque 2016","link":"https://www.coldcasezaken.nl/marlon-fidanque"},
+  {"lat":53.149115,"lng":7.028219,"title":"De moord op Sietze Grave 2016","link":"https://www.coldcasezaken.nl/sietze-grave"},
+  {"lat":52.304610,"lng":4.971006,"title":"De moord op Rosleny Magdalena 2016","link":"https://www.coldcasezaken.nl/rosleny-magdalena"},
+  {"lat":45.946244,"lng":15.730564,"title":"De moord op Viktor Jajcanin 2016","link":"https://www.coldcasezaken.nl/viktor-jajcanin"},
+  {"lat":52.395009,"lng":4.638856,"title":"De moord op Dumitru Sirbu 2017","link":"https://www.coldcasezaken.nl/dumitru-sirbu"},
+  {"lat":52.671103,"lng":6.795018,"title":"De moord op Ralf Meinema 2017","link":"https://www.coldcasezaken.nl/ralf-meinema"},
+  {"lat":52.749715,"lng":4.914394,"title":"De moord op Hannie Bakker 2017","link":"https://www.coldcasezaken.nl/hannie-bakker"},
+  {"lat":52.041625,"lng":4.282169,"title":"De moord op Corrie van Geesbergen 2019","link":"https://www.coldcasezaken.nl/corrie-van-geesbergen"},
+  {"lat":52.396118,"lng":4.907667,"title":"De moord op Saban Berk 2019","link":"https://www.coldcasezaken.nl/saban-berk"},
+  {"lat":53.241768,"lng":5.782766,"title":"De mysterieuze dood van Karin Grijpstra 2020","link":"https://www.coldcasezaken.nl/karin-grijpstra-1"},
+  {"lat":51.456564,"lng":3.571972,"title":"De moord op Roshentlie Rosaria 2021","link":"https://www.coldcasezaken.nl/roshentlie-rosaria"},
+  {"lat":51.659664,"lng":5.190779,"title":"De moord op Peter van Dongen 2022","link":"https://www.coldcasezaken.nl/peter-van-dongen"},
+  {"lat":52.054889,"lng":5.402557,"title":"De moord op het onbekende Heulmeisje 1976","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-maarsbergen-heulmeisje"},
+  {"lat":52.377535,"lng":4.895505,"title":"Onbekende dode man 1986","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-nieuwezijds-voorburgwal"},
+  {"lat":51.599583,"lng":4.829213,"title":"De moord op een onbekend meisje 1990","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-teteringen"},
+  {"lat":51.408255,"lng":5.983157,"title":"De moord op een onbekende man 1991","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sevenum"},
+  {"lat":50.598193,"lng":7.437855,"title":"Onbekende dode vrouw 1991","link":"https://www.coldcasezaken.nl/duitse-jane-doe"},
+  {"lat":52.364710,"lng":4.860343,"title":"De moord op een onbekende man 1992","link":"https://www.coldcasezaken.nl/onbekende-dode-man-kinkerbrug-amsterdam"},
+  {"lat":51.600269,"lng":6.024709,"title":"De moord op een onbekende man 1994","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bergen"},
+  {"lat":52.322485,"lng":4.961828,"title":"Onbekende dode man 1994","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-strandvlietpad"},
+  {"lat":52.319939,"lng":4.875384,"title":"De moord op een onbekende vrouw 1995","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amstelveen"},
+  {"lat":52.387892,"lng":4.892213,"title":"Onbekende dode man 1995","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westerdoksdijk"},
+  {"lat":51.245380,"lng":5.290023,"title":"De moord op een onbekende dode man 1996","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-lommel"},
+  {"lat":52.389190,"lng":4.838516,"title":"De moord op een onbekende dode man 1997","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-sloterdijk"},
+  {"lat":52.363663,"lng":4.866586,"title":"Mogelijke moord op onbekende vrouw 1998","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-amsterdam-5"},
+  {"lat":52.328551,"lng":4.852171,"title":"De moord op een onbekende man 1998","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amstelveen"},
+  {"lat":52.362597,"lng":4.948907,"title":"De moord op een onbekende man 1998","link":"https://www.coldcasezaken.nl/onbekende-man-flevopark"},
+  {"lat":52.304677,"lng":5.019833,"title":"De moord op een onbekende vrouw in een kliko 1999","link":"https://www.coldcasezaken.nl/klikobak-moord"},
+  {"lat":52.380710,"lng":4.903910,"title":"De moord op een onbekende man 2000","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-t-ij-amsterdam"},
+  {"lat":51.888013,"lng":5.455712,"title":"Onbekende dode man 2003","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-tiel"},
+  {"lat":52.062219,"lng":4.301614,"title":"De moord op een onbekende man 2004","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-den-haag"},
+  {"lat":52.380124,"lng":4.906597,"title":"De moord op een onbekende vrouw 2004","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-ij-amsterdam"},
+  {"lat":50.456350,"lng":4.864194,"title":"Onbekende dode vrouw 2005","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-namen"},
+  {"lat":52.289608,"lng":5.220459,"title":"De moord op een onbekende dode man 2005","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-huizen"},
+  {"lat":50.737807,"lng":5.676887,"title":"De moord op een onbekende vrouw 2009","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-albertkanaal-vise"},
+  {"lat":52.438790,"lng":4.761542,"title":"Onbekende dode jongeman 2010","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-westzaan"},
+  {"lat":52.378755,"lng":4.897402,"title":"De moord op een onbekende man 2010","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-amsterdam-12"},
+  {"lat":50.825385,"lng":5.699019,"title":"De moord op een onbekende vrouw 2013","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-pietersplas"},
+  {"lat":50.611801,"lng":5.351747,"title":"Onbekende dode man 2018","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-bij-luik"},
+  {"lat":51.236189,"lng":2.925549,"title":"Onbekende dode man 2019","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-oostende"},
+  {"lat":52.358564,"lng":4.904076,"title":"Onbekende dode man 2022","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-torontobrug"},
+  {"lat":51.751362,"lng":5.139025,"title":"De moord op een onbekende man 2023","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/john-doe-nederhemert-zuid"},
+  {"lat":51.889545,"lng":5.715029,"title":"Onbekende dode vrouw 2025","link":"https://www.coldcasezaken.nl/ongeidentificeerde-doden/jane-doe-waal-winssen"},
+  {"lat":51.460525,"lng":3.577323,"title":"De moord op Jan Kloet 1984 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.828425,"lng":5.093024,"title":"De moord op André Brilleman 1985 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.383783,"lng":4.907589,"title":"De moord op Joanne Wilson 1985 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.098549,"lng":4.393695,"title":"De moord op Anna Maria Kolstee-Sluiter 1986 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.535676,"lng":4.715792,"title":"De moord op Jan en Henk van Reken 1989 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.221428,"lng":6.580344,"title":"De moord op Salah Tayebi 1990 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.078677,"lng":5.832459,"title":"De moord op Ria de Vries 1990 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.363897,"lng":4.881252,"title":"De moord op Roy Adkins 1990 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"}, 
+  {"lat":51.829643,"lng":5.585239,"title":"De moord op Joyce Labruyère 1991 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.076084,"lng":4.866561,"title":"De moord op Rudolphine de Ranitz 1991 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.452287,"lng":6.415204,"title":"De moord op Jeanette van Bentum-Coers 1992 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.630716,"lng":4.752279,"title":"De moord op Jaap van der Heijden 1993 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.938455,"lng":4.444489,"title":"De moord op Johan van den Bosch 1993 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.919818,"lng":4.409092,"title":"De moord op Helio Stewart 1993 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.091606,"lng":4.276050,"title":"De moord op Robert Willem van den Berg 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.545375,"lng":5.162132,"title":"De moord op Antonio Brizzi 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.045395,"lng":4.230506,"title":"De moord op Nazim Isik 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.153094,"lng":5.386855,"title":"De moord op Ricky Hok A Hin 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.435756,"lng":4.853163,"title":"De moord op Sahin Adhami 1995 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.214386,"lng":6.579603,"title":"De moord op Antoinette Bont 1995 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.370879,"lng":4.888494,"title":"De moord op Bert Bons 1996 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":48.694194,"lng":2.192963,"title":"De moord op Caroline Pino 1996 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.357061,"lng":5.874764,"title":"De moord op Chris van de Werken 1996 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.828512,"lng":4.944669,"title":"De moord op Piet Baams 1996 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.229991,"lng":6.556451,"title":"Shirley Hereijgers 1997 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.041788,"lng":4.231963,"title":"De moord op Wim Koenen 1997 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.375004,"lng":4.900561,"title":"De moord op Ina Vos 1997","link":"https://www.coldcasezaken.nl/ina-vos"},
+  {"lat":52.228100,"lng":5.946749,"title":"De moord op Henk Gerritsen 1998 ","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.532972,"lng":5.119041,"title":"De moord op Polle en Frank Taminiau, Rinus den Boer en Nico van Golde 1998 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.908195,"lng":4.503504,"title":"De moord op Josina Rave 1998 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.616982,"lng":4.186269,"title":"De moord op Cedric Zimmerman 1999 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.382465,"lng":4.707538,"title":"De moord op Sefer Yildirim 1999 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.094782,"lng":5.137888,"title":"De moord op Klaas Makkinje 1999 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.131531,"lng":4.706200,"title":"De moord op Hans Schonewille 1999 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.355948,"lng":4.778686,"title":"De moord op Debora Horstman 1999 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.641520,"lng":4.658338,"title":"De moord op Willem Wijker 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.504752,"lng":5.486081,"title":"De moord op Habib M'Hedhbi 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.568427,"lng":5.062627,"title":"De moord op Sjef, Piet en Ria Verhagen 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.383225,"lng":4.886255,"title":"De moord op Jan Jacobus Femer 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.331825,"lng":4.879206,"title":"De moord op Sam Klepper 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.920567,"lng":4.473390,"title":"De moord op Cafer Dereli 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.295975,"lng":4.988864,"title":"De moord op Abdul Majeed Khan 2001 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.388942,"lng":6.108528,"title":"De moord op Dogan Manan 2001 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.809720,"lng":5.808133,"title":"De moord op Leon Kok 2002 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.580414,"lng":4.755198,"title":"De moord op Corné Balemans 2002 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":50.886434,"lng":5.973747,"title":"De moord op Patrick van der Bolt 2002 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.873640,"lng":4.477160,"title":"De moord op Sedar Soares 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.657560,"lng":5.020661,"title":"De moord op Leon Rombouts en Manita Koenen 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.920731,"lng":4.462225,"title":"De moord op Geert Raeymaeker 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.331304,"lng":3.826851,"title":"De moord op John Wijngaarde 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.349216,"lng":4.937679,"title":"De moord op Bertus Lüske 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.306066,"lng":4.855991,"title":"De moord op Jules Jie en vriendin 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.646433,"lng":5.049051,"title":"De moord op Martin Hoogland 2004 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.367986,"lng":4.531724,"title":"De moord op Gijs van Dam jr.2004 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.369461,"lng":6.212122,"title":"De moord op Bulent Derendeli 2004 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.340823,"lng":4.893218,"title":"De moord op Nordin Ben Salah 2004 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.350600,"lng":4.876998,"title":"De moord op Willem Endstra 2004 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.348848,"lng":4.873378,"title":"De moord op Evert Hingst 2005 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.332561,"lng":4.855231,"title":"De moord op George van Kleef 2005 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.359494,"lng":4.917002,"title":"De moord op Jacques Versnel 2005 (geen sitedossier","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.588935,"lng":5.084056,"title":"De moord op Hakki Adnan Yesilkagit 2006 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.918814,"lng":4.463106,"title":"De moord op Karim Bouhmala en Sabah El Fadili 2006 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.120631,"lng":4.663111,"title":"De moord op Tamara Wolvers 2006 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.062183,"lng":4.328492,"title":"De moord op Anandkoemar Koebar en Claudia Yvette Edoo 2006 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.312829,"lng":3.858891,"title":"De moord op Nermin Kutlu 2006 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.991530,"lng":4.360320,"title":"De moord op Jacobus Drevijn 2007 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.501428,"lng":4.516747,"title":"De moord op Sheikmoes Sindy 2007 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.891033,"lng":4.555777,"title":"De moord op Ahmad Al-Saidy 2007 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.061283,"lng":4.218364,"title":"De moord op Tineke Verhagen 2007 (geen sidedossier","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.201202,"lng":5.797955,"title":"De moord op Tevfik Igli 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.845812,"lng":6.043596,"title":"De moord op Ida Klijnstra 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.454678,"lng":3.582212,"title":"De moord op Ilonka Toth 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.332029,"lng":4.887363,"title":"De moord op August Adjoeba 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.454371,"lng":5.452759,"title":"De moord op Fred Ruijzenaars 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.358096,"lng":4.863468,"title":"De moord op Robert Woei a Tsoi 2008 (geen sitedosser) ","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.280466,"lng":5.752173,"title":"De moord op Daan van Es 2009 ","link":"https://www.coldcasezaken.nl/daan-van-es"},
+  {"lat":52.664243,"lng":4.761645,"title":"De moord op Johnny Neslo 2009 (geen sitedossier","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.834208,"lng":5.830268,"title":"De moord op Harry Schrievers 2010 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.340836,"lng":4.929194,"title":"De moord op Stanley Hillis 2011 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.025795,"lng":5.139267,"title":"De moord op Pieter Vos en Jaap Zillig 2011 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.830525,"lng":4.882519,"title":"De moord op Johan de Waal 2012 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.235308,"lng":3.826232,"title":"De moord op Michaël ten Napel 2012 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.829267,"lng":5.790558,"title":"De moord op Kevin Amerika 2012 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.096528,"lng":5.038948,"title":"De moord op Altan Soysal 2013 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.377669,"lng":4.821395,"title":"De moord op Aytas Goraler 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.188309,"lng":5.407025,"title":"De moord op Mohammed Alarasi 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.481412,"lng":4.659405,"title":"De moord op Hans Nijman 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.288164,"lng":4.826862,"title":"De moord op Luana Luz Xavier 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.359203,"lng":4.796104,"title":"De moord op Augustine Nyantakyi 2015 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.307142,"lng":4.975456,"title":"De moord op Siegmar Flanuer 2015 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.401669,"lng":5.673560,"title":"De moord op Esther Paul 2017 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.436253,"lng":5.513576,"title":"De moord op Johan van Boxtel 2017 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.494453,"lng":5.395590,"title":"De moord op Dennis Struijk 2017 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.078975,"lng":4.331415,"title":"De moord op Ahmad Mola Nissi 2017 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.182127,"lng":5.401315,"title":"De moord op Samir Jabli 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.923780,"lng":5.018486,"title":"De vermissing van Sidney Lute 2016","link":"https://www.coldcasezaken.nl/sidney-luten"},
+  {"lat":51.716409,"lng":5.327277,"title":"De vermissing van Jules Clement 1984 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.589240,"lng":5.145050,"title":"De vermissing van Wim van den Hurk 1989 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.540508,"lng":4.461306,"title":"De vermissing van Maarten Geurts 1990 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.959180,"lng":5.636642,"title":"De vermissing van Kees Epker 1993 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.233852,"lng":6.556646,"title":"De vermissing van Ineke Fleurke 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.885900,"lng":4.458741,"title":"De vermissing van Gerard Hulscher 1998 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.001777,"lng":5.860584,"title":"De vermissing van Jan Nebbeling 2000 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.301083,"lng":4.675825,"title":"De vermissing van Yvonne Catsburg2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.651201,"lng":4.835633,"title":"De vermissing van John Heijboer 2005 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.962183,"lng":4.569196,"title":"De vermissing van Remco van der Torre 2008 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.273395,"lng":6.228495,"title":"De vermissing van Michael de Vrieze 2010 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.327865,"lng":4.856951,"title":"De vermissing van Roel van Otten 2010 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.072173,"lng":5.028128,"title":"De vermissing van Hugo Charles 2012 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.528837,"lng":6.023257,"title":"De vermissing van Zoryana Tupis 2013 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.397187,"lng":4.941888,"title":"De vermissing van Rachid Zaoudi 2013 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.328014,"lng":5.632334,"title":"De vermissing van Henk Vierwind 2013 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.033671,"lng":3.637481,"title":"De vermissing van Mieke Kuijpers 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.446190,"lng":5.445892,"title":"De vermissing van Henry Pfaff 2015 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.982968,"lng":6.568453,"title":"De vermissing van Hugo van Dijk 2015 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.302590,"lng":4.968214,"title":"De vermissing van Sabrina Oosterbeek 2017 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.040068,"lng":4.324935,"title":"De vermissing van Mohamed Anaya 2018 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.253602,"lng":4.767016,"title":"De vermissing van Frederik Pallesen 2019 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.982111,"lng":4.362262,"title":"De vermissing van Jakob Johan de Bruijn 2022 ","link":"https://www.coldcasezaken.nl/jakob-johan-de-bruijn"},
+  {"lat":51.827130,"lng":4.942457,"title":"De vermissing van Yoran Krol 2023","link":"https://www.coldcasezaken.nl/yoran-krol"},
+  {"lat":50.963108,"lng":5.713263,"title":"De moord op Angelique Hendrix 1990","link":"https://www.coldcasezaken.nl/angelique-hendrix"},
+  {"lat":51.568754,"lng":3.517343,"title":"De moord op Annie van der Poel 2019","link":"https://www.coldcasezaken.nl/annie-van-der-poel"},
+  {"lat":52.878010,"lng":5.795247,"title":"De moord op Ronnie Spa 1994 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.364722,"lng":4.939533,"title":"De moord op Virgil Schot 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":50.853387,"lng":5.684319,"title":"De vermissing van Tanja Groen 1993 ","link":"https://www.coldcasezaken.nl/tanja-groen"},
+  {"lat":50.947374,"lng":5.954921,"title":"De moord op Leon Reubzaet 1987  ","link":"https://www.coldcasezaken.nl/leon-reubzaet"},
+  {"lat":51.375441,"lng":6.147173,"title":"De moord op Rudy van der Hoeven 2006 ","link":"https://www.coldcasezaken.nl/rudy-van-der-hoeven"},
+  {"lat":52.448797,"lng":4.595967,"title":"De vermissing van cheryl morriën 1986 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.403020,"lng":4.653009,"title":"De moord op W. Scholtemeijer 1997 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.545756,"lng":5.814808,"title":"De vermissing van Marc Jaskulski 2024 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.436388,"lng":4.821726,"title":"De moord op William Caceres Marcano 2025 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.974088,"lng":5.664070,"title":"De vermissing van Hendrik Jan van Houten 2003 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.060852,"lng":5.133585,"title":"De vermissing van Churisan Allen 2018 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.034094,"lng":3.637569,"title":"De vermissing van Mieke Kuijpers 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.730242,"lng":5.877778,"title":"De vermissing van Jan en Riet Kelders 1989 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":53.202554,"lng":6.568880,"title":"De moord op Annet van Akkeren 1982 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.154197,"lng":4.946079,"title":"De moord op Irene Bernet 1984","link":"https://www.coldcasezaken.nl/irene-bernet"},
+  {"lat":51.948614,"lng":6.346610,"title":"De moord op Rinie Wielheesen 1970 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":52.468731,"lng":6.708808,"title":"De vermissing Frans Olthof 1995 ","link":"https://www.coldcasezaken.nl/frans-olthof"},
+  {"lat":52.036506,"lng":4.701798,"title":"De moord op Ewoud Siegers 2014 (geen sitedossier)","link":"https://www.coldcasezaken.nl/zaak-zonder-dossier"},
+  {"lat":51.083053,"lng":4.135659,"title":"De moord op Lodewijk Genbrugge 1994","link":"https://www.coldcasezaken.nl/lodewijk-louis-genbrugge"},
+  {"lat":52.372612,"lng":4.897087,"title":"De moord op Geert Jacobus Gernand 1984","link":"https://www.coldcasezaken.nl/geert-gernand"},
+  {"lat":52.227394,"lng":5.176696,"title":"De vermissing Marcel Putman 2001 ","link":"https://www.coldcasezaken.nl/marcel-putman"}
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
